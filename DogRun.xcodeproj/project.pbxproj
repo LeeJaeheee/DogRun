@@ -20,6 +20,14 @@
 		D23E77F02BD3CDB600A386A0 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = D23E77EF2BD3CDB600A386A0 /* Then */; };
 		D23E77F32BD3CDD300A386A0 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = D23E77F22BD3CDD300A386A0 /* Alamofire */; };
 		D23E77F62BD3CDE100A386A0 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = D23E77F52BD3CDE100A386A0 /* Kingfisher */; };
+		D23E77F82BD3CE3E00A386A0 /* TargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23E77F72BD3CE3E00A386A0 /* TargetType.swift */; };
+		D23E77FA2BD3CE6700A386A0 /* HTTPHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23E77F92BD3CE6700A386A0 /* HTTPHeader.swift */; };
+		D23E77FC2BD3CE8600A386A0 /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23E77FB2BD3CE8600A386A0 /* APIKey.swift */; };
+		D23E77FE2BD3CECD00A386A0 /* MultipartEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23E77FD2BD3CECD00A386A0 /* MultipartEncoder.swift */; };
+		D23E78002BD3CF3900A386A0 /* TokenRefreshInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23E77FF2BD3CF3900A386A0 /* TokenRefreshInterceptor.swift */; };
+		D23E78022BD3CF7D00A386A0 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23E78012BD3CF7D00A386A0 /* NetworkManager.swift */; };
+		D23E78052BD3D04F00A386A0 /* AuthModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23E78042BD3D04F00A386A0 /* AuthModel.swift */; };
+		D23E78072BD3D05900A386A0 /* AuthRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23E78062BD3D05900A386A0 /* AuthRouter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +40,14 @@
 		D23E77B42BD1291200A386A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D23E77B62BD1291200A386A0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D23E77BC2BD1294900A386A0 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		D23E77F72BD3CE3E00A386A0 /* TargetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetType.swift; sourceTree = "<group>"; };
+		D23E77F92BD3CE6700A386A0 /* HTTPHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPHeader.swift; sourceTree = "<group>"; };
+		D23E77FB2BD3CE8600A386A0 /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
+		D23E77FD2BD3CECD00A386A0 /* MultipartEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipartEncoder.swift; sourceTree = "<group>"; };
+		D23E77FF2BD3CF3900A386A0 /* TokenRefreshInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenRefreshInterceptor.swift; sourceTree = "<group>"; };
+		D23E78012BD3CF7D00A386A0 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		D23E78042BD3D04F00A386A0 /* AuthModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthModel.swift; sourceTree = "<group>"; };
+		D23E78062BD3D05900A386A0 /* AuthRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRouter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +106,13 @@
 		D23E77BE2BD12A5700A386A0 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				D23E78032BD3D04200A386A0 /* Auth */,
+				D23E77F72BD3CE3E00A386A0 /* TargetType.swift */,
+				D23E77F92BD3CE6700A386A0 /* HTTPHeader.swift */,
+				D23E77FB2BD3CE8600A386A0 /* APIKey.swift */,
+				D23E77FD2BD3CECD00A386A0 /* MultipartEncoder.swift */,
+				D23E77FF2BD3CF3900A386A0 /* TokenRefreshInterceptor.swift */,
+				D23E78012BD3CF7D00A386A0 /* NetworkManager.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -144,6 +167,15 @@
 			children = (
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		D23E78032BD3D04200A386A0 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				D23E78042BD3D04F00A386A0 /* AuthModel.swift */,
+				D23E78062BD3D05900A386A0 /* AuthRouter.swift */,
+			);
+			path = Auth;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -233,9 +265,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D23E78022BD3CF7D00A386A0 /* NetworkManager.swift in Sources */,
+				D23E77F82BD3CE3E00A386A0 /* TargetType.swift in Sources */,
 				D23E77AD2BD1290F00A386A0 /* ViewController.swift in Sources */,
+				D23E77FA2BD3CE6700A386A0 /* HTTPHeader.swift in Sources */,
 				D23E77A92BD1290F00A386A0 /* AppDelegate.swift in Sources */,
+				D23E77FE2BD3CECD00A386A0 /* MultipartEncoder.swift in Sources */,
+				D23E77FC2BD3CE8600A386A0 /* APIKey.swift in Sources */,
 				D23E77AB2BD1290F00A386A0 /* SceneDelegate.swift in Sources */,
+				D23E78072BD3D05900A386A0 /* AuthRouter.swift in Sources */,
+				D23E78002BD3CF3900A386A0 /* TokenRefreshInterceptor.swift in Sources */,
+				D23E78052BD3D04F00A386A0 /* AuthModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
