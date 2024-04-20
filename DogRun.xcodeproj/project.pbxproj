@@ -28,6 +28,7 @@
 		D23E78022BD3CF7D00A386A0 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23E78012BD3CF7D00A386A0 /* NetworkManager.swift */; };
 		D23E78052BD3D04F00A386A0 /* AuthModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23E78042BD3D04F00A386A0 /* AuthModel.swift */; };
 		D23E78072BD3D05900A386A0 /* AuthRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23E78062BD3D05900A386A0 /* AuthRouter.swift */; };
+		D23E780A2BD402A300A386A0 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23E78092BD402A300A386A0 /* UserDefaultsManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		D23E78012BD3CF7D00A386A0 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		D23E78042BD3D04F00A386A0 /* AuthModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthModel.swift; sourceTree = "<group>"; };
 		D23E78062BD3D05900A386A0 /* AuthRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRouter.swift; sourceTree = "<group>"; };
+		D23E78092BD402A300A386A0 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +89,7 @@
 		D23E77A72BD1290F00A386A0 /* DogRun */ = {
 			isa = PBXGroup;
 			children = (
+				D23E78082BD3D1DB00A386A0 /* Manager */,
 				D23E77BE2BD12A5700A386A0 /* Network */,
 				D23E77DE2BD3CC3300A386A0 /* View */,
 				D23E77DD2BD3CBFC00A386A0 /* Present */,
@@ -112,7 +115,6 @@
 				D23E77FB2BD3CE8600A386A0 /* APIKey.swift */,
 				D23E77FD2BD3CECD00A386A0 /* MultipartEncoder.swift */,
 				D23E77FF2BD3CF3900A386A0 /* TokenRefreshInterceptor.swift */,
-				D23E78012BD3CF7D00A386A0 /* NetworkManager.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -176,6 +178,15 @@
 				D23E78062BD3D05900A386A0 /* AuthRouter.swift */,
 			);
 			path = Auth;
+			sourceTree = "<group>";
+		};
+		D23E78082BD3D1DB00A386A0 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				D23E78012BD3CF7D00A386A0 /* NetworkManager.swift */,
+				D23E78092BD402A300A386A0 /* UserDefaultsManager.swift */,
+			);
+			path = Manager;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -267,6 +278,7 @@
 			files = (
 				D23E78022BD3CF7D00A386A0 /* NetworkManager.swift in Sources */,
 				D23E77F82BD3CE3E00A386A0 /* TargetType.swift in Sources */,
+				D23E780A2BD402A300A386A0 /* UserDefaultsManager.swift in Sources */,
 				D23E77AD2BD1290F00A386A0 /* ViewController.swift in Sources */,
 				D23E77FA2BD3CE6700A386A0 /* HTTPHeader.swift in Sources */,
 				D23E77A92BD1290F00A386A0 /* AppDelegate.swift in Sources */,

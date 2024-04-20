@@ -33,9 +33,9 @@ enum HeaderFieldType {
         case .sesacKey:
                 .init(name: HeaderLiteral.sesacKey.rawValue, value: APIKey.sesacKey.rawValue)
         case .authorization:
-                .init(name: HeaderLiteral.authorization.rawValue, value: UserDefaults.standard.string(forKey: "accessToken") ?? "")
+                .init(name: HeaderLiteral.authorization.rawValue, value: UserDefaultsManager.accessToken)
         case .refresh:
-                .init(name: HeaderLiteral.refresh.rawValue, value: UserDefaults.standard.string(forKey: "refreshToken") ?? "")
+                .init(name: HeaderLiteral.refresh.rawValue, value: UserDefaultsManager.refreshToken)
         }
     }
 }

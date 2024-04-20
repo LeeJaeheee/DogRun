@@ -35,7 +35,7 @@ final class TokenRefreshInterceptor: RequestInterceptor {
         if isTokenRefreshed {
             print("재발급된 토큰으로 URLRequset 변경")
             var modifiedRequest = urlRequest
-            modifiedRequest.setValue(UserDefaults.standard.string(forKey: "accessToken"), forHTTPHeaderField: HeaderLiteral.authorization.rawValue)
+            modifiedRequest.setValue(UserDefaultsManager.accessToken, forHTTPHeaderField: HeaderLiteral.authorization.rawValue)
 
             isTokenRefreshed = false
             completion(.success(modifiedRequest))
@@ -55,7 +55,7 @@ final class TokenRefreshInterceptor: RequestInterceptor {
         // 토큰 갱신 API 호출
         NetworkManager.request(type: AuthResponse.self, router: AuthRouter.refresh)
             .subscribe(with: self) { owner, response in
-                UserDefaults.standard.set(response.accessToken, forKey: "accessToken")
+                UserDefaultsManager.accessToken = response.accessToken
                 self.isTokenRefreshed = true
                 completion(.retry)
                 return
