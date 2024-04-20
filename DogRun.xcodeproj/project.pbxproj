@@ -59,6 +59,11 @@
 		D23E77A72BD1290F00A386A0 /* DogRun */ = {
 			isa = PBXGroup;
 			children = (
+				D23E77BE2BD12A5700A386A0 /* Network */,
+				D23E77DE2BD3CC3300A386A0 /* View */,
+				D23E77DD2BD3CBFC00A386A0 /* Present */,
+				D23E77DF2BD3CC4200A386A0 /* Util */,
+				D23E77E02BD3CC4C00A386A0 /* Resource */,
 				D23E77A82BD1290F00A386A0 /* AppDelegate.swift */,
 				D23E77AA2BD1290F00A386A0 /* SceneDelegate.swift */,
 				D23E77AC2BD1290F00A386A0 /* ViewController.swift */,
@@ -68,6 +73,65 @@
 				D23E77B62BD1291200A386A0 /* Info.plist */,
 			);
 			path = DogRun;
+			sourceTree = "<group>";
+		};
+		D23E77BE2BD12A5700A386A0 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		D23E77DD2BD3CBFC00A386A0 /* Present */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Present;
+			sourceTree = "<group>";
+		};
+		D23E77DE2BD3CC3300A386A0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D23E77DF2BD3CC4200A386A0 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				D23E77E12BD3CC9100A386A0 /* Base */,
+				D23E77E22BD3CC9A00A386A0 /* Protocol */,
+				D23E77E32BD3CCA100A386A0 /* Extension */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		D23E77E02BD3CC4C00A386A0 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		D23E77E12BD3CC9100A386A0 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		D23E77E22BD3CC9A00A386A0 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		D23E77E32BD3CCA100A386A0 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
