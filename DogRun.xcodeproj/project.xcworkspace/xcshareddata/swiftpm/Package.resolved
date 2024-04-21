@@ -1,5 +1,5 @@
 {
-  "originHash" : "565e327d4ca41568019893be4019ce37441ebcfaa19b4f3f64a22a1a5522122c",
+  "originHash" : "a3a1bea59814b6200572b1b04a35eb9ff74942eee59572ad77c176fb15f489fb",
   "pins" : [
     {
       "identity" : "alamofire",
@@ -8,6 +8,15 @@
       "state" : {
         "revision" : "f455c2975872ccd2d9c81594c658af65716e9b9a",
         "version" : "5.9.1"
+      }
+    },
+    {
+      "identity" : "iqkeyboardmanager",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/hackiftekhar/IQKeyboardManager",
+      "state" : {
+        "revision" : "5d30eba093678d05a6d5d1800f8c1d2121c7e3dd",
+        "version" : "7.0.2"
       }
     },
     {
@@ -38,12 +47,30 @@
       }
     },
     {
+      "identity" : "textfieldeffects",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/raulriera/TextFieldEffects",
+      "state" : {
+        "revision" : "7e563d4d6d755bb1ab6c1c049f8c215d7c489100",
+        "version" : "1.7.0"
+      }
+    },
+    {
       "identity" : "then",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/devxoul/Then.git",
       "state" : {
         "revision" : "d41ef523faef0f911369f79c0b96815d9dbb6d7a",
         "version" : "3.0.0"
+      }
+    },
+    {
+      "identity" : "toast-swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/scalessec/Toast-Swift",
+      "state" : {
+        "revision" : "ddccd20d6fb718448d9b179c454c561653fda7d5",
+        "version" : "5.1.1"
       }
     }
   ],

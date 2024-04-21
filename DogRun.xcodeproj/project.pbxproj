@@ -29,6 +29,11 @@
 		D23E78052BD3D04F00A386A0 /* AuthModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23E78042BD3D04F00A386A0 /* AuthModel.swift */; };
 		D23E78072BD3D05900A386A0 /* AuthRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23E78062BD3D05900A386A0 /* AuthRouter.swift */; };
 		D23E780A2BD402A300A386A0 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23E78092BD402A300A386A0 /* UserDefaultsManager.swift */; };
+		D23E780C2BD40EA000A386A0 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23E780B2BD40EA000A386A0 /* BaseView.swift */; };
+		D23E780E2BD40EC700A386A0 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23E780D2BD40EC700A386A0 /* BaseViewController.swift */; };
+		D23E78112BD4C2E300A386A0 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = D23E78102BD4C2E300A386A0 /* Toast */; };
+		D23E78142BD4C2F900A386A0 /* TextFieldEffects in Frameworks */ = {isa = PBXBuildFile; productRef = D23E78132BD4C2F900A386A0 /* TextFieldEffects */; };
+		D23E78172BD4C32200A386A0 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D23E78162BD4C32200A386A0 /* IQKeyboardManagerSwift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +55,8 @@
 		D23E78042BD3D04F00A386A0 /* AuthModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthModel.swift; sourceTree = "<group>"; };
 		D23E78062BD3D05900A386A0 /* AuthRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRouter.swift; sourceTree = "<group>"; };
 		D23E78092BD402A300A386A0 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
+		D23E780B2BD40EA000A386A0 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
+		D23E780D2BD40EC700A386A0 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,10 +65,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				D23E77F62BD3CDE100A386A0 /* Kingfisher in Frameworks */,
+				D23E78142BD4C2F900A386A0 /* TextFieldEffects in Frameworks */,
 				D23E77F32BD3CDD300A386A0 /* Alamofire in Frameworks */,
 				D23E77ED2BD3CD2600A386A0 /* SnapKit in Frameworks */,
 				D23E77EA2BD3CD1A00A386A0 /* RxSwift in Frameworks */,
+				D23E78172BD4C32200A386A0 /* IQKeyboardManagerSwift in Frameworks */,
 				D23E77E82BD3CD1A00A386A0 /* RxCocoa in Frameworks */,
+				D23E78112BD4C2E300A386A0 /* Toast in Frameworks */,
 				D23E77F02BD3CDB600A386A0 /* Then in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -153,6 +163,8 @@
 		D23E77E12BD3CC9100A386A0 /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				D23E780B2BD40EA000A386A0 /* BaseView.swift */,
+				D23E780D2BD40EC700A386A0 /* BaseViewController.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -212,6 +224,9 @@
 				D23E77EF2BD3CDB600A386A0 /* Then */,
 				D23E77F22BD3CDD300A386A0 /* Alamofire */,
 				D23E77F52BD3CDE100A386A0 /* Kingfisher */,
+				D23E78102BD4C2E300A386A0 /* Toast */,
+				D23E78132BD4C2F900A386A0 /* TextFieldEffects */,
+				D23E78162BD4C32200A386A0 /* IQKeyboardManagerSwift */,
 			);
 			productName = DogRun;
 			productReference = D23E77A52BD1290F00A386A0 /* DogRun.app */;
@@ -247,6 +262,9 @@
 				D23E77EE2BD3CDB500A386A0 /* XCRemoteSwiftPackageReference "Then" */,
 				D23E77F12BD3CDD300A386A0 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				D23E77F42BD3CDE100A386A0 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				D23E780F2BD4C2E300A386A0 /* XCRemoteSwiftPackageReference "Toast-Swift" */,
+				D23E78122BD4C2F900A386A0 /* XCRemoteSwiftPackageReference "TextFieldEffects" */,
+				D23E78152BD4C32200A386A0 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 			);
 			productRefGroup = D23E77A62BD1290F00A386A0 /* Products */;
 			projectDirPath = "";
@@ -277,9 +295,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				D23E78022BD3CF7D00A386A0 /* NetworkManager.swift in Sources */,
+				D23E780C2BD40EA000A386A0 /* BaseView.swift in Sources */,
 				D23E77F82BD3CE3E00A386A0 /* TargetType.swift in Sources */,
 				D23E780A2BD402A300A386A0 /* UserDefaultsManager.swift in Sources */,
 				D23E77AD2BD1290F00A386A0 /* ViewController.swift in Sources */,
+				D23E780E2BD40EC700A386A0 /* BaseViewController.swift in Sources */,
 				D23E77FA2BD3CE6700A386A0 /* HTTPHeader.swift in Sources */,
 				D23E77A92BD1290F00A386A0 /* AppDelegate.swift in Sources */,
 				D23E77FE2BD3CECD00A386A0 /* MultipartEncoder.swift in Sources */,
@@ -562,6 +582,30 @@
 				minimumVersion = 7.11.0;
 			};
 		};
+		D23E780F2BD4C2E300A386A0 /* XCRemoteSwiftPackageReference "Toast-Swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scalessec/Toast-Swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.1.1;
+			};
+		};
+		D23E78122BD4C2F900A386A0 /* XCRemoteSwiftPackageReference "TextFieldEffects" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/raulriera/TextFieldEffects";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.7.0;
+			};
+		};
+		D23E78152BD4C32200A386A0 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.2;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -594,6 +638,21 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D23E77F42BD3CDE100A386A0 /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
+		};
+		D23E78102BD4C2E300A386A0 /* Toast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D23E780F2BD4C2E300A386A0 /* XCRemoteSwiftPackageReference "Toast-Swift" */;
+			productName = Toast;
+		};
+		D23E78132BD4C2F900A386A0 /* TextFieldEffects */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D23E78122BD4C2F900A386A0 /* XCRemoteSwiftPackageReference "TextFieldEffects" */;
+			productName = TextFieldEffects;
+		};
+		D23E78162BD4C32200A386A0 /* IQKeyboardManagerSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D23E78152BD4C32200A386A0 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
+			productName = IQKeyboardManagerSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
