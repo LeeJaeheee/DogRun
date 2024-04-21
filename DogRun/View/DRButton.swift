@@ -15,12 +15,15 @@ final class DRButton: UIButton {
         }
     }
     
+    var basicHeight: Int { 48 }
+    
     init(title: String) {
         super.init(frame: .zero)
         
+        isEnabled = true
+        
         setTitle(title, for: .normal)
         setTitleColor(.white, for: .normal)
-        backgroundColor = isEnabled ? .accent : .lightGray
         
         titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
         

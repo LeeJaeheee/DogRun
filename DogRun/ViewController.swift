@@ -7,7 +7,6 @@
 
 import UIKit
 import SnapKit
-import TextFieldEffects
 
 class ViewController: UIViewController {
     
@@ -26,7 +25,7 @@ class ViewController: UIViewController {
         
         view.addSubview(textField)
         textField.snp.makeConstraints { make in
-            make.center.equalToSuperview()
+            make.top.equalTo(titleLabel.snp.bottom).offset(70)
             make.horizontalEdges.equalToSuperview().inset(20)
             make.height.equalTo(textField.basicHeight)
         }
@@ -35,7 +34,7 @@ class ViewController: UIViewController {
         view.addSubview(button)
         button.snp.makeConstraints { make in
             make.horizontalEdges.equalToSuperview().inset(20)
-            make.bottom.equalTo(view.safeAreaLayoutGuide).inset(40)
+            make.bottom.equalTo(view.safeAreaLayoutGuide).inset(60)
             make.height.equalTo(48)
         }
 

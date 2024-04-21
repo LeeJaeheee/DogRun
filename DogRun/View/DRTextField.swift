@@ -17,7 +17,7 @@ final class DRTextField: HoshiTextField {
     private let normalFont = UIFont.systemFont(ofSize: 18, weight: .semibold)
     private let holderFont = UIFont.systemFont(ofSize: 13)
     
-    let basicHeight = 80
+    var basicHeight: Int { 80 }
     var isValid = false
     
     init(title: String) {

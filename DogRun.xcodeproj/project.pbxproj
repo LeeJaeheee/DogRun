@@ -39,6 +39,15 @@
 		D23E781D2BD4E4E700A386A0 /* DRTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23E781C2BD4E4E700A386A0 /* DRTextField.swift */; };
 		D23E781F2BD53E3F00A386A0 /* DRLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23E781E2BD53E3F00A386A0 /* DRLabel.swift */; };
 		D23E78212BD5400400A386A0 /* DRButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23E78202BD5400400A386A0 /* DRButton.swift */; };
+		D23E78262BD5479500A386A0 /* EmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23E78252BD5479500A386A0 /* EmailViewController.swift */; };
+		D23E78282BD547AD00A386A0 /* PasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23E78272BD547AD00A386A0 /* PasswordViewController.swift */; };
+		D23E782A2BD547BB00A386A0 /* NicknameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23E78292BD547BB00A386A0 /* NicknameViewController.swift */; };
+		D23E782D2BD5485E00A386A0 /* EmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23E782C2BD5485E00A386A0 /* EmailView.swift */; };
+		D23E782F2BD54DB100A386A0 /* EmailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23E782E2BD54DB100A386A0 /* EmailViewModel.swift */; };
+		D23E78322BD54E6C00A386A0 /* PasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23E78312BD54E6C00A386A0 /* PasswordView.swift */; };
+		D23E78342BD54E7A00A386A0 /* PasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23E78332BD54E7A00A386A0 /* PasswordViewModel.swift */; };
+		D23E78372BD54E9700A386A0 /* NicknameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23E78362BD54E9700A386A0 /* NicknameView.swift */; };
+		D23E78392BD54EA200A386A0 /* NicknameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23E78382BD54EA200A386A0 /* NicknameViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,6 +76,15 @@
 		D23E781C2BD4E4E700A386A0 /* DRTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DRTextField.swift; sourceTree = "<group>"; };
 		D23E781E2BD53E3F00A386A0 /* DRLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DRLabel.swift; sourceTree = "<group>"; };
 		D23E78202BD5400400A386A0 /* DRButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DRButton.swift; sourceTree = "<group>"; };
+		D23E78252BD5479500A386A0 /* EmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailViewController.swift; sourceTree = "<group>"; };
+		D23E78272BD547AD00A386A0 /* PasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordViewController.swift; sourceTree = "<group>"; };
+		D23E78292BD547BB00A386A0 /* NicknameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameViewController.swift; sourceTree = "<group>"; };
+		D23E782C2BD5485E00A386A0 /* EmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailView.swift; sourceTree = "<group>"; };
+		D23E782E2BD54DB100A386A0 /* EmailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailViewModel.swift; sourceTree = "<group>"; };
+		D23E78312BD54E6C00A386A0 /* PasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordView.swift; sourceTree = "<group>"; };
+		D23E78332BD54E7A00A386A0 /* PasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordViewModel.swift; sourceTree = "<group>"; };
+		D23E78362BD54E9700A386A0 /* NicknameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameView.swift; sourceTree = "<group>"; };
+		D23E78382BD54EA200A386A0 /* NicknameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +160,7 @@
 		D23E77DD2BD3CBFC00A386A0 /* Present */ = {
 			isa = PBXGroup;
 			children = (
+				D23E78222BD5475100A386A0 /* SignUp */,
 			);
 			path = Present;
 			sourceTree = "<group>";
@@ -214,6 +233,46 @@
 				D23E78092BD402A300A386A0 /* UserDefaultsManager.swift */,
 			);
 			path = Manager;
+			sourceTree = "<group>";
+		};
+		D23E78222BD5475100A386A0 /* SignUp */ = {
+			isa = PBXGroup;
+			children = (
+				D23E782B2BD5485000A386A0 /* Email */,
+				D23E78302BD54E5600A386A0 /* Password */,
+				D23E78352BD54E8400A386A0 /* Nickname */,
+			);
+			path = SignUp;
+			sourceTree = "<group>";
+		};
+		D23E782B2BD5485000A386A0 /* Email */ = {
+			isa = PBXGroup;
+			children = (
+				D23E782C2BD5485E00A386A0 /* EmailView.swift */,
+				D23E78252BD5479500A386A0 /* EmailViewController.swift */,
+				D23E782E2BD54DB100A386A0 /* EmailViewModel.swift */,
+			);
+			path = Email;
+			sourceTree = "<group>";
+		};
+		D23E78302BD54E5600A386A0 /* Password */ = {
+			isa = PBXGroup;
+			children = (
+				D23E78312BD54E6C00A386A0 /* PasswordView.swift */,
+				D23E78272BD547AD00A386A0 /* PasswordViewController.swift */,
+				D23E78332BD54E7A00A386A0 /* PasswordViewModel.swift */,
+			);
+			path = Password;
+			sourceTree = "<group>";
+		};
+		D23E78352BD54E8400A386A0 /* Nickname */ = {
+			isa = PBXGroup;
+			children = (
+				D23E78362BD54E9700A386A0 /* NicknameView.swift */,
+				D23E78292BD547BB00A386A0 /* NicknameViewController.swift */,
+				D23E78382BD54EA200A386A0 /* NicknameViewModel.swift */,
+			);
+			path = Nickname;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -309,24 +368,33 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D23E78372BD54E9700A386A0 /* NicknameView.swift in Sources */,
 				D23E78022BD3CF7D00A386A0 /* NetworkManager.swift in Sources */,
 				D23E780C2BD40EA000A386A0 /* BaseView.swift in Sources */,
 				D23E77F82BD3CE3E00A386A0 /* TargetType.swift in Sources */,
+				D23E78342BD54E7A00A386A0 /* PasswordViewModel.swift in Sources */,
 				D23E780A2BD402A300A386A0 /* UserDefaultsManager.swift in Sources */,
 				D23E78192BD4C3FA00A386A0 /* ReusableIdentifier.swift in Sources */,
 				D23E77AD2BD1290F00A386A0 /* ViewController.swift in Sources */,
+				D23E782A2BD547BB00A386A0 /* NicknameViewController.swift in Sources */,
 				D23E781F2BD53E3F00A386A0 /* DRLabel.swift in Sources */,
 				D23E78212BD5400400A386A0 /* DRButton.swift in Sources */,
+				D23E782D2BD5485E00A386A0 /* EmailView.swift in Sources */,
 				D23E780E2BD40EC700A386A0 /* BaseViewController.swift in Sources */,
 				D23E77FA2BD3CE6700A386A0 /* HTTPHeader.swift in Sources */,
 				D23E77A92BD1290F00A386A0 /* AppDelegate.swift in Sources */,
 				D23E781D2BD4E4E700A386A0 /* DRTextField.swift in Sources */,
 				D23E77FE2BD3CECD00A386A0 /* MultipartEncoder.swift in Sources */,
+				D23E78322BD54E6C00A386A0 /* PasswordView.swift in Sources */,
 				D23E77FC2BD3CE8600A386A0 /* APIKey.swift in Sources */,
 				D23E77AB2BD1290F00A386A0 /* SceneDelegate.swift in Sources */,
 				D23E781B2BD4C54700A386A0 /* ViewModelType.swift in Sources */,
 				D23E78072BD3D05900A386A0 /* AuthRouter.swift in Sources */,
+				D23E782F2BD54DB100A386A0 /* EmailViewModel.swift in Sources */,
+				D23E78282BD547AD00A386A0 /* PasswordViewController.swift in Sources */,
+				D23E78392BD54EA200A386A0 /* NicknameViewModel.swift in Sources */,
 				D23E78002BD3CF3900A386A0 /* TokenRefreshInterceptor.swift in Sources */,
+				D23E78262BD5479500A386A0 /* EmailViewController.swift in Sources */,
 				D23E78052BD3D04F00A386A0 /* AuthModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
