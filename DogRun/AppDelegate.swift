@@ -7,6 +7,7 @@
 
 import UIKit
 import IQKeyboardManagerSwift
+import Kingfisher
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +17,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
         IQKeyboardManager.shared.enable = true
+        
+        let modifier = AnyModifier { request in
+            var req = request
+            req.addValue(APIKey.sesacKey.rawValue, forHTTPHeaderField: HeaderLiteral.sesacKey.rawValue)
+            req.addValue(UserDefaultsManager.accessToken, forHTTPHeaderField: HeaderLiteral.authorization.rawValue)
+            return req
+        }
+        KingfisherManager.shared.defaultOptions = [.requestModifier(modifier)]
 
         return true
     }
