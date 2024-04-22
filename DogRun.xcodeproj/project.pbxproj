@@ -48,6 +48,10 @@
 		D23E78342BD54E7A00A386A0 /* PasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23E78332BD54E7A00A386A0 /* PasswordViewModel.swift */; };
 		D23E78372BD54E9700A386A0 /* NicknameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23E78362BD54E9700A386A0 /* NicknameView.swift */; };
 		D23E78392BD54EA200A386A0 /* NicknameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23E78382BD54EA200A386A0 /* NicknameViewModel.swift */; };
+		D2EDA3442BD580F8009CB0D7 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EDA3432BD580F8009CB0D7 /* MapView.swift */; };
+		D2EDA3462BD58104009CB0D7 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EDA3452BD58104009CB0D7 /* MapViewController.swift */; };
+		D2EDA3482BD5810F009CB0D7 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EDA3472BD5810F009CB0D7 /* MapViewModel.swift */; };
+		D2EDA34A2BD58D60009CB0D7 /* MapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EDA3492BD58D60009CB0D7 /* MapModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -85,6 +89,10 @@
 		D23E78332BD54E7A00A386A0 /* PasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordViewModel.swift; sourceTree = "<group>"; };
 		D23E78362BD54E9700A386A0 /* NicknameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameView.swift; sourceTree = "<group>"; };
 		D23E78382BD54EA200A386A0 /* NicknameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameViewModel.swift; sourceTree = "<group>"; };
+		D2EDA3432BD580F8009CB0D7 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		D2EDA3452BD58104009CB0D7 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		D2EDA3472BD5810F009CB0D7 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
+		D2EDA3492BD58D60009CB0D7 /* MapModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +168,9 @@
 		D23E77DD2BD3CBFC00A386A0 /* Present */ = {
 			isa = PBXGroup;
 			children = (
+				D2EDA3422BD580BA009CB0D7 /* Map */,
+				D2EDA3412BD5809E009CB0D7 /* UploadPost */,
+				D2EDA3402BD58089009CB0D7 /* SignIn */,
 				D23E78222BD5475100A386A0 /* SignUp */,
 			);
 			path = Present;
@@ -275,6 +286,31 @@
 			path = Nickname;
 			sourceTree = "<group>";
 		};
+		D2EDA3402BD58089009CB0D7 /* SignIn */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = SignIn;
+			sourceTree = "<group>";
+		};
+		D2EDA3412BD5809E009CB0D7 /* UploadPost */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = UploadPost;
+			sourceTree = "<group>";
+		};
+		D2EDA3422BD580BA009CB0D7 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				D2EDA3432BD580F8009CB0D7 /* MapView.swift */,
+				D2EDA3452BD58104009CB0D7 /* MapViewController.swift */,
+				D2EDA3472BD5810F009CB0D7 /* MapViewModel.swift */,
+				D2EDA3492BD58D60009CB0D7 /* MapModel.swift */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -368,6 +404,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2EDA3482BD5810F009CB0D7 /* MapViewModel.swift in Sources */,
 				D23E78372BD54E9700A386A0 /* NicknameView.swift in Sources */,
 				D23E78022BD3CF7D00A386A0 /* NetworkManager.swift in Sources */,
 				D23E780C2BD40EA000A386A0 /* BaseView.swift in Sources */,
@@ -381,7 +418,9 @@
 				D23E78212BD5400400A386A0 /* DRButton.swift in Sources */,
 				D23E782D2BD5485E00A386A0 /* EmailView.swift in Sources */,
 				D23E780E2BD40EC700A386A0 /* BaseViewController.swift in Sources */,
+				D2EDA3462BD58104009CB0D7 /* MapViewController.swift in Sources */,
 				D23E77FA2BD3CE6700A386A0 /* HTTPHeader.swift in Sources */,
+				D2EDA3442BD580F8009CB0D7 /* MapView.swift in Sources */,
 				D23E77A92BD1290F00A386A0 /* AppDelegate.swift in Sources */,
 				D23E781D2BD4E4E700A386A0 /* DRTextField.swift in Sources */,
 				D23E77FE2BD3CECD00A386A0 /* MultipartEncoder.swift in Sources */,
@@ -389,6 +428,7 @@
 				D23E77FC2BD3CE8600A386A0 /* APIKey.swift in Sources */,
 				D23E77AB2BD1290F00A386A0 /* SceneDelegate.swift in Sources */,
 				D23E781B2BD4C54700A386A0 /* ViewModelType.swift in Sources */,
+				D2EDA34A2BD58D60009CB0D7 /* MapModel.swift in Sources */,
 				D23E78072BD3D05900A386A0 /* AuthRouter.swift in Sources */,
 				D23E782F2BD54DB100A386A0 /* EmailViewModel.swift in Sources */,
 				D23E78282BD547AD00A386A0 /* PasswordViewController.swift in Sources */,
