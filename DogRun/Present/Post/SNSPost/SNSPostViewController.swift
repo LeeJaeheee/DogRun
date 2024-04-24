@@ -1,8 +1,8 @@
 //
-//  ViewController.swift
+//  SNSPostViewController.swift
 //  DogRun
 //
-//  Created by 이재희 on 4/18/24.
+//  Created by 이재희 on 4/23/24.
 //
 
 import UIKit
@@ -13,8 +13,20 @@ import RxCocoa
 import Kingfisher
 import Alamofire
 
-class ViewController: UIViewController {
-    
+extension UIColor {
+    var color: Color {
+        Color(self)
+    }
+}
+
+extension String: Identifiable {
+    public var id: String {
+        String(describing: self)
+    }
+}
+
+class SNSPostViewController: UIViewController {
+
     var posts: [PostResponse] = []
     
     let disposeBag = DisposeBag()
@@ -64,6 +76,7 @@ class ViewController: UIViewController {
             }
             .subscribe(with: self) { owner, response in
                 owner.posts = response.data
+                owner.configureImages()
             } onError: { owner, error in
                 print("오류 발생")
             }
@@ -71,6 +84,45 @@ class ViewController: UIViewController {
          
     }
     
-    
-}
+    func configureImages() {
+        if let files = posts[4].files {
+            let cardStack = CardStack(files) { imageURLString in
+                RoundedRectangle(cornerRadius: 20, style: .continuous)
+                    .fill(Color.red)
+                    .overlay(
+                        Group {
+                            if let imageURL = URL(string: APIKey.baseURL.rawValue+"/"+imageURLString) {
+                                KFImage.init(imageURL)
+                                    .resizable()
+                                    .scaledToFill()
+                                    .frame(width: 300, height: 400)
+                            } else {
+                                Rectangle()
+                                    .fill(Color.gray)
+                                    .frame(width: 300, height: 400)
+                            }
+                        }
+                    )
+                    .clipShape(RoundedRectangle(cornerRadius: 20))
+                    .frame(width: 300, height: 400)
+                    .onTapGesture {
+                        // Handle tap event if needed
+                    }
+                    .padding(50)
+            }
+            
+            let hostingController = UIHostingController(rootView: cardStack)
+            addChild(hostingController)
+            view.addSubview(hostingController.view)
+            
+            hostingController.view.backgroundColor = .clear
+            hostingController.view.snp.makeConstraints { make in
+                make.center.equalToSuperview()
+                make.width.equalTo(350)
+                make.height.equalTo(500)
+            }
+            hostingController.didMove(toParent: self)
+        }
+    }
 
+}

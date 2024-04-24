@@ -6,13 +6,21 @@
 //
 
 import SwiftUI
+import UIKit
 
-struct CardStackViewWrapper: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+struct CardStackWrapper<Data, Content>: UIViewControllerRepresentable where Data: RandomAccessCollection, Data.Element: Identifiable, Content: View {
+    typealias UIViewControllerType = UIHostingController<CardStack<Data, Content>>
+    
+    let data: Data
+    let currentIndex: Binding<Int>
+    let content: (Data.Element) -> Content
+    
+    func makeUIViewController(context: Context) -> UIViewControllerType {
+        let hostingController = UIHostingController(rootView: CardStack(data, currentIndex: currentIndex, content: content))
+        return hostingController
     }
-}
-
-#Preview {
-    CardStackViewWrapper()
+    
+    func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
+        uiViewController.rootView = CardStack(data, currentIndex: currentIndex, content: content)
+    }
 }
