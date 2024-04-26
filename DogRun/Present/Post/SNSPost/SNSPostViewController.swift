@@ -13,17 +13,17 @@ import RxCocoa
 import Kingfisher
 import Alamofire
 
-extension UIColor {
-    var color: Color {
-        Color(self)
-    }
-}
-
-extension String: Identifiable {
-    public var id: String {
-        String(describing: self)
-    }
-}
+//extension UIColor {
+//    var color: Color {
+//        Color(self)
+//    }
+//}
+//
+//extension String: Identifiable {
+//    public var id: String {
+//        String(describing: self)
+//    }
+//}
 
 class SNSPostViewController: UIViewController {
 

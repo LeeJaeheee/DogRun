@@ -59,6 +59,16 @@
 		D25DE02D2BD93EFF0045C259 /* UserProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25DE02C2BD93EFF0045C259 /* UserProfileViewModel.swift */; };
 		D25DE0312BD942440045C259 /* UserProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25DE0302BD942440045C259 /* UserProfileHeaderView.swift */; };
 		D25DE0332BD94CD40045C259 /* UserProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25DE0322BD94CD40045C259 /* UserProfileTableViewCell.swift */; };
+		D25DE0362BD980680045C259 /* Tabman in Frameworks */ = {isa = PBXBuildFile; productRef = D25DE0352BD980680045C259 /* Tabman */; };
+		D25DE0382BD982F70045C259 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25DE0372BD982F70045C259 /* UserViewController.swift */; };
+		D25DE03A2BD9832D0045C259 /* UserTabmanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25DE0392BD9832D0045C259 /* UserTabmanViewController.swift */; };
+		D2EA5B912BDB99320055884C /* UserGalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EA5B902BDB99320055884C /* UserGalleryViewController.swift */; };
+		D2EA5B932BDBFBCF0055884C /* UserFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EA5B922BDBFBCF0055884C /* UserFeedViewController.swift */; };
+		D2EA5B962BDBFC050055884C /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EA5B952BDBFC050055884C /* ImageCollectionViewCell.swift */; };
+		D2EA5B982BDC00020055884C /* FeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EA5B972BDC00020055884C /* FeedTableViewCell.swift */; };
+		D2EA5B9A2BDC2BFA0055884C /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EA5B992BDC2BFA0055884C /* UIView+Ext.swift */; };
+		D2EA5B9C2BDC2D700055884C /* UserChallengeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EA5B9B2BDC2D700055884C /* UserChallengeViewController.swift */; };
+		D2EA5B9E2BDC355C0055884C /* UserChallengeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EA5B9D2BDC355C0055884C /* UserChallengeTableViewCell.swift */; };
 		D2EDA3442BD580F8009CB0D7 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EDA3432BD580F8009CB0D7 /* MapView.swift */; };
 		D2EDA3462BD58104009CB0D7 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EDA3452BD58104009CB0D7 /* MapViewController.swift */; };
 		D2EDA3482BD5810F009CB0D7 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EDA3472BD5810F009CB0D7 /* MapViewModel.swift */; };
@@ -115,6 +125,15 @@
 		D25DE02C2BD93EFF0045C259 /* UserProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewModel.swift; sourceTree = "<group>"; };
 		D25DE0302BD942440045C259 /* UserProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileHeaderView.swift; sourceTree = "<group>"; };
 		D25DE0322BD94CD40045C259 /* UserProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileTableViewCell.swift; sourceTree = "<group>"; };
+		D25DE0372BD982F70045C259 /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
+		D25DE0392BD9832D0045C259 /* UserTabmanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTabmanViewController.swift; sourceTree = "<group>"; };
+		D2EA5B902BDB99320055884C /* UserGalleryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserGalleryViewController.swift; sourceTree = "<group>"; };
+		D2EA5B922BDBFBCF0055884C /* UserFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFeedViewController.swift; sourceTree = "<group>"; };
+		D2EA5B952BDBFC050055884C /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
+		D2EA5B972BDC00020055884C /* FeedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedTableViewCell.swift; sourceTree = "<group>"; };
+		D2EA5B992BDC2BFA0055884C /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
+		D2EA5B9B2BDC2D700055884C /* UserChallengeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserChallengeViewController.swift; sourceTree = "<group>"; };
+		D2EA5B9D2BDC355C0055884C /* UserChallengeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserChallengeTableViewCell.swift; sourceTree = "<group>"; };
 		D2EDA3432BD580F8009CB0D7 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		D2EDA3452BD58104009CB0D7 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		D2EDA3472BD5810F009CB0D7 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
@@ -137,6 +156,7 @@
 				D23E77F32BD3CDD300A386A0 /* Alamofire in Frameworks */,
 				D23E77ED2BD3CD2600A386A0 /* SnapKit in Frameworks */,
 				D23E77EA2BD3CD1A00A386A0 /* RxSwift in Frameworks */,
+				D25DE0362BD980680045C259 /* Tabman in Frameworks */,
 				D25DE01A2BD92FA90045C259 /* RxDataSources in Frameworks */,
 				D23E78172BD4C32200A386A0 /* IQKeyboardManagerSwift in Frameworks */,
 				D25DE0182BD92FA90045C259 /* Differentiator in Frameworks */,
@@ -219,6 +239,7 @@
 		D23E77DE2BD3CC3300A386A0 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				D2EA5B942BDBFBF20055884C /* Cell */,
 				D2EDA35D2BD691FA009CB0D7 /* CardStackView */,
 				D23E781C2BD4E4E700A386A0 /* DRTextField.swift */,
 				D23E781E2BD53E3F00A386A0 /* DRLabel.swift */,
@@ -265,6 +286,7 @@
 		D23E77E32BD3CCA100A386A0 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				D2EA5B992BDC2BFA0055884C /* UIView+Ext.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -356,7 +378,10 @@
 		D25DE0132BD7F4320045C259 /* User */ = {
 			isa = PBXGroup;
 			children = (
+				D2EA5B8F2BDB98F20055884C /* UserFeed */,
 				D25DE0142BD7F4860045C259 /* UserView.swift */,
+				D25DE0372BD982F70045C259 /* UserViewController.swift */,
+				D25DE0392BD9832D0045C259 /* UserTabmanViewController.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -386,6 +411,26 @@
 				D25DE0322BD94CD40045C259 /* UserProfileTableViewCell.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		D2EA5B8F2BDB98F20055884C /* UserFeed */ = {
+			isa = PBXGroup;
+			children = (
+				D2EA5B902BDB99320055884C /* UserGalleryViewController.swift */,
+				D2EA5B922BDBFBCF0055884C /* UserFeedViewController.swift */,
+				D2EA5B9B2BDC2D700055884C /* UserChallengeViewController.swift */,
+			);
+			path = UserFeed;
+			sourceTree = "<group>";
+		};
+		D2EA5B942BDBFBF20055884C /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				D2EA5B952BDBFC050055884C /* ImageCollectionViewCell.swift */,
+				D2EA5B972BDC00020055884C /* FeedTableViewCell.swift */,
+				D2EA5B9D2BDC355C0055884C /* UserChallengeTableViewCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		D2EDA3402BD58089009CB0D7 /* SignIn */ = {
@@ -468,6 +513,7 @@
 				D23E78162BD4C32200A386A0 /* IQKeyboardManagerSwift */,
 				D25DE0172BD92FA90045C259 /* Differentiator */,
 				D25DE0192BD92FA90045C259 /* RxDataSources */,
+				D25DE0352BD980680045C259 /* Tabman */,
 			);
 			productName = DogRun;
 			productReference = D23E77A52BD1290F00A386A0 /* DogRun.app */;
@@ -507,6 +553,7 @@
 				D23E78122BD4C2F900A386A0 /* XCRemoteSwiftPackageReference "TextFieldEffects" */,
 				D23E78152BD4C32200A386A0 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 				D25DE0162BD92FA90045C259 /* XCRemoteSwiftPackageReference "RxDataSources" */,
+				D25DE0342BD980680045C259 /* XCRemoteSwiftPackageReference "Tabman" */,
 			);
 			productRefGroup = D23E77A62BD1290F00A386A0 /* Products */;
 			projectDirPath = "";
@@ -537,6 +584,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				D2EDA3482BD5810F009CB0D7 /* MapViewModel.swift in Sources */,
+				D25DE0382BD982F70045C259 /* UserViewController.swift in Sources */,
+				D2EA5B962BDBFC050055884C /* ImageCollectionViewCell.swift in Sources */,
 				D23E78372BD54E9700A386A0 /* NicknameView.swift in Sources */,
 				D23E78022BD3CF7D00A386A0 /* NetworkManager.swift in Sources */,
 				D25DDFFD2BD6CC5F0045C259 /* SNSPostView.swift in Sources */,
@@ -545,8 +594,10 @@
 				D23E78342BD54E7A00A386A0 /* PasswordViewModel.swift in Sources */,
 				D23E780A2BD402A300A386A0 /* UserDefaultsManager.swift in Sources */,
 				D2EDA35F2BD69212009CB0D7 /* CardStackViewWrapper.swift in Sources */,
+				D25DE03A2BD9832D0045C259 /* UserTabmanViewController.swift in Sources */,
 				D2EDA3622BD6A357009CB0D7 /* UserModel.swift in Sources */,
 				D23E78192BD4C3FA00A386A0 /* ReusableIdentifier.swift in Sources */,
+				D2EA5B982BDC00020055884C /* FeedTableViewCell.swift in Sources */,
 				D23E77AD2BD1290F00A386A0 /* ViewController.swift in Sources */,
 				D23E782A2BD547BB00A386A0 /* NicknameViewController.swift in Sources */,
 				D25DE0152BD7F4860045C259 /* UserView.swift in Sources */,
@@ -562,9 +613,13 @@
 				D23E77FA2BD3CE6700A386A0 /* HTTPHeader.swift in Sources */,
 				D25DE0312BD942440045C259 /* UserProfileHeaderView.swift in Sources */,
 				D2EDA3442BD580F8009CB0D7 /* MapView.swift in Sources */,
+				D2EA5B912BDB99320055884C /* UserGalleryViewController.swift in Sources */,
 				D23E77A92BD1290F00A386A0 /* AppDelegate.swift in Sources */,
+				D2EA5B9E2BDC355C0055884C /* UserChallengeTableViewCell.swift in Sources */,
+				D2EA5B9A2BDC2BFA0055884C /* UIView+Ext.swift in Sources */,
 				D23E781D2BD4E4E700A386A0 /* DRTextField.swift in Sources */,
 				D25DE0012BD6CC800045C259 /* SNSPostViewModel.swift in Sources */,
+				D2EA5B9C2BDC2D700055884C /* UserChallengeViewController.swift in Sources */,
 				D23E77FE2BD3CECD00A386A0 /* MultipartEncoder.swift in Sources */,
 				D23E78322BD54E6C00A386A0 /* PasswordView.swift in Sources */,
 				D23E77FC2BD3CE8600A386A0 /* APIKey.swift in Sources */,
@@ -576,6 +631,7 @@
 				D23E782F2BD54DB100A386A0 /* EmailViewModel.swift in Sources */,
 				D23E78282BD547AD00A386A0 /* PasswordViewController.swift in Sources */,
 				D2EDA3642BD6A365009CB0D7 /* UserRouter.swift in Sources */,
+				D2EA5B932BDBFBCF0055884C /* UserFeedViewController.swift in Sources */,
 				D2EDA3692BD6A3E1009CB0D7 /* PostRouter.swift in Sources */,
 				D25DE0332BD94CD40045C259 /* UserProfileTableViewCell.swift in Sources */,
 				D23E78392BD54EA200A386A0 /* NicknameViewModel.swift in Sources */,
@@ -889,6 +945,14 @@
 				minimumVersion = 5.0.2;
 			};
 		};
+		D25DE0342BD980680045C259 /* XCRemoteSwiftPackageReference "Tabman" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/uias/Tabman.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.2.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -946,6 +1010,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D25DE0162BD92FA90045C259 /* XCRemoteSwiftPackageReference "RxDataSources" */;
 			productName = RxDataSources;
+		};
+		D25DE0352BD980680045C259 /* Tabman */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D25DE0342BD980680045C259 /* XCRemoteSwiftPackageReference "Tabman" */;
+			productName = Tabman;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

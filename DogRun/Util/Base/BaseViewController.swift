@@ -24,10 +24,12 @@ class BaseViewController<T: BaseView>: UIViewController {
         
         bind()
         configureNavigation()
+        configureView()
     }
     
     func bind() { }
     func configureNavigation() { }
+    func configureView() { }
     
     func showToast(_ message: String) {
         self.view.hideAllToasts()
