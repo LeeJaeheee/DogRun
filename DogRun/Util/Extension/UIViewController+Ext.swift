@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Toast
 
 extension UIViewController {
     
@@ -15,6 +16,14 @@ extension UIViewController {
         let vc = isNav ? UINavigationController(rootViewController: viewController) : viewController
         sceneDelegate?.window?.rootViewController = vc
         sceneDelegate?.window?.makeKey()
+    }
+    
+    func showToast(_ message: String, position: ToastPosition) {
+        var style = ToastStyle()
+        style.horizontalPadding = 30
+        style.verticalPadding = 20
+        style.messageFont = .systemFont(ofSize: 18)
+        view.makeToast(message, position: position, style: style)
     }
 
 }

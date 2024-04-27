@@ -39,7 +39,7 @@ struct NetworkManager {
         }
     }
     
-    static func request<T: Decodable>(type: T.Type, router: TargetType) -> Single<Result<T, Error>> {
+    static func request2<T: Decodable>(type: T.Type, router: TargetType) -> Single<Result<T, Error>> {
         return Single<Result<T, Error>>.create { single in
             do {
                 let urlRequest = try router.asURLRequest()

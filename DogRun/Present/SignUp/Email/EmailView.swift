@@ -44,13 +44,17 @@ final class EmailView: BaseView {
         nextButton.snp.makeConstraints { make in
             make.horizontalEdges.equalToSuperview().inset(20)
             make.bottom.equalTo(safeAreaLayoutGuide).inset(60)
+            // FIXME: 아래 코드로 실행하면 textfieldeffects에서 문제생김 (animateViewsForTextEntry() 호출안함)
+            //make.bottom.equalTo(keyboardLayoutGuide.snp.top).inset(-16)
             make.height.equalTo(nextButton.basicHeight)
         }
+        
     }
     
     override func configureView() {
         nextButton.isEnabled = false
         validButton.isEnabled = false
+        emailTextField.keyboardType = .emailAddress
     }
     
 }

@@ -78,6 +78,8 @@
 		D2EA5BAE2BDD14FF0055884C /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EA5BAD2BDD14FF0055884C /* WelcomeViewController.swift */; };
 		D2EA5BB02BDD15260055884C /* WelcomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EA5BAF2BDD15260055884C /* WelcomeViewModel.swift */; };
 		D2EA5BB22BDD16280055884C /* DRVariableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EA5BB12BDD16280055884C /* DRVariableButton.swift */; };
+		D2EA5BB52BDD30150055884C /* ValidationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EA5BB42BDD30150055884C /* ValidationModel.swift */; };
+		D2EA5BB72BDD302C0055884C /* ValidationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EA5BB62BDD302C0055884C /* ValidationRouter.swift */; };
 		D2EDA3442BD580F8009CB0D7 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EDA3432BD580F8009CB0D7 /* MapView.swift */; };
 		D2EDA3462BD58104009CB0D7 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EDA3452BD58104009CB0D7 /* MapViewController.swift */; };
 		D2EDA3482BD5810F009CB0D7 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EDA3472BD5810F009CB0D7 /* MapViewModel.swift */; };
@@ -152,6 +154,8 @@
 		D2EA5BAD2BDD14FF0055884C /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		D2EA5BAF2BDD15260055884C /* WelcomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewModel.swift; sourceTree = "<group>"; };
 		D2EA5BB12BDD16280055884C /* DRVariableButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DRVariableButton.swift; sourceTree = "<group>"; };
+		D2EA5BB42BDD30150055884C /* ValidationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationModel.swift; sourceTree = "<group>"; };
+		D2EA5BB62BDD302C0055884C /* ValidationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationRouter.swift; sourceTree = "<group>"; };
 		D2EDA3432BD580F8009CB0D7 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		D2EDA3452BD58104009CB0D7 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		D2EDA3472BD5810F009CB0D7 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
@@ -228,6 +232,7 @@
 		D23E77BE2BD12A5700A386A0 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				D2EA5BB32BDD30090055884C /* Validation */,
 				D2EDA3652BD6A3CC009CB0D7 /* Post */,
 				D2EDA3602BD6A34A009CB0D7 /* User */,
 				D23E78032BD3D04200A386A0 /* Auth */,
@@ -476,6 +481,15 @@
 			path = Welcome;
 			sourceTree = "<group>";
 		};
+		D2EA5BB32BDD30090055884C /* Validation */ = {
+			isa = PBXGroup;
+			children = (
+				D2EA5BB42BDD30150055884C /* ValidationModel.swift */,
+				D2EA5BB62BDD302C0055884C /* ValidationRouter.swift */,
+			);
+			path = Validation;
+			sourceTree = "<group>";
+		};
 		D2EDA3402BD58089009CB0D7 /* SignIn */ = {
 			isa = PBXGroup;
 			children = (
@@ -644,6 +658,7 @@
 				D2EDA3622BD6A357009CB0D7 /* UserModel.swift in Sources */,
 				D23E78192BD4C3FA00A386A0 /* ReusableIdentifier.swift in Sources */,
 				D2EA5B982BDC00020055884C /* FeedTableViewCell.swift in Sources */,
+				D2EA5BB52BDD30150055884C /* ValidationModel.swift in Sources */,
 				D23E77AD2BD1290F00A386A0 /* ViewController.swift in Sources */,
 				D23E782A2BD547BB00A386A0 /* NicknameViewController.swift in Sources */,
 				D25DE0152BD7F4860045C259 /* UserView.swift in Sources */,
@@ -661,6 +676,7 @@
 				D2EDA3462BD58104009CB0D7 /* MapViewController.swift in Sources */,
 				D23E77FA2BD3CE6700A386A0 /* HTTPHeader.swift in Sources */,
 				D25DE0312BD942440045C259 /* UserProfileHeaderView.swift in Sources */,
+				D2EA5BB72BDD302C0055884C /* ValidationRouter.swift in Sources */,
 				D2EA5BA92BDCF1810055884C /* UIViewController+Ext.swift in Sources */,
 				D2EDA3442BD580F8009CB0D7 /* MapView.swift in Sources */,
 				D2EA5B912BDB99320055884C /* UserGalleryViewController.swift in Sources */,

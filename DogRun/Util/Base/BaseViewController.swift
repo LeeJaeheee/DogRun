@@ -7,7 +7,6 @@
 
 import UIKit
 import RxSwift
-import Toast
 
 class BaseViewController<T: BaseView>: UIViewController {
     
@@ -31,9 +30,4 @@ class BaseViewController<T: BaseView>: UIViewController {
     func configureNavigation() { }
     func configureView() { }
     
-    func showToast(_ message: String) {
-        self.view.hideAllToasts()
-        self.view.makeToast(message)
-    }
-
 }
