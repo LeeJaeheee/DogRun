@@ -5,17 +5,19 @@
 //  Created by 이재희 on 4/21/24.
 //
 
-import Foundation
+import UIKit
 import SnapKit
 
 final class PasswordView: BaseView {
     
-    let titleLabel = DRLabel(text: "비밀번호를 입력해주세요", style: .title)
+    let titleLabel = DRLabel(text: "비밀번호를\n입력해주세요.", style: .title)
     let passwordTextField = DRTextField(title: "비밀번호")
+    let firstValidationView = ValidationView(text: "문자길이 최소 8자리 이상 20자리 이하", image: .checkmark)
+    let secondValidationView = ValidationView(text: "영문+숫자 조합 포함", image: .checkmark)
     let nextButton = DRButton(title: "다음")
     
     override func configureHierarchy() {
-        [titleLabel, passwordTextField, nextButton].forEach {
+        [titleLabel, passwordTextField, firstValidationView, secondValidationView, nextButton].forEach {
             addSubview($0)
         }
     }
@@ -27,20 +29,35 @@ final class PasswordView: BaseView {
         }
         
         passwordTextField.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel.snp.bottom).offset(70)
+            make.top.equalTo(titleLabel.snp.bottom).offset(40)
             make.horizontalEdges.equalToSuperview().inset(20)
             make.height.equalTo(passwordTextField.basicHeight)
+        }
+        
+        firstValidationView.snp.makeConstraints { make in
+            make.top.equalTo(passwordTextField.snp.bottom).offset(16)
+            make.horizontalEdges.equalTo(passwordTextField).inset(16)
+            make.height.equalTo(24)
+        }
+        
+        secondValidationView.snp.makeConstraints { make in
+            make.top.equalTo(firstValidationView.snp.bottom).offset(12)
+            make.horizontalEdges.equalTo(passwordTextField).inset(16)
+            make.height.equalTo(24)
         }
         
         nextButton.snp.makeConstraints { make in
             make.horizontalEdges.equalToSuperview().inset(20)
             make.bottom.equalTo(safeAreaLayoutGuide).inset(60)
+            // FIXME: 아래 코드로 실행하면 textfieldeffects에서 문제생김 (animateViewsForTextEntry() 호출안함)
+            //make.bottom.equalTo(keyboardLayoutGuide.snp.top).inset(-16)
             make.height.equalTo(nextButton.basicHeight)
         }
     }
     
     override func configureView() {
         nextButton.isEnabled = false
+        passwordTextField.isSecureTextEntry = true
     }
     
 }

@@ -7,22 +7,44 @@
 
 import Foundation
 import RxSwift
+import RxCocoa
 
 final class PasswordViewModel: ViewModelType {
     
     var disposeBag = DisposeBag()
     
     struct Input {
-        
+        let password: ControlProperty<String?>
+        let nextButtonTap: ControlEvent<Void>
     }
     
     struct Output {
-        
+        let lengthValidation: Driver<Bool>
+        let alphanumericValidation: Driver<Bool>
+        let isPasswordValid: Driver<Bool>
+        let nextButtonTap: Driver<Void>
     }
     
     func transform(input: Input) -> Output {
+        let password = input.password.orEmpty
         
-        return Output()
+        let lengthRule = password
+            .map { $0.count >= 8 && $0.count <= 20 }
+            .asDriver(onErrorJustReturn: false)
+        
+        let alphanumericRule = password
+            .map { password in
+                let pattern = "^(?=.*[0-9])(?=.*[a-zA-Z]).*$"
+                return password.range(of: pattern, options: .regularExpression) != nil
+            }
+            .asDriver(onErrorJustReturn: false)
+        
+        let isPasswordValid = Driver.combineLatest(lengthRule, alphanumericRule) { $0 && $1 }
+        
+        return Output(lengthValidation: lengthRule,
+                       alphanumericValidation: alphanumericRule,
+                      isPasswordValid: isPasswordValid,
+                      nextButtonTap: input.nextButtonTap.asDriver())
     }
     
 }

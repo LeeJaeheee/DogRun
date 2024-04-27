@@ -35,7 +35,7 @@ final class DRLabel: UILabel {
             font = UIFont.systemFont(ofSize: 18)
             textColor = .darkGray
         case .body:
-            font = UIFont.systemFont(ofSize: 14)
+            font = UIFont.systemFont(ofSize: 15)
             textColor = .lightGray
         }
         
