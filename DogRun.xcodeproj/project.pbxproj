@@ -70,6 +70,10 @@
 		D2EA5B9C2BDC2D700055884C /* UserChallengeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EA5B9B2BDC2D700055884C /* UserChallengeViewController.swift */; };
 		D2EA5B9E2BDC355C0055884C /* UserChallengeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EA5B9D2BDC355C0055884C /* UserChallengeTableViewCell.swift */; };
 		D2EA5BA02BDCE9C80055884C /* MainTabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EA5B9F2BDCE9C80055884C /* MainTabbarController.swift */; };
+		D2EA5BA32BDCEE8F0055884C /* LaunchScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EA5BA22BDCEE8F0055884C /* LaunchScreenView.swift */; };
+		D2EA5BA52BDCEEB80055884C /* LaunchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EA5BA42BDCEEB80055884C /* LaunchScreenViewController.swift */; };
+		D2EA5BA72BDCEEDA0055884C /* LaunchScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EA5BA62BDCEEDA0055884C /* LaunchScreenViewModel.swift */; };
+		D2EA5BA92BDCF1810055884C /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EA5BA82BDCF1810055884C /* UIViewController+Ext.swift */; };
 		D2EDA3442BD580F8009CB0D7 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EDA3432BD580F8009CB0D7 /* MapView.swift */; };
 		D2EDA3462BD58104009CB0D7 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EDA3452BD58104009CB0D7 /* MapViewController.swift */; };
 		D2EDA3482BD5810F009CB0D7 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EDA3472BD5810F009CB0D7 /* MapViewModel.swift */; };
@@ -136,6 +140,10 @@
 		D2EA5B9B2BDC2D700055884C /* UserChallengeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserChallengeViewController.swift; sourceTree = "<group>"; };
 		D2EA5B9D2BDC355C0055884C /* UserChallengeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserChallengeTableViewCell.swift; sourceTree = "<group>"; };
 		D2EA5B9F2BDCE9C80055884C /* MainTabbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabbarController.swift; sourceTree = "<group>"; };
+		D2EA5BA22BDCEE8F0055884C /* LaunchScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenView.swift; sourceTree = "<group>"; };
+		D2EA5BA42BDCEEB80055884C /* LaunchScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenViewController.swift; sourceTree = "<group>"; };
+		D2EA5BA62BDCEEDA0055884C /* LaunchScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenViewModel.swift; sourceTree = "<group>"; };
+		D2EA5BA82BDCF1810055884C /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
 		D2EDA3432BD580F8009CB0D7 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		D2EDA3452BD58104009CB0D7 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		D2EDA3472BD5810F009CB0D7 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
@@ -227,6 +235,7 @@
 		D23E77DD2BD3CBFC00A386A0 /* Present */ = {
 			isa = PBXGroup;
 			children = (
+				D2EA5BA12BDCEE400055884C /* LaunchScreen */,
 				D25DE01B2BD9313D0045C259 /* UserProfile */,
 				D25DE0132BD7F4320045C259 /* User */,
 				D25DDFF92BD6CB7F0045C259 /* Post */,
@@ -290,6 +299,7 @@
 			isa = PBXGroup;
 			children = (
 				D2EA5B992BDC2BFA0055884C /* UIView+Ext.swift */,
+				D2EA5BA82BDCF1810055884C /* UIViewController+Ext.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -434,6 +444,16 @@
 				D2EA5B9D2BDC355C0055884C /* UserChallengeTableViewCell.swift */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		D2EA5BA12BDCEE400055884C /* LaunchScreen */ = {
+			isa = PBXGroup;
+			children = (
+				D2EA5BA22BDCEE8F0055884C /* LaunchScreenView.swift */,
+				D2EA5BA42BDCEEB80055884C /* LaunchScreenViewController.swift */,
+				D2EA5BA62BDCEEDA0055884C /* LaunchScreenViewModel.swift */,
+			);
+			path = LaunchScreen;
 			sourceTree = "<group>";
 		};
 		D2EDA3402BD58089009CB0D7 /* SignIn */ = {
@@ -612,10 +632,12 @@
 				D25DDFFF2BD6CC700045C259 /* SNSPostViewController.swift in Sources */,
 				D23E782D2BD5485E00A386A0 /* EmailView.swift in Sources */,
 				D25DE02B2BD93A890045C259 /* SectionModel.swift in Sources */,
+				D2EA5BA52BDCEEB80055884C /* LaunchScreenViewController.swift in Sources */,
 				D23E780E2BD40EC700A386A0 /* BaseViewController.swift in Sources */,
 				D2EDA3462BD58104009CB0D7 /* MapViewController.swift in Sources */,
 				D23E77FA2BD3CE6700A386A0 /* HTTPHeader.swift in Sources */,
 				D25DE0312BD942440045C259 /* UserProfileHeaderView.swift in Sources */,
+				D2EA5BA92BDCF1810055884C /* UIViewController+Ext.swift in Sources */,
 				D2EDA3442BD580F8009CB0D7 /* MapView.swift in Sources */,
 				D2EA5B912BDB99320055884C /* UserGalleryViewController.swift in Sources */,
 				D23E77A92BD1290F00A386A0 /* AppDelegate.swift in Sources */,
@@ -625,6 +647,7 @@
 				D25DE0012BD6CC800045C259 /* SNSPostViewModel.swift in Sources */,
 				D2EA5B9C2BDC2D700055884C /* UserChallengeViewController.swift in Sources */,
 				D23E77FE2BD3CECD00A386A0 /* MultipartEncoder.swift in Sources */,
+				D2EA5BA32BDCEE8F0055884C /* LaunchScreenView.swift in Sources */,
 				D23E78322BD54E6C00A386A0 /* PasswordView.swift in Sources */,
 				D23E77FC2BD3CE8600A386A0 /* APIKey.swift in Sources */,
 				D23E77AB2BD1290F00A386A0 /* SceneDelegate.swift in Sources */,
@@ -637,6 +660,7 @@
 				D2EDA3642BD6A365009CB0D7 /* UserRouter.swift in Sources */,
 				D2EA5B932BDBFBCF0055884C /* UserFeedViewController.swift in Sources */,
 				D2EDA3692BD6A3E1009CB0D7 /* PostRouter.swift in Sources */,
+				D2EA5BA72BDCEEDA0055884C /* LaunchScreenViewModel.swift in Sources */,
 				D25DE0332BD94CD40045C259 /* UserProfileTableViewCell.swift in Sources */,
 				D23E78392BD54EA200A386A0 /* NicknameViewModel.swift in Sources */,
 				D23E78002BD3CF3900A386A0 /* TokenRefreshInterceptor.swift in Sources */,
