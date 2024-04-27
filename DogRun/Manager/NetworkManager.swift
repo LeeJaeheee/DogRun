@@ -39,6 +39,34 @@ struct NetworkManager {
         }
     }
     
+    static func request<T: Decodable>(type: T.Type, router: TargetType) -> Single<Result<T, Error>> {
+        return Single<Result<T, Error>>.create { single in
+            do {
+                let urlRequest = try router.asURLRequest()
+                
+                AF.request(urlRequest, interceptor: TokenRefreshInterceptor.shared)
+                    .validate(statusCode: 200..<300)
+                    .responseDecodable(of: T.self) { response in
+                        switch response.result {
+                        case .success(let model):
+                            dump(model)
+                            single(.success(.success(model)))
+                        case .failure(let error):
+                            print("요청 실패: \(error.localizedDescription)")
+                            if let data = response.data, let utf8Text = String(data: data, encoding: .utf8) {
+                                print("서버로부터의 에러 메시지: \(utf8Text)")
+                            }
+                            single(.success(.failure(error)))
+                        }
+                    }
+            } catch {
+                single(.success(.failure(error)))
+            }
+            
+            return Disposables.create()
+        }
+    }
+    
     static func requestMultipart<T: Decodable>(type: T.Type, router: TargetType) -> Single<T> {
         return Single<T>.create { single in
             do {

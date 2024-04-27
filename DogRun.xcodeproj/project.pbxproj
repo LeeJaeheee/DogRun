@@ -74,6 +74,10 @@
 		D2EA5BA52BDCEEB80055884C /* LaunchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EA5BA42BDCEEB80055884C /* LaunchScreenViewController.swift */; };
 		D2EA5BA72BDCEEDA0055884C /* LaunchScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EA5BA62BDCEEDA0055884C /* LaunchScreenViewModel.swift */; };
 		D2EA5BA92BDCF1810055884C /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EA5BA82BDCF1810055884C /* UIViewController+Ext.swift */; };
+		D2EA5BAC2BDD14E10055884C /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EA5BAB2BDD14E10055884C /* WelcomeView.swift */; };
+		D2EA5BAE2BDD14FF0055884C /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EA5BAD2BDD14FF0055884C /* WelcomeViewController.swift */; };
+		D2EA5BB02BDD15260055884C /* WelcomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EA5BAF2BDD15260055884C /* WelcomeViewModel.swift */; };
+		D2EA5BB22BDD16280055884C /* DRVariableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EA5BB12BDD16280055884C /* DRVariableButton.swift */; };
 		D2EDA3442BD580F8009CB0D7 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EDA3432BD580F8009CB0D7 /* MapView.swift */; };
 		D2EDA3462BD58104009CB0D7 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EDA3452BD58104009CB0D7 /* MapViewController.swift */; };
 		D2EDA3482BD5810F009CB0D7 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EDA3472BD5810F009CB0D7 /* MapViewModel.swift */; };
@@ -144,6 +148,10 @@
 		D2EA5BA42BDCEEB80055884C /* LaunchScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenViewController.swift; sourceTree = "<group>"; };
 		D2EA5BA62BDCEEDA0055884C /* LaunchScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenViewModel.swift; sourceTree = "<group>"; };
 		D2EA5BA82BDCF1810055884C /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
+		D2EA5BAB2BDD14E10055884C /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
+		D2EA5BAD2BDD14FF0055884C /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
+		D2EA5BAF2BDD15260055884C /* WelcomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewModel.swift; sourceTree = "<group>"; };
+		D2EA5BB12BDD16280055884C /* DRVariableButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DRVariableButton.swift; sourceTree = "<group>"; };
 		D2EDA3432BD580F8009CB0D7 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		D2EDA3452BD58104009CB0D7 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		D2EDA3472BD5810F009CB0D7 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
@@ -241,6 +249,7 @@
 				D25DDFF92BD6CB7F0045C259 /* Post */,
 				D2EDA3422BD580BA009CB0D7 /* Map */,
 				D2EDA3412BD5809E009CB0D7 /* UploadPost */,
+				D2EA5BAA2BDD148A0055884C /* Welcome */,
 				D2EDA3402BD58089009CB0D7 /* SignIn */,
 				D23E78222BD5475100A386A0 /* SignUp */,
 			);
@@ -255,6 +264,7 @@
 				D23E781C2BD4E4E700A386A0 /* DRTextField.swift */,
 				D23E781E2BD53E3F00A386A0 /* DRLabel.swift */,
 				D23E78202BD5400400A386A0 /* DRButton.swift */,
+				D2EA5BB12BDD16280055884C /* DRVariableButton.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -456,6 +466,16 @@
 			path = LaunchScreen;
 			sourceTree = "<group>";
 		};
+		D2EA5BAA2BDD148A0055884C /* Welcome */ = {
+			isa = PBXGroup;
+			children = (
+				D2EA5BAB2BDD14E10055884C /* WelcomeView.swift */,
+				D2EA5BAD2BDD14FF0055884C /* WelcomeViewController.swift */,
+				D2EA5BAF2BDD15260055884C /* WelcomeViewModel.swift */,
+			);
+			path = Welcome;
+			sourceTree = "<group>";
+		};
 		D2EDA3402BD58089009CB0D7 /* SignIn */ = {
 			isa = PBXGroup;
 			children = (
@@ -609,11 +629,14 @@
 				D2EDA3482BD5810F009CB0D7 /* MapViewModel.swift in Sources */,
 				D25DE0382BD982F70045C259 /* UserViewController.swift in Sources */,
 				D2EA5B962BDBFC050055884C /* ImageCollectionViewCell.swift in Sources */,
+				D2EA5BB22BDD16280055884C /* DRVariableButton.swift in Sources */,
 				D23E78372BD54E9700A386A0 /* NicknameView.swift in Sources */,
 				D23E78022BD3CF7D00A386A0 /* NetworkManager.swift in Sources */,
+				D2EA5BAC2BDD14E10055884C /* WelcomeView.swift in Sources */,
 				D25DDFFD2BD6CC5F0045C259 /* SNSPostView.swift in Sources */,
 				D23E780C2BD40EA000A386A0 /* BaseView.swift in Sources */,
 				D23E77F82BD3CE3E00A386A0 /* TargetType.swift in Sources */,
+				D2EA5BB02BDD15260055884C /* WelcomeViewModel.swift in Sources */,
 				D23E78342BD54E7A00A386A0 /* PasswordViewModel.swift in Sources */,
 				D23E780A2BD402A300A386A0 /* UserDefaultsManager.swift in Sources */,
 				D2EDA35F2BD69212009CB0D7 /* CardStackViewWrapper.swift in Sources */,
@@ -632,6 +655,7 @@
 				D25DDFFF2BD6CC700045C259 /* SNSPostViewController.swift in Sources */,
 				D23E782D2BD5485E00A386A0 /* EmailView.swift in Sources */,
 				D25DE02B2BD93A890045C259 /* SectionModel.swift in Sources */,
+				D2EA5BAE2BDD14FF0055884C /* WelcomeViewController.swift in Sources */,
 				D2EA5BA52BDCEEB80055884C /* LaunchScreenViewController.swift in Sources */,
 				D23E780E2BD40EC700A386A0 /* BaseViewController.swift in Sources */,
 				D2EDA3462BD58104009CB0D7 /* MapViewController.swift in Sources */,

@@ -24,7 +24,7 @@ final class LaunchScreenViewController: BaseViewController<LaunchScreenView> {
                 if isValid {
                     owner.changeRootView(to: MainTabbarController())
                 } else {
-                    owner.changeRootView(to: EmailViewController(), isNav: true)
+                    owner.changeRootView(to: WelcomeViewController(), isNav: true)
                 }
             }
             .disposed(by: disposeBag)

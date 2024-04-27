@@ -79,6 +79,7 @@ class ViewController: UIViewController {
             }
             .disposed(by: disposeBag)
         
+        /*
         myProfileButton.rx.tap
             .debounce(.seconds(1), scheduler: MainScheduler.instance)
             .flatMap { loginQuery in
@@ -91,7 +92,7 @@ class ViewController: UIViewController {
                 print("오류 발생")
             }
             .disposed(by: disposeBag)
-         
+         */
     }
     
     

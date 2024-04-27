@@ -21,9 +21,10 @@ final class LaunchScreenViewModel: ViewModelType {
     }
     
     func transform(input: Input) -> Output {
+        // TODO: accessToken 갱신해주기
         let isValidUser = input.checkLoginStatus
             .map {
-                UserDefaults.standard.value(forKey: "accessToken") != nil
+                !UserDefaultsManager.accessToken.isEmpty
             }
             .asDriver(onErrorJustReturn: false)
         

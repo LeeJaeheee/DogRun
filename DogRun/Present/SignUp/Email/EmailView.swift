@@ -10,7 +10,7 @@ import SnapKit
 
 final class EmailView: BaseView {
     
-    let titleLabel = DRLabel(text: "이메일을 입력해주세요", style: .title)
+    let titleLabel = DRLabel(text: "이메일을\n입력해주세요.", style: .title)
     let emailTextField = DRTextField(title: "이메일")
     let validButton = DRButton(title: "중복확인")
     let nextButton = DRButton(title: "다음")
@@ -28,7 +28,7 @@ final class EmailView: BaseView {
         }
         
         emailTextField.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel.snp.bottom).offset(70)
+            make.top.equalTo(titleLabel.snp.bottom).offset(40)
             make.leading.equalToSuperview().inset(20)
             make.height.equalTo(emailTextField.basicHeight)
         }
