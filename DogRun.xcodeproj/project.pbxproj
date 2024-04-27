@@ -69,6 +69,7 @@
 		D2EA5B9A2BDC2BFA0055884C /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EA5B992BDC2BFA0055884C /* UIView+Ext.swift */; };
 		D2EA5B9C2BDC2D700055884C /* UserChallengeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EA5B9B2BDC2D700055884C /* UserChallengeViewController.swift */; };
 		D2EA5B9E2BDC355C0055884C /* UserChallengeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EA5B9D2BDC355C0055884C /* UserChallengeTableViewCell.swift */; };
+		D2EA5BA02BDCE9C80055884C /* MainTabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EA5B9F2BDCE9C80055884C /* MainTabbarController.swift */; };
 		D2EDA3442BD580F8009CB0D7 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EDA3432BD580F8009CB0D7 /* MapView.swift */; };
 		D2EDA3462BD58104009CB0D7 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EDA3452BD58104009CB0D7 /* MapViewController.swift */; };
 		D2EDA3482BD5810F009CB0D7 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EDA3472BD5810F009CB0D7 /* MapViewModel.swift */; };
@@ -134,6 +135,7 @@
 		D2EA5B992BDC2BFA0055884C /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
 		D2EA5B9B2BDC2D700055884C /* UserChallengeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserChallengeViewController.swift; sourceTree = "<group>"; };
 		D2EA5B9D2BDC355C0055884C /* UserChallengeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserChallengeTableViewCell.swift; sourceTree = "<group>"; };
+		D2EA5B9F2BDCE9C80055884C /* MainTabbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabbarController.swift; sourceTree = "<group>"; };
 		D2EDA3432BD580F8009CB0D7 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		D2EDA3452BD58104009CB0D7 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		D2EDA3472BD5810F009CB0D7 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
@@ -270,6 +272,7 @@
 			children = (
 				D23E780B2BD40EA000A386A0 /* BaseView.swift */,
 				D23E780D2BD40EC700A386A0 /* BaseViewController.swift */,
+				D2EA5B9F2BDCE9C80055884C /* MainTabbarController.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -603,6 +606,7 @@
 				D25DE0152BD7F4860045C259 /* UserView.swift in Sources */,
 				D23E781F2BD53E3F00A386A0 /* DRLabel.swift in Sources */,
 				D25DE01D2BD931F10045C259 /* UserProfileViewController.swift in Sources */,
+				D2EA5BA02BDCE9C80055884C /* MainTabbarController.swift in Sources */,
 				D23E78212BD5400400A386A0 /* DRButton.swift in Sources */,
 				D25DE02D2BD93EFF0045C259 /* UserProfileViewModel.swift in Sources */,
 				D25DDFFF2BD6CC700045C259 /* SNSPostViewController.swift in Sources */,

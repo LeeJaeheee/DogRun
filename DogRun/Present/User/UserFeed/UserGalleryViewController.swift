@@ -15,7 +15,7 @@ class UserGalleryViewController: UIViewController {
     
     lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: createLayout())
     
-    let images = Observable.just(Array(repeating: "https://picsum.photos/200", count: 20))
+    let images = Observable.just(Array(repeating: "https://picsum.photos/200/300", count: 20))
     
     let disposeBag = DisposeBag()
 
@@ -27,7 +27,7 @@ class UserGalleryViewController: UIViewController {
         
         view.addSubview(collectionView)
         collectionView.snp.makeConstraints { make in
-            make.edges.equalTo(view.safeAreaLayoutGuide)
+            make.edges.equalToSuperview()
         }
         
         bind()
