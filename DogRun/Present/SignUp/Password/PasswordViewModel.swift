@@ -23,10 +23,11 @@ final class PasswordViewModel: ViewModelType {
         let alphanumericValidation: Driver<Bool>
         let isPasswordValid: Driver<Bool>
         let nextButtonTap: Driver<Void>
+        let isNotEmpty: Driver<Bool>
     }
     
     func transform(input: Input) -> Output {
-        let password = input.password.orEmpty
+        let password = input.password.orEmpty.share()
         
         let lengthRule = password
             .map { $0.count >= 8 && $0.count <= 20 }
@@ -41,10 +42,15 @@ final class PasswordViewModel: ViewModelType {
         
         let isPasswordValid = Driver.combineLatest(lengthRule, alphanumericRule) { $0 && $1 }
         
+        let isNotEmpty = password
+            .map { !$0.isEmpty }
+            .asDriver(onErrorJustReturn: false)
+        
         return Output(lengthValidation: lengthRule,
                        alphanumericValidation: alphanumericRule,
                       isPasswordValid: isPasswordValid,
-                      nextButtonTap: input.nextButtonTap.asDriver())
+                      nextButtonTap: input.nextButtonTap.asDriver(),
+                      isNotEmpty: isNotEmpty)
     }
     
 }

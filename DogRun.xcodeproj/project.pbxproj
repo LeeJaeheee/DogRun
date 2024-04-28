@@ -67,6 +67,8 @@
 		D26190122BDDFF45009BD5C5 /* BirthdayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26190112BDDFF45009BD5C5 /* BirthdayViewController.swift */; };
 		D26190142BDDFF50009BD5C5 /* BirthdayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26190132BDDFF50009BD5C5 /* BirthdayViewModel.swift */; };
 		D26190162BDE130B009BD5C5 /* DateFormatterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26190152BDE130B009BD5C5 /* DateFormatterManager.swift */; };
+		D26190182BDE28D0009BD5C5 /* ModeBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26190172BDE28D0009BD5C5 /* ModeBaseView.swift */; };
+		D261901A2BDE28DD009BD5C5 /* ModeBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26190192BDE28DD009BD5C5 /* ModeBaseViewController.swift */; };
 		D2EA5B912BDB99320055884C /* UserGalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EA5B902BDB99320055884C /* UserGalleryViewController.swift */; };
 		D2EA5B932BDBFBCF0055884C /* UserFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EA5B922BDBFBCF0055884C /* UserFeedViewController.swift */; };
 		D2EA5B962BDBFC050055884C /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EA5B952BDBFC050055884C /* ImageCollectionViewCell.swift */; };
@@ -148,6 +150,8 @@
 		D26190112BDDFF45009BD5C5 /* BirthdayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthdayViewController.swift; sourceTree = "<group>"; };
 		D26190132BDDFF50009BD5C5 /* BirthdayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthdayViewModel.swift; sourceTree = "<group>"; };
 		D26190152BDE130B009BD5C5 /* DateFormatterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterManager.swift; sourceTree = "<group>"; };
+		D26190172BDE28D0009BD5C5 /* ModeBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModeBaseView.swift; sourceTree = "<group>"; };
+		D26190192BDE28DD009BD5C5 /* ModeBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModeBaseViewController.swift; sourceTree = "<group>"; };
 		D2EA5B902BDB99320055884C /* UserGalleryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserGalleryViewController.swift; sourceTree = "<group>"; };
 		D2EA5B922BDBFBCF0055884C /* UserFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFeedViewController.swift; sourceTree = "<group>"; };
 		D2EA5B952BDBFC050055884C /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -308,6 +312,8 @@
 				D23E780B2BD40EA000A386A0 /* BaseView.swift */,
 				D23E780D2BD40EC700A386A0 /* BaseViewController.swift */,
 				D2EA5B9F2BDCE9C80055884C /* MainTabbarController.swift */,
+				D26190172BDE28D0009BD5C5 /* ModeBaseView.swift */,
+				D26190192BDE28DD009BD5C5 /* ModeBaseViewController.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -694,6 +700,7 @@
 				D25DDFFF2BD6CC700045C259 /* SNSPostViewController.swift in Sources */,
 				D23E782D2BD5485E00A386A0 /* EmailView.swift in Sources */,
 				D25DE02B2BD93A890045C259 /* SectionModel.swift in Sources */,
+				D26190182BDE28D0009BD5C5 /* ModeBaseView.swift in Sources */,
 				D2EA5BAE2BDD14FF0055884C /* WelcomeViewController.swift in Sources */,
 				D2EA5BA52BDCEEB80055884C /* LaunchScreenViewController.swift in Sources */,
 				D23E780E2BD40EC700A386A0 /* BaseViewController.swift in Sources */,
@@ -732,6 +739,7 @@
 				D23E78392BD54EA200A386A0 /* NicknameViewModel.swift in Sources */,
 				D23E78002BD3CF3900A386A0 /* TokenRefreshInterceptor.swift in Sources */,
 				D23E78262BD5479500A386A0 /* EmailViewController.swift in Sources */,
+				D261901A2BDE28DD009BD5C5 /* ModeBaseViewController.swift in Sources */,
 				D23E78052BD3D04F00A386A0 /* AuthModel.swift in Sources */,
 				D2EDA3672BD6A3D9009CB0D7 /* PostModel.swift in Sources */,
 				D26190142BDDFF50009BD5C5 /* BirthdayViewModel.swift in Sources */,

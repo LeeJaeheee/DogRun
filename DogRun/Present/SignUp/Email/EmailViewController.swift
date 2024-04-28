@@ -10,11 +10,12 @@ import SnapKit
 import RxSwift
 import RxCocoa
 
-final class EmailViewController: BaseViewController<EmailView> {
+final class EmailViewController: ModeBaseViewController<EmailView> {
     
     let viewModel = EmailViewModel()
     
     override func bind() {
+        
         let input = EmailViewModel.Input(
             email: mainView.emailTextField.rx.text,
             validButtonTap: mainView.validButton.rx.tap,
@@ -23,9 +24,16 @@ final class EmailViewController: BaseViewController<EmailView> {
         
         let output = viewModel.transform(input: input)
         
-        output.isEmailValid
-            .drive(mainView.validButton.rx.isEnabled, mainView.emailTextField.rx.isValid)
-            .disposed(by: disposeBag)
+        switch mainView.mode {
+        case .basic:
+            output.isEmailValid
+                .drive(mainView.validButton.rx.isEnabled, mainView.emailTextField.rx.isValid)
+                .disposed(by: disposeBag)
+        case .modify:
+            output.isEmailValid
+                .drive(mainView.nextButton.rx.isEnabled, mainView.emailTextField.rx.isValid)
+                .disposed(by: disposeBag)
+        }
         
         output.isNextButtonEnabled
             .drive(mainView.nextButton.rx.isEnabled)
@@ -39,7 +47,13 @@ final class EmailViewController: BaseViewController<EmailView> {
         
         output.navigateToNextVC
             .drive(with: self) { owner, _ in
-                let nextVC = PasswordViewController()
+                var nextVC: PasswordViewController
+                switch owner.mainView.mode {
+                case .basic:
+                    nextVC = PasswordViewController()
+                case .modify:
+                    nextVC = PasswordViewController(mode: .modify)
+                }
                 owner.navigationController?.pushViewController(nextVC, animated: true)
             }
             .disposed(by: disposeBag)

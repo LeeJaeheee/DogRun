@@ -8,13 +8,13 @@
 import UIKit
 import SnapKit
 
-final class PasswordView: BaseView {
+final class PasswordView: ModeBaseView {
     
     let titleLabel = DRLabel(text: "비밀번호를\n입력해주세요.", style: .title)
     let passwordTextField = DRTextField(title: "비밀번호")
     let firstValidationView = ValidationView(text: "문자길이 최소 8자리 이상 20자리 이하", image: .checkmark)
     let secondValidationView = ValidationView(text: "영문+숫자 조합 포함", image: .checkmark)
-    let nextButton = DRButton(title: "다음")
+    lazy var nextButton = DRButton(title: mode == .basic ? "다음" : "로그인")
     
     override func configureHierarchy() {
         [titleLabel, passwordTextField, firstValidationView, secondValidationView, nextButton].forEach {
@@ -58,6 +58,16 @@ final class PasswordView: BaseView {
     override func configureView() {
         nextButton.isEnabled = false
         passwordTextField.isSecureTextEntry = true
+    }
+    
+    override func configureMode() {
+        switch mode {
+        case .basic:
+            break
+        case .modify:
+            firstValidationView.isHidden = true
+            secondValidationView.isHidden = true
+        }
     }
     
 }

@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-final class EmailView: BaseView {
+final class EmailView: ModeBaseView {
     
     let titleLabel = DRLabel(text: "이메일을\n입력해주세요.", style: .title)
     let emailTextField = DRTextField(title: "이메일")
@@ -55,6 +55,20 @@ final class EmailView: BaseView {
         nextButton.isEnabled = false
         validButton.isEnabled = false
         emailTextField.keyboardType = .emailAddress
+    }
+    
+    override func configureMode() {
+        switch mode {
+        case .basic:
+            break
+        case .modify:
+            validButton.isHidden = true
+            emailTextField.snp.remakeConstraints { make in
+                make.top.equalTo(titleLabel.snp.bottom).offset(40)
+                make.horizontalEdges.equalToSuperview().inset(20)
+                make.height.equalTo(emailTextField.basicHeight)
+            }
+        }
     }
     
 }
