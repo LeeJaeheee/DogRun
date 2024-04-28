@@ -13,10 +13,10 @@ struct CardStack<Data, Content>: View where Data: RandomAccessCollection, Data.E
     @State private var previousIndex: Double = 0.0
     
     private let data: Data
-    @ViewBuilder private let content: (Data.Element) -> Content
+    @ViewBuilder private let content: (Data.Element, Int) -> Content
     @Binding var finalCurrentIndex: Int
     
-    init(_ data: Data, currentIndex: Binding<Int> = .constant(0), @ViewBuilder content: @escaping (Data.Element) -> Content) {
+    init(_ data: Data, currentIndex: Binding<Int> = .constant(0), @ViewBuilder content: @escaping (Data.Element, Int) -> Content) {
         self.data = data
         self.content = content
         _finalCurrentIndex = currentIndex
@@ -25,7 +25,7 @@ struct CardStack<Data, Content>: View where Data: RandomAccessCollection, Data.E
     var body: some View {
         ZStack {
             ForEach(Array(data.enumerated()), id: \.element.id) { (index, element) in
-                content(element)
+                content(element, index)
                     .zIndex(zIndex(for: index))
                     .offset(x: xOffset(for: index), y: 0)
                     .scaleEffect(scale(for: index), anchor: .center)
@@ -117,6 +117,7 @@ struct CardStack<Data, Content>: View where Data: RandomAccessCollection, Data.E
 
 struct ImageCardView: View {
     var imageURLString: String
+    var onTap: () -> Void
     
     var body: some View {
         RoundedRectangle(cornerRadius: 20, style: .continuous)
@@ -138,7 +139,7 @@ struct ImageCardView: View {
             .clipShape(RoundedRectangle(cornerRadius: 20))
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .onTapGesture {
-                
+                self.onTap()
             }
             .padding(.horizontal, 40)
             .padding(.bottom, 16)
