@@ -33,7 +33,7 @@ final class NicknameViewController: BaseViewController<NicknameView> {
         
         output.nextButtonTap
             .drive(with: self) { owner, _ in
-                let nextVC = PasswordViewController()
+                let nextVC = BirthdayViewController()
                 owner.navigationController?.pushViewController(nextVC, animated: true)
             }
             .disposed(by: disposeBag)

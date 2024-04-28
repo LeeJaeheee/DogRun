@@ -20,7 +20,7 @@ final class WelcomeViewController: BaseViewController<WelcomeView> {
         
         output.navigateToSignUp
             .drive(with: self) { owner, _ in
-                let signUpVC = NicknameViewController()
+                let signUpVC = BirthdayViewController()
                 owner.navigationController?.pushViewController(signUpVC, animated: true)
             }
             .disposed(by: disposeBag)
