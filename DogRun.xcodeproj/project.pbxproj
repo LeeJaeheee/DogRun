@@ -69,6 +69,10 @@
 		D26190162BDE130B009BD5C5 /* DateFormatterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26190152BDE130B009BD5C5 /* DateFormatterManager.swift */; };
 		D26190182BDE28D0009BD5C5 /* ModeBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26190172BDE28D0009BD5C5 /* ModeBaseView.swift */; };
 		D261901A2BDE28DD009BD5C5 /* ModeBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26190192BDE28DD009BD5C5 /* ModeBaseViewController.swift */; };
+		D261901D2BDE3685009BD5C5 /* PhoneNumberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D261901C2BDE3685009BD5C5 /* PhoneNumberView.swift */; };
+		D261901F2BDE3692009BD5C5 /* PhoneNumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D261901E2BDE3692009BD5C5 /* PhoneNumberViewController.swift */; };
+		D26190212BDE369E009BD5C5 /* PhoneNumberViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26190202BDE369E009BD5C5 /* PhoneNumberViewModel.swift */; };
+		D26190232BDE3B38009BD5C5 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26190222BDE3B38009BD5C5 /* String+Ext.swift */; };
 		D2EA5B912BDB99320055884C /* UserGalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EA5B902BDB99320055884C /* UserGalleryViewController.swift */; };
 		D2EA5B932BDBFBCF0055884C /* UserFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EA5B922BDBFBCF0055884C /* UserFeedViewController.swift */; };
 		D2EA5B962BDBFC050055884C /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EA5B952BDBFC050055884C /* ImageCollectionViewCell.swift */; };
@@ -152,6 +156,10 @@
 		D26190152BDE130B009BD5C5 /* DateFormatterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterManager.swift; sourceTree = "<group>"; };
 		D26190172BDE28D0009BD5C5 /* ModeBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModeBaseView.swift; sourceTree = "<group>"; };
 		D26190192BDE28DD009BD5C5 /* ModeBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModeBaseViewController.swift; sourceTree = "<group>"; };
+		D261901C2BDE3685009BD5C5 /* PhoneNumberView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberView.swift; sourceTree = "<group>"; };
+		D261901E2BDE3692009BD5C5 /* PhoneNumberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberViewController.swift; sourceTree = "<group>"; };
+		D26190202BDE369E009BD5C5 /* PhoneNumberViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberViewModel.swift; sourceTree = "<group>"; };
+		D26190222BDE3B38009BD5C5 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 		D2EA5B902BDB99320055884C /* UserGalleryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserGalleryViewController.swift; sourceTree = "<group>"; };
 		D2EA5B922BDBFBCF0055884C /* UserFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFeedViewController.swift; sourceTree = "<group>"; };
 		D2EA5B952BDBFC050055884C /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -332,6 +340,7 @@
 			children = (
 				D2EA5B992BDC2BFA0055884C /* UIView+Ext.swift */,
 				D2EA5BA82BDCF1810055884C /* UIViewController+Ext.swift */,
+				D26190222BDE3B38009BD5C5 /* String+Ext.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -361,6 +370,7 @@
 				D23E782B2BD5485000A386A0 /* Email */,
 				D23E78302BD54E5600A386A0 /* Password */,
 				D23E78352BD54E8400A386A0 /* Nickname */,
+				D261901B2BDE365D009BD5C5 /* PhoneNumber */,
 				D261900E2BDDFF14009BD5C5 /* Birthday */,
 			);
 			path = SignUp;
@@ -468,6 +478,16 @@
 				D26190132BDDFF50009BD5C5 /* BirthdayViewModel.swift */,
 			);
 			path = Birthday;
+			sourceTree = "<group>";
+		};
+		D261901B2BDE365D009BD5C5 /* PhoneNumber */ = {
+			isa = PBXGroup;
+			children = (
+				D261901C2BDE3685009BD5C5 /* PhoneNumberView.swift */,
+				D261901E2BDE3692009BD5C5 /* PhoneNumberViewController.swift */,
+				D26190202BDE369E009BD5C5 /* PhoneNumberViewModel.swift */,
+			);
+			path = PhoneNumber;
 			sourceTree = "<group>";
 		};
 		D2EA5B8F2BDB98F20055884C /* UserFeed */ = {
@@ -673,6 +693,7 @@
 				D25DE0382BD982F70045C259 /* UserViewController.swift in Sources */,
 				D2EA5B962BDBFC050055884C /* ImageCollectionViewCell.swift in Sources */,
 				D2EA5BB22BDD16280055884C /* DRVariableButton.swift in Sources */,
+				D26190212BDE369E009BD5C5 /* PhoneNumberViewModel.swift in Sources */,
 				D23E78372BD54E9700A386A0 /* NicknameView.swift in Sources */,
 				D23E78022BD3CF7D00A386A0 /* NetworkManager.swift in Sources */,
 				D2EA5BAC2BDD14E10055884C /* WelcomeView.swift in Sources */,
@@ -681,6 +702,7 @@
 				D23E77F82BD3CE3E00A386A0 /* TargetType.swift in Sources */,
 				D26190162BDE130B009BD5C5 /* DateFormatterManager.swift in Sources */,
 				D2EA5BB02BDD15260055884C /* WelcomeViewModel.swift in Sources */,
+				D261901F2BDE3692009BD5C5 /* PhoneNumberViewController.swift in Sources */,
 				D23E78342BD54E7A00A386A0 /* PasswordViewModel.swift in Sources */,
 				D23E780A2BD402A300A386A0 /* UserDefaultsManager.swift in Sources */,
 				D2EDA35F2BD69212009CB0D7 /* CardStackViewWrapper.swift in Sources */,
@@ -709,6 +731,7 @@
 				D25DE0312BD942440045C259 /* UserProfileHeaderView.swift in Sources */,
 				D26190102BDDFF31009BD5C5 /* BirthdayView.swift in Sources */,
 				D2EA5BB72BDD302C0055884C /* ValidationRouter.swift in Sources */,
+				D26190232BDE3B38009BD5C5 /* String+Ext.swift in Sources */,
 				D2EA5BA92BDCF1810055884C /* UIViewController+Ext.swift in Sources */,
 				D2EDA3442BD580F8009CB0D7 /* MapView.swift in Sources */,
 				D2EA5B912BDB99320055884C /* UserGalleryViewController.swift in Sources */,
@@ -735,6 +758,7 @@
 				D2EA5B932BDBFBCF0055884C /* UserFeedViewController.swift in Sources */,
 				D2EDA3692BD6A3E1009CB0D7 /* PostRouter.swift in Sources */,
 				D2EA5BA72BDCEEDA0055884C /* LaunchScreenViewModel.swift in Sources */,
+				D261901D2BDE3685009BD5C5 /* PhoneNumberView.swift in Sources */,
 				D25DE0332BD94CD40045C259 /* UserProfileTableViewCell.swift in Sources */,
 				D23E78392BD54EA200A386A0 /* NicknameViewModel.swift in Sources */,
 				D23E78002BD3CF3900A386A0 /* TokenRefreshInterceptor.swift in Sources */,
