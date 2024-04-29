@@ -11,11 +11,13 @@ import MapKit
 final class CustomAnnotation: NSObject, MKAnnotation {
     var coordinate: CLLocationCoordinate2D
     var image: UIImage?
+    var imageName: String?
     var tintColor: UIColor?
 
-    init(coordinate: CLLocationCoordinate2D, image: UIImage?, tintColor: UIColor? = .accent) {
+    init(coordinate: CLLocationCoordinate2D, image: UIImage?, imageName: String?, tintColor: UIColor? = .accent) {
         self.coordinate = coordinate
         self.image = image
+        self.imageName = imageName
         self.tintColor = tintColor
         
         super.init()

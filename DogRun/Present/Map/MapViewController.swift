@@ -53,6 +53,16 @@ final class MapViewController: BaseViewController<MapView> {
         mainView.heartButton.addTarget(self, action: #selector(heartButtonTapped(_:)), for: .touchUpInside)
         mainView.numOneButton.addTarget(self, action: #selector(numOneButtonTapped(_:)), for: .touchUpInside)
         mainView.numTwoButton.addTarget(self, action: #selector(numTwoButtonTapped(_:)), for: .touchUpInside)
+        
+        mainView.startButton.addTarget(self, action: #selector(convertViewToImage), for: .touchUpInside)
+    }
+    
+    @objc func convertViewToImage() {
+        //mainView.testImageView.image = mainView.asImage()
+        captureMapSnapshot(mapView: mainView.mapView) { [weak self] image in
+            guard let image else { return }
+            self?.mainView.testImageView.image = image
+        }
     }
     
     @objc func heartButtonTapped(_ sender: UIButton) {
@@ -104,7 +114,8 @@ final class MapViewController: BaseViewController<MapView> {
     private func addAnnotation(buttonImage: ButtonImages) {
         let annotation = CustomAnnotation(
             coordinate: mainView.mapView.userLocation.coordinate,
-            image: UIImage(systemName: buttonImage.imageName),
+            image: UIImage(systemName: buttonImage.imageName), 
+            imageName: buttonImage.imageName,
             tintColor: buttonImage.tintColor
         )
         mainView.mapView.addAnnotation(annotation)

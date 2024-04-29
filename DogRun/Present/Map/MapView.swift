@@ -21,6 +21,8 @@ final class MapView: BaseView {
     let currentLocationButton = UIButton()
     let stopButton = UIButton()
     
+    let testImageView = UIImageView()
+    
     private lazy var buttonsStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [heartButton, numOneButton, numTwoButton])
         stackView.axis = .vertical
@@ -30,6 +32,14 @@ final class MapView: BaseView {
     
     override func configureHierarchy() {
         [mapView, startButton, buttonsStackView].forEach { addSubview($0) }
+        
+        addSubview(testImageView)
+        testImageView.snp.makeConstraints { make in
+            make.top.leading.equalToSuperview()
+            make.width.equalTo(300)
+            make.height.equalTo(500)
+        }
+        testImageView.backgroundColor = .white
     }
     
     override func configureLayout() {
