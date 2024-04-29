@@ -53,31 +53,35 @@ class ViewController: UIViewController {
         myProfileButton.setTitle("프로필", for: .normal)
         myProfileButton.backgroundColor = .blue
         
-        loginButton.rx.tap
-            .debounce(.seconds(1), scheduler: MainScheduler.instance)
-            .flatMap { loginQuery in
-                return NetworkManager.request(type: LoginResponse.self, router: UserRouter.login(model: .init(email: APIKey.testId.rawValue, password: APIKey.password.rawValue)))
-                //return NetworkManager.createLogin(model: loginQuery)
-            }
-            .subscribe(with: self) { owner, loginModel in
-                UserDefaults.standard.set(loginModel.accessToken, forKey: "accessToken")
-                UserDefaults.standard.set(loginModel.refreshToken, forKey: "refreshToken")
-            } onError: { owner, error in
-                print("오류 발생")
-            }
-            .disposed(by: disposeBag)
+//        loginButton.rx.tap
+//            .debounce(.seconds(1), scheduler: MainScheduler.instance)
+//            .flatMap { loginQuery in
+//                return NetworkManager.request(type: LoginResponse.self, router: UserRouter.login(model: .init(email: APIKey.testId.rawValue, password: APIKey.password.rawValue)))
+//                //return NetworkManager.createLogin(model: loginQuery)
+//            }
+//            .subscribe(with: self) { owner, loginModel in
+//                UserDefaults.standard.set(loginModel.accessToken, forKey: "accessToken")
+//                UserDefaults.standard.set(loginModel.refreshToken, forKey: "refreshToken")
+//            } onError: { owner, error in
+//                print("오류 발생")
+//            }
+//            .disposed(by: disposeBag)
         
         loadPostButton.rx.tap
             .debounce(.seconds(1), scheduler: MainScheduler.instance)
             .flatMap { loginQuery in
-                return NetworkManager.request(type: PostsResponse.self, router: PostRouter.fetchPost(query: .init(next: nil, limit: nil, product_id: nil, hashTag: nil)))
+                return NetworkManager.request2(type: PostsResponse.self, router: PostRouter.fetchPost(query: .init(next: nil, limit: nil, product_id: nil, hashTag: nil)))
             }
             .subscribe(with: self) { owner, response in
-                owner.posts = response.data
-            } onError: { owner, error in
-                print("오류 발생")
+                switch response {
+                case .success(let success):
+                    owner.posts = success.data
+                case .failure(let failure):
+                    owner.errorHandler(failure)
+                }
             }
             .disposed(by: disposeBag)
+
         
         /*
         myProfileButton.rx.tap

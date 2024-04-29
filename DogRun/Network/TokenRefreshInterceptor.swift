@@ -40,30 +40,33 @@ final class TokenRefreshInterceptor: RequestInterceptor {
             isTokenRefreshed = false
             completion(.success(modifiedRequest))
         } else {
+            print("재발급 안됨?")
             completion(.success(urlRequest))
         }
     }
 
     func retry(_ request: Request, for session: Session, dueTo error: Error, completion: @escaping (RetryResult) -> Void) {
         print("retry 진입")
-        guard let response = request.task?.response as? HTTPURLResponse, response.statusCode == 419 else {
+        guard let response = request.response, response.statusCode == 419 else {
             completion(.doNotRetryWithError(error))
             return
         }
 
         print("retry 코드:", response.statusCode)
         // 토큰 갱신 API 호출
-        NetworkManager.request(type: AuthResponse.self, router: AuthRouter.refresh)
+        NetworkManager.requestTokenRefresh(type: AuthResponse.self, router: AuthRouter.refresh)
             .subscribe(with: self) { owner, response in
-                UserDefaultsManager.accessToken = response.accessToken
-                self.isTokenRefreshed = true
-                completion(.retry)
-                return
-            } onFailure: { owner, error in
-                print(error)
-                completion(.doNotRetryWithError(error))
+                switch response {
+                case .success(let success):
+                    UserDefaultsManager.accessToken = success.accessToken
+                    owner.isTokenRefreshed = true
+                    completion(.retryWithDelay(0.5))
+                    return
+                case .failure(_):
+                    print("에러에러", error)
+                    completion(.doNotRetry)
+                }
             }
             .disposed(by: disposeBag)
-
     }
 }

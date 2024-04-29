@@ -27,6 +27,25 @@ extension UIViewController {
         view.makeToast(message, position: position, style: style)
     }
     
+    func showAlert(title: String? = nil, message: String? = nil, style: UIAlertController.Style = .alert, okTitle: String = "확인", okStyle: UIAlertAction.Style = .default, showCancelButton: Bool = false, handler: (() -> Void)? = nil) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: style)
+        let okAction = UIAlertAction(title: okTitle, style: okStyle) { _ in
+            handler?()
+        }
+        alert.addAction(okAction)
+        if showCancelButton {
+            alert.addAction(UIAlertAction(title: "취소", style: .cancel))
+        }
+        present(alert, animated: true)
+    }
+    
+    func showAlertForDismiss() {
+        showAlert(style: .actionSheet, okTitle: "변경사항 폐기", okStyle: .destructive, showCancelButton: true) {
+            self.dismiss(animated: true)
+        }
+    }
+    
+    
     func captureMapSnapshot(mapView: MKMapView, completionHandler: @escaping (UIImage?) -> Void) {
         let options = MKMapSnapshotter.Options()
         options.mapType = mapView.mapType
@@ -74,5 +93,28 @@ extension UIViewController {
         }
 
     }
+    
+    func errorHandler(_ error: DRError, completionHandler: @escaping (() -> Void) = { }) {
+        
+        if error.isCommon {
+            
+        }
+        
+        switch error.handlingRule {
+            
+        case .showToast:
+            showToast(error.errorMessage, position: .center)
+        case .showLogin:
+            showAlert(title: "🔒", message: "\n로그인이 필요한 서비스입니다.\n로그인 후 다시 시도해주세요!\n", okTitle: "로그인하러 가기") { [weak self] in
+                let nav = UINavigationController(rootViewController: EmailViewController(mode: .modify))
+                nav.modalPresentationStyle = .fullScreen
+                self?.present(nav, animated: true, completion: nil)
+            }
+        case .developerFaultSorry:
+            showAlert(title: "오류 발생", message: "\n개발자에게 돌을 던져주세요...🪨")
+        }
+        
+    }
+    
 
 }
