@@ -74,6 +74,8 @@
 		D26190212BDE369E009BD5C5 /* PhoneNumberViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26190202BDE369E009BD5C5 /* PhoneNumberViewModel.swift */; };
 		D26190232BDE3B38009BD5C5 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26190222BDE3B38009BD5C5 /* String+Ext.swift */; };
 		D26190262BDE7873009BD5C5 /* PostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26190252BDE7873009BD5C5 /* PostDetailViewController.swift */; };
+		D261908F2BDF7E92009BD5C5 /* CustomAnnotataion.swift in Sources */ = {isa = PBXBuildFile; fileRef = D261908E2BDF7E92009BD5C5 /* CustomAnnotataion.swift */; };
+		D26190912BDF81C7009BD5C5 /* CustomAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26190902BDF81C7009BD5C5 /* CustomAnnotationView.swift */; };
 		D2EA5B912BDB99320055884C /* UserGalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EA5B902BDB99320055884C /* UserGalleryViewController.swift */; };
 		D2EA5B932BDBFBCF0055884C /* UserFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EA5B922BDBFBCF0055884C /* UserFeedViewController.swift */; };
 		D2EA5B962BDBFC050055884C /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EA5B952BDBFC050055884C /* ImageCollectionViewCell.swift */; };
@@ -162,6 +164,8 @@
 		D26190202BDE369E009BD5C5 /* PhoneNumberViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberViewModel.swift; sourceTree = "<group>"; };
 		D26190222BDE3B38009BD5C5 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 		D26190252BDE7873009BD5C5 /* PostDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewController.swift; sourceTree = "<group>"; };
+		D261908E2BDF7E92009BD5C5 /* CustomAnnotataion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAnnotataion.swift; sourceTree = "<group>"; };
+		D26190902BDF81C7009BD5C5 /* CustomAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAnnotationView.swift; sourceTree = "<group>"; };
 		D2EA5B902BDB99320055884C /* UserGalleryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserGalleryViewController.swift; sourceTree = "<group>"; };
 		D2EA5B922BDBFBCF0055884C /* UserFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFeedViewController.swift; sourceTree = "<group>"; };
 		D2EA5B952BDBFC050055884C /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -295,6 +299,8 @@
 				D23E78202BD5400400A386A0 /* DRButton.swift */,
 				D2EA5BB12BDD16280055884C /* DRVariableButton.swift */,
 				D261900C2BDD6E78009BD5C5 /* ValidationView.swift */,
+				D261908E2BDF7E92009BD5C5 /* CustomAnnotataion.swift */,
+				D26190902BDF81C7009BD5C5 /* CustomAnnotationView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -725,6 +731,7 @@
 				D23E77AD2BD1290F00A386A0 /* ViewController.swift in Sources */,
 				D23E782A2BD547BB00A386A0 /* NicknameViewController.swift in Sources */,
 				D25DE0152BD7F4860045C259 /* UserView.swift in Sources */,
+				D261908F2BDF7E92009BD5C5 /* CustomAnnotataion.swift in Sources */,
 				D23E781F2BD53E3F00A386A0 /* DRLabel.swift in Sources */,
 				D25DE01D2BD931F10045C259 /* UserProfileViewController.swift in Sources */,
 				D2EA5BA02BDCE9C80055884C /* MainTabbarController.swift in Sources */,
@@ -733,6 +740,7 @@
 				D25DDFFF2BD6CC700045C259 /* SNSPostViewController.swift in Sources */,
 				D23E782D2BD5485E00A386A0 /* EmailView.swift in Sources */,
 				D25DE02B2BD93A890045C259 /* SectionModel.swift in Sources */,
+				D26190912BDF81C7009BD5C5 /* CustomAnnotationView.swift in Sources */,
 				D26190182BDE28D0009BD5C5 /* ModeBaseView.swift in Sources */,
 				D2EA5BAE2BDD14FF0055884C /* WelcomeViewController.swift in Sources */,
 				D2EA5BA52BDCEEB80055884C /* LaunchScreenViewController.swift in Sources */,

@@ -34,12 +34,38 @@ final class MapViewController: BaseViewController<MapView> {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        mainView.mapView.delegate = self
         
         getLocationUsagePermission()
     }
     
     override func bind() {
         
+    }
+    
+    override func configureView() {
+        mainView.heartButton.addTarget(self, action: #selector(heartButtonTapped(_:)), for: .touchUpInside)
+        mainView.numOneButton.addTarget(self, action: #selector(numOneButtonTapped(_:)), for: .touchUpInside)
+        mainView.numTwoButton.addTarget(self, action: #selector(numTwoButtonTapped(_:)), for: .touchUpInside)
+    }
+    
+    @objc func heartButtonTapped(_ sender: UIButton) {
+        addAnnotation(coordinate: mainView.mapView.userLocation.coordinate, image: UIImage(systemName: "heart.fill"), tintColor: .systemRed)
+    }
+    
+    @objc func numOneButtonTapped(_ sender: UIButton) {
+        addAnnotation(coordinate: mainView.mapView.userLocation.coordinate, image: UIImage(systemName: "drop.fill"), tintColor: .systemYellow)
+    }
+    
+    @objc func numTwoButtonTapped(_ sender: UIButton) {
+        addAnnotation(coordinate: mainView.mapView.userLocation.coordinate, image: UIImage(systemName: "hands.sparkles.fill"), tintColor: .systemOrange)
+    }
+    
+    private func addAnnotation(coordinate: CLLocationCoordinate2D, image: UIImage?, tintColor: UIColor?) {
+        let annotation = CustomAnnotation(coordinate: coordinate, image: image, tintColor: tintColor)
+        print(mainView.mapView.annotations)
+        mainView.mapView.addAnnotation(annotation)
+        print(mainView.mapView.annotations)
     }
     
     func getLocationUsagePermission() {
@@ -66,6 +92,25 @@ final class MapViewController: BaseViewController<MapView> {
     }
 }
 
+extension MapViewController: MKMapViewDelegate {
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+
+        guard let customAnnotation = annotation as? CustomAnnotation else {
+            return nil
+        }
+        
+        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: CustomAnnotationView.identifier)
+        if annotationView == nil {
+            annotationView = CustomAnnotationView(annotation: customAnnotation, reuseIdentifier: CustomAnnotationView.identifier)
+        } else {
+            annotationView?.annotation = customAnnotation
+        }
+        
+        return annotationView
+
+    }
+}
+
 extension MapViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
             switch status {
@@ -88,7 +133,6 @@ extension MapViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
-
         guard let location = locations.last
         else {return}
         let latitude = location.coordinate.latitude

@@ -8,6 +8,7 @@
 import UIKit
 import Kingfisher
 
+// TODO: MVVM으로 리팩토링하기
 final class PostDetailViewController: UIViewController {
     var scrollView = UIScrollView()
     var pageControl = UIPageControl()
@@ -25,7 +26,7 @@ final class PostDetailViewController: UIViewController {
         setupPageControl()
         loadImages()
         
-        
+        // FIXME: sheet presentation 올라와있을때 뒤쪽 swipeDownGesture 막기
         let swipeDownGesture = UISwipeGestureRecognizer(target: self, action: #selector(dismissViewController))
         swipeDownGesture.direction = .down
         scrollView.addGestureRecognizer(swipeDownGesture)
