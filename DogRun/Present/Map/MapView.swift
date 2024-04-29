@@ -14,9 +14,12 @@ final class MapView: BaseView {
     let mapView = MKMapView()
     let startButton = DRButton(title: "산책 시작")
     
-    let heartButton = UIButton()
-    let numOneButton = UIButton()
-    let numTwoButton = UIButton()
+    let heartButton = DRRoundImageButton(buttonImage: .heart)
+    let numOneButton = DRRoundImageButton(buttonImage: .numOne)
+    let numTwoButton = DRRoundImageButton(buttonImage: .numTwo)
+    
+    let currentLocationButton = UIButton()
+    let stopButton = UIButton()
     
     private lazy var buttonsStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [heartButton, numOneButton, numTwoButton])
@@ -65,20 +68,6 @@ final class MapView: BaseView {
         mapView.isZoomEnabled = true
         mapView.delegate = self
         
-        heartButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
-        heartButton.tintColor = .systemRed
-        heartButton.backgroundColor = .init(white: 0, alpha: 0.4)
-        heartButton.layer.cornerRadius = 24
-        
-        numOneButton.setImage(UIImage(systemName: "drop.fill"), for: .normal)
-        numOneButton.tintColor = .systemYellow
-        numOneButton.backgroundColor = .init(white: 0, alpha: 0.4)
-        numOneButton.layer.cornerRadius = 24
-        
-        numTwoButton.setImage(UIImage(systemName: "hands.sparkles.fill"), for: .normal)
-        numTwoButton.tintColor = .systemOrange
-        numTwoButton.backgroundColor = .init(white: 0, alpha: 0.4)
-        numTwoButton.layer.cornerRadius = 24
     }
 }
 

@@ -9,7 +9,7 @@ import UIKit
 import CoreLocation
 import RxSwift
 import RxCocoa
-import CoreMotion
+//import CoreMotion
 import MapKit
 
 final class MapViewController: BaseViewController<MapView> {
@@ -17,7 +17,7 @@ final class MapViewController: BaseViewController<MapView> {
     private let viewModel = MapViewModel()
     
     var trackData: TrackData = TrackData(traces: [])
-    let motionManager = CMMotionActivityManager()
+    //let motionManager = CMMotionActivityManager()
     
     lazy var locationManager: CLLocationManager = {
         let manager = CLLocationManager()
@@ -31,6 +31,12 @@ final class MapViewController: BaseViewController<MapView> {
      }()
     
     var previousCoordinate: CLLocationCoordinate2D?
+    
+    var walkStartTime: Date?
+    var walkEndTime: Date?
+    
+    var previousLocation: CLLocation?
+    var totalDistance: CLLocationDistance = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,31 +56,67 @@ final class MapViewController: BaseViewController<MapView> {
     }
     
     @objc func heartButtonTapped(_ sender: UIButton) {
-        addAnnotation(coordinate: mainView.mapView.userLocation.coordinate, image: UIImage(systemName: "heart.fill"), tintColor: .systemRed)
+        addAnnotation(buttonImage: .heart)
     }
     
     @objc func numOneButtonTapped(_ sender: UIButton) {
-        addAnnotation(coordinate: mainView.mapView.userLocation.coordinate, image: UIImage(systemName: "drop.fill"), tintColor: .systemYellow)
+        addAnnotation(buttonImage: .numOne)
     }
     
     @objc func numTwoButtonTapped(_ sender: UIButton) {
-        addAnnotation(coordinate: mainView.mapView.userLocation.coordinate, image: UIImage(systemName: "hands.sparkles.fill"), tintColor: .systemOrange)
+        addAnnotation(buttonImage: .numTwo)
     }
     
-    private func addAnnotation(coordinate: CLLocationCoordinate2D, image: UIImage?, tintColor: UIColor?) {
-        let annotation = CustomAnnotation(coordinate: coordinate, image: image, tintColor: tintColor)
-        print(mainView.mapView.annotations)
+    func startWalk() {
+        walkStartTime = Date()
+    }
+    
+    func endWalk() {
+        guard let startTime = walkStartTime else {
+            print("산책을 시작하지 않았습니다.")
+            return
+        }
+        
+        walkEndTime = Date()
+        
+        guard let endTime = walkEndTime else {
+            print("산책 종료 시간을 기록하지 못했습니다.")
+            return
+        }
+        
+        let timeInterval = endTime.timeIntervalSince(startTime)
+//        let timeFormatter = DateComponentsFormatter()
+//        timeFormatter.unitsStyle = .short
+//        timeFormatter.allowedUnits = [.hour, .minute, .second]
+//        timeFormatter.zeroFormattingBehavior = .default
+//        let formattedTime = timeFormatter.string(from: timeInterval)
+        
+        let timeFormatter = DateComponentsFormatter()
+        timeFormatter.unitsStyle = .positional
+        timeFormatter.allowedUnits = [.hour, .minute, .second]
+        timeFormatter.zeroFormattingBehavior = .pad
+        let formattedTime = timeFormatter.string(from: timeInterval)
+        
+        print("산책 시간: \(formattedTime ?? "기록 실패")")
+        print("이동 거리: \(totalDistance) meters")
+    }
+    
+    private func addAnnotation(buttonImage: ButtonImages) {
+        let annotation = CustomAnnotation(
+            coordinate: mainView.mapView.userLocation.coordinate,
+            image: UIImage(systemName: buttonImage.imageName),
+            tintColor: buttonImage.tintColor
+        )
         mainView.mapView.addAnnotation(annotation)
-        print(mainView.mapView.annotations)
     }
     
     func getLocationUsagePermission() {
         self.locationManager.requestWhenInUseAuthorization()
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        self.locationManager.stopUpdatingLocation()
-    }
+//    override func viewWillDisappear(_ animated: Bool) {
+//        self.locationManager.stopUpdatingLocation()
+//    }
     
     // TODO: 아래 코드들(테스트용) 뷰 그리고 수정하기
     
@@ -133,8 +175,13 @@ extension MapViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
-        guard let location = locations.last
-        else {return}
+        guard let location = locations.last else { return }
+        
+        if let previousLocation = previousLocation {
+            totalDistance += location.distance(from: previousLocation)
+        }
+        previousLocation = location
+        
         let latitude = location.coordinate.latitude
         let longitude = location.coordinate.longitude
         

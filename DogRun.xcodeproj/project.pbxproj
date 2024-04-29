@@ -76,6 +76,8 @@
 		D26190262BDE7873009BD5C5 /* PostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26190252BDE7873009BD5C5 /* PostDetailViewController.swift */; };
 		D261908F2BDF7E92009BD5C5 /* CustomAnnotataion.swift in Sources */ = {isa = PBXBuildFile; fileRef = D261908E2BDF7E92009BD5C5 /* CustomAnnotataion.swift */; };
 		D26190912BDF81C7009BD5C5 /* CustomAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26190902BDF81C7009BD5C5 /* CustomAnnotationView.swift */; };
+		D26190932BDF93A3009BD5C5 /* DRRoundImageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26190922BDF93A3009BD5C5 /* DRRoundImageButton.swift */; };
+		D26190952BDF9708009BD5C5 /* ButtonImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26190942BDF9708009BD5C5 /* ButtonImages.swift */; };
 		D2EA5B912BDB99320055884C /* UserGalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EA5B902BDB99320055884C /* UserGalleryViewController.swift */; };
 		D2EA5B932BDBFBCF0055884C /* UserFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EA5B922BDBFBCF0055884C /* UserFeedViewController.swift */; };
 		D2EA5B962BDBFC050055884C /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EA5B952BDBFC050055884C /* ImageCollectionViewCell.swift */; };
@@ -166,6 +168,8 @@
 		D26190252BDE7873009BD5C5 /* PostDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewController.swift; sourceTree = "<group>"; };
 		D261908E2BDF7E92009BD5C5 /* CustomAnnotataion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAnnotataion.swift; sourceTree = "<group>"; };
 		D26190902BDF81C7009BD5C5 /* CustomAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAnnotationView.swift; sourceTree = "<group>"; };
+		D26190922BDF93A3009BD5C5 /* DRRoundImageButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DRRoundImageButton.swift; sourceTree = "<group>"; };
+		D26190942BDF9708009BD5C5 /* ButtonImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonImages.swift; sourceTree = "<group>"; };
 		D2EA5B902BDB99320055884C /* UserGalleryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserGalleryViewController.swift; sourceTree = "<group>"; };
 		D2EA5B922BDBFBCF0055884C /* UserFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFeedViewController.swift; sourceTree = "<group>"; };
 		D2EA5B952BDBFC050055884C /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -301,6 +305,7 @@
 				D261900C2BDD6E78009BD5C5 /* ValidationView.swift */,
 				D261908E2BDF7E92009BD5C5 /* CustomAnnotataion.swift */,
 				D26190902BDF81C7009BD5C5 /* CustomAnnotationView.swift */,
+				D26190922BDF93A3009BD5C5 /* DRRoundImageButton.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -466,6 +471,7 @@
 			isa = PBXGroup;
 			children = (
 				D25DE02A2BD93A890045C259 /* SectionModel.swift */,
+				D26190942BDF9708009BD5C5 /* ButtonImages.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -755,7 +761,9 @@
 				D2EDA3442BD580F8009CB0D7 /* MapView.swift in Sources */,
 				D2EA5B912BDB99320055884C /* UserGalleryViewController.swift in Sources */,
 				D23E77A92BD1290F00A386A0 /* AppDelegate.swift in Sources */,
+				D26190952BDF9708009BD5C5 /* ButtonImages.swift in Sources */,
 				D2EA5B9E2BDC355C0055884C /* UserChallengeTableViewCell.swift in Sources */,
+				D26190932BDF93A3009BD5C5 /* DRRoundImageButton.swift in Sources */,
 				D261900D2BDD6E78009BD5C5 /* ValidationView.swift in Sources */,
 				D26190262BDE7873009BD5C5 /* PostDetailViewController.swift in Sources */,
 				D2EA5B9A2BDC2BFA0055884C /* UIView+Ext.swift in Sources */,
