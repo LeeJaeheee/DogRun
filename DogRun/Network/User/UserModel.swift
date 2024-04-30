@@ -13,8 +13,8 @@ struct JoinRequest: Encodable {
     let email: String
     let password: String
     let nick: String
-    let phoneNum: String? = nil
-    let birthDay: String? = nil
+    let phoneNum: String
+    let birthDay: String
 }
 
 struct JoinResponse: Decodable {

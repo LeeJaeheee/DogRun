@@ -51,7 +51,7 @@ final class EmailViewModel: ViewModelType {
                     emailValidResult.accept(success.message)
                     return true
                 case .failure(let failure):
-                    emailValidResult.accept(failure.localizedDescription)
+                    emailValidResult.accept(failure.errorMessage)
                     return false
                 }
             }

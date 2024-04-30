@@ -21,7 +21,7 @@ final class BirthdayViewController: BaseViewController<BirthdayView> {
         )
         
         let output = viewModel.transform(input: input)
-
+        
         output.formattedDate
             .drive(mainView.birthdayTextField.rx.text)
             .disposed(by: disposeBag)
@@ -39,8 +39,22 @@ final class BirthdayViewController: BaseViewController<BirthdayView> {
         
         output.nextButtonTap
             .drive(with: self) { owner, _ in
-                let nextVC = PasswordViewController()
-                owner.navigationController?.pushViewController(nextVC, animated: true)
+                //let nextVC = PasswordViewController()
+                //owner.navigationController?.pushViewController(nextVC, animated: true)
+            }
+            .disposed(by: disposeBag)
+        
+        output.signUpSuccess
+            .bind(with: self) { owner, loginRequest in
+                let vc = JoinGreetingViewController()
+                vc.viewModel.loginRequest = loginRequest
+                owner.changeRootView(to: vc)
+            }
+            .disposed(by: disposeBag)
+        
+        output.signUpFailure
+            .bind(with: self) { owner, error in
+                owner.errorHandler(error)
             }
             .disposed(by: disposeBag)
         

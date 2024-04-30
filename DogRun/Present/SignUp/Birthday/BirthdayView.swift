@@ -37,8 +37,8 @@ final class BirthdayView: BaseView {
         }
         
         nextButton.snp.makeConstraints { make in
-            make.horizontalEdges.equalToSuperview().inset(20)
-            make.bottom.equalTo(safeAreaLayoutGuide).inset(60)
+            make.horizontalEdges.equalToSuperview().inset(nextButton.basicHorizontalInset)
+            make.bottom.equalTo(safeAreaLayoutGuide).inset(nextButton.basicBottomInset)
             // FIXME: 아래 코드로 실행하면 textfieldeffects에서 문제생김 (animateViewsForTextEntry() 호출안함)
             //make.bottom.equalTo(keyboardLayoutGuide.snp.top).inset(-16)
             make.height.equalTo(nextButton.basicHeight)

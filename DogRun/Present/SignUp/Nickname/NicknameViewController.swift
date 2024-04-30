@@ -12,6 +12,10 @@ final class NicknameViewController: BaseViewController<NicknameView> {
     
     let viewModel = NicknameViewModel()
     
+    var email: String = ""
+    var password: String = ""
+    var nickname: String = ""
+    
     override func bind() {
         let input = NicknameViewModel.Input(
             nickname: mainView.nicknameTextField.rx.text,
@@ -34,6 +38,9 @@ final class NicknameViewController: BaseViewController<NicknameView> {
         output.nextButtonTap
             .drive(with: self) { owner, _ in
                 let nextVC = PhoneNumberViewController()
+                nextVC.email = owner.email
+                nextVC.password = owner.password
+                nextVC.nickname = owner.mainView.nicknameTextField.text ?? ""
                 owner.navigationController?.pushViewController(nextVC, animated: true)
             }
             .disposed(by: disposeBag)

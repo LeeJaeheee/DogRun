@@ -12,6 +12,11 @@ final class PhoneNumberViewController: ModeBaseViewController<PhoneNumberView> {
     
     let viewModel = PhoneNumberViewModel()
     
+    var email: String = ""
+    var password: String = ""
+    var nickname: String = ""
+    var phoneNumber: String = ""
+    
     override func bind() {
         let input = PhoneNumberViewModel.Input(
             phoneNumber: mainView.phoneNumberTextField.rx.text,
@@ -30,6 +35,10 @@ final class PhoneNumberViewController: ModeBaseViewController<PhoneNumberView> {
         output.nextButtonTap
             .drive(with: self) { owner, _ in
                 let nextVC = BirthdayViewController()
+                nextVC.viewModel.email = owner.email
+                nextVC.viewModel.password = owner.password
+                nextVC.viewModel.nickname = owner.nickname
+                nextVC.viewModel.phoneNumber = owner.mainView.phoneNumberTextField.text ?? ""
                 owner.navigationController?.pushViewController(nextVC, animated: true)
             }
             .disposed(by: disposeBag)

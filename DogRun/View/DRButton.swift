@@ -16,6 +16,8 @@ final class DRButton: UIButton {
     }
     
     var basicHeight: Int { 52 }
+    var basicBottomInset: Int { 60 }
+    var basicHorizontalInset: Int { 20 }
     
     init(title: String) {
         super.init(frame: .zero)

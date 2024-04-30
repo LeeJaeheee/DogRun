@@ -80,6 +80,9 @@
 		D26190952BDF9708009BD5C5 /* ButtonImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26190942BDF9708009BD5C5 /* ButtonImages.swift */; };
 		D26190972BDFDF98009BD5C5 /* DRError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26190962BDFDF98009BD5C5 /* DRError.swift */; };
 		D26190992BE0096E009BD5C5 /* ErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26190982BE0096E009BD5C5 /* ErrorResponse.swift */; };
+		D26190AA2BE125C6009BD5C5 /* JoinGreetingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26190A92BE125C6009BD5C5 /* JoinGreetingView.swift */; };
+		D26190AC2BE125D8009BD5C5 /* JoinGreetingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26190AB2BE125D8009BD5C5 /* JoinGreetingViewController.swift */; };
+		D26190AE2BE125E3009BD5C5 /* JoinGreetingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26190AD2BE125E3009BD5C5 /* JoinGreetingViewModel.swift */; };
 		D2EA5B912BDB99320055884C /* UserGalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EA5B902BDB99320055884C /* UserGalleryViewController.swift */; };
 		D2EA5B932BDBFBCF0055884C /* UserFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EA5B922BDBFBCF0055884C /* UserFeedViewController.swift */; };
 		D2EA5B962BDBFC050055884C /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EA5B952BDBFC050055884C /* ImageCollectionViewCell.swift */; };
@@ -174,6 +177,9 @@
 		D26190942BDF9708009BD5C5 /* ButtonImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonImages.swift; sourceTree = "<group>"; };
 		D26190962BDFDF98009BD5C5 /* DRError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DRError.swift; sourceTree = "<group>"; };
 		D26190982BE0096E009BD5C5 /* ErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorResponse.swift; sourceTree = "<group>"; };
+		D26190A92BE125C6009BD5C5 /* JoinGreetingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinGreetingView.swift; sourceTree = "<group>"; };
+		D26190AB2BE125D8009BD5C5 /* JoinGreetingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinGreetingViewController.swift; sourceTree = "<group>"; };
+		D26190AD2BE125E3009BD5C5 /* JoinGreetingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinGreetingViewModel.swift; sourceTree = "<group>"; };
 		D2EA5B902BDB99320055884C /* UserGalleryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserGalleryViewController.swift; sourceTree = "<group>"; };
 		D2EA5B922BDBFBCF0055884C /* UserFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFeedViewController.swift; sourceTree = "<group>"; };
 		D2EA5B952BDBFC050055884C /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -519,6 +525,16 @@
 			path = Detail;
 			sourceTree = "<group>";
 		};
+		D26190A82BE12596009BD5C5 /* JoinGreeting */ = {
+			isa = PBXGroup;
+			children = (
+				D26190A92BE125C6009BD5C5 /* JoinGreetingView.swift */,
+				D26190AB2BE125D8009BD5C5 /* JoinGreetingViewController.swift */,
+				D26190AD2BE125E3009BD5C5 /* JoinGreetingViewModel.swift */,
+			);
+			path = JoinGreeting;
+			sourceTree = "<group>";
+		};
 		D2EA5B8F2BDB98F20055884C /* UserFeed */ = {
 			isa = PBXGroup;
 			children = (
@@ -571,6 +587,7 @@
 		D2EDA3402BD58089009CB0D7 /* SignIn */ = {
 			isa = PBXGroup;
 			children = (
+				D26190A82BE12596009BD5C5 /* JoinGreeting */,
 			);
 			path = SignIn;
 			sourceTree = "<group>";
@@ -767,9 +784,11 @@
 				D2EDA3442BD580F8009CB0D7 /* MapView.swift in Sources */,
 				D2EA5B912BDB99320055884C /* UserGalleryViewController.swift in Sources */,
 				D23E77A92BD1290F00A386A0 /* AppDelegate.swift in Sources */,
+				D26190AA2BE125C6009BD5C5 /* JoinGreetingView.swift in Sources */,
 				D26190952BDF9708009BD5C5 /* ButtonImages.swift in Sources */,
 				D2EA5B9E2BDC355C0055884C /* UserChallengeTableViewCell.swift in Sources */,
 				D26190932BDF93A3009BD5C5 /* DRRoundImageButton.swift in Sources */,
+				D26190AC2BE125D8009BD5C5 /* JoinGreetingViewController.swift in Sources */,
 				D26190972BDFDF98009BD5C5 /* DRError.swift in Sources */,
 				D261900D2BDD6E78009BD5C5 /* ValidationView.swift in Sources */,
 				D26190262BDE7873009BD5C5 /* PostDetailViewController.swift in Sources */,
@@ -803,6 +822,7 @@
 				D23E78052BD3D04F00A386A0 /* AuthModel.swift in Sources */,
 				D2EDA3672BD6A3D9009CB0D7 /* PostModel.swift in Sources */,
 				D26190142BDDFF50009BD5C5 /* BirthdayViewModel.swift in Sources */,
+				D26190AE2BE125E3009BD5C5 /* JoinGreetingViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

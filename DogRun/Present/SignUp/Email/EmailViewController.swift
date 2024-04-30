@@ -54,6 +54,7 @@ final class EmailViewController: ModeBaseViewController<EmailView> {
                 case .modify:
                     nextVC = PasswordViewController(mode: .modify)
                 }
+                nextVC.email = owner.mainView.emailTextField.text ?? ""
                 owner.navigationController?.pushViewController(nextVC, animated: true)
             }
             .disposed(by: disposeBag)
