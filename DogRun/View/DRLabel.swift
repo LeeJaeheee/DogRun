@@ -11,6 +11,7 @@ enum TextStyle {
     case title
     case subtitle
     case body
+    case count
 }
 
 final class DRLabel: UILabel {
@@ -36,6 +37,9 @@ final class DRLabel: UILabel {
             textColor = .darkGray
         case .body:
             font = UIFont.systemFont(ofSize: 15)
+            textColor = .lightGray
+        case .count:
+            font = UIFont.systemFont(ofSize: 12, weight: .medium)
             textColor = .lightGray
         }
         

@@ -32,6 +32,8 @@ class FeedTableViewCell: UITableViewCell {
     let dateLabel = UILabel()
     let likeButton = UIButton()
     let commentButton = UIButton()
+    let likeCountLabel = DRLabel(text: "", style: .count)
+    let commentCountLabel = DRLabel(text: "", style: .count)
     
     var hostingController: UIHostingController<AnyView>? = nil
 
@@ -54,20 +56,20 @@ class FeedTableViewCell: UITableViewCell {
     }
     
     func configureHierarchy() {
-        [profileView, nicknameLabel, dateLabel, likeButton, commentButton].forEach { contentView.addSubview($0) }
+        [profileView, nicknameLabel, dateLabel, likeButton, likeCountLabel, commentButton, commentCountLabel].forEach { contentView.addSubview($0) }
     }
     
     func configureLayout() {
         profileView.snp.makeConstraints { make in
-            make.top.leading.equalToSuperview().inset(16)
+            make.top.leading.equalToSuperview().inset(20)
             make.size.equalTo(60)
         }
         
         nicknameLabel.snp.makeConstraints { make in
             make.leading.equalTo(profileView.snp.trailing).offset(12)
-            make.top.equalTo(profileView.snp.top)
+            make.top.equalTo(profileView.snp.top).offset(4)
             make.trailing.equalToSuperview().inset(16)
-            make.height.equalTo(30)
+            make.height.equalTo(26)
         }
         
         dateLabel.snp.makeConstraints { make in
@@ -78,21 +80,34 @@ class FeedTableViewCell: UITableViewCell {
         }
         
         likeButton.snp.makeConstraints { make in
-            make.top.equalTo(profileView.snp.bottom).offset(200)
-            make.leading.equalToSuperview().inset(16)
-            make.size.equalTo(60)
+            make.top.equalTo(profileView.snp.bottom).offset(180)
+            make.centerX.equalTo(profileView)
+            make.size.equalTo(52)
         }
         likeButton.imageView!.snp.makeConstraints { make in
-            make.edges.equalToSuperview().inset(4)
+            make.edges.equalToSuperview()
+        }
+        
+        likeCountLabel.snp.makeConstraints { make in
+            make.top.equalTo(likeButton.snp.bottom)
+            make.centerX.equalTo(profileView)
+            make.height.equalTo(16)
         }
         
         commentButton.snp.makeConstraints { make in
-            make.top.equalTo(likeButton.snp.bottom).offset(4)
-            make.size.equalTo(60)
-            make.leading.bottom.equalToSuperview().inset(16)
+            make.top.equalTo(likeCountLabel.snp.bottom).offset(4)
+            make.size.equalTo(52)
+            make.centerX.equalTo(profileView)
         }
         commentButton.imageView!.snp.makeConstraints { make in
-            make.edges.equalToSuperview().inset(4)
+            make.edges.equalToSuperview()
+        }
+        
+        commentCountLabel.snp.makeConstraints { make in
+            make.top.equalTo(commentButton.snp.bottom)
+            make.centerX.equalTo(profileView)
+            make.height.equalTo(16)
+            make.bottom.equalToSuperview().inset(20)
         }
     }
     
@@ -100,8 +115,8 @@ class FeedTableViewCell: UITableViewCell {
         profileView.backgroundColor = .yellow
         profileView.layer.cornerRadius = 30
         
-        nicknameLabel.font = .systemFont(ofSize: 17, weight: .medium)
-        dateLabel.font = .systemFont(ofSize: 15, weight: .light)
+        nicknameLabel.font = .systemFont(ofSize: 16, weight: .medium)
+        dateLabel.font = .systemFont(ofSize: 13, weight: .light)
         dateLabel.textColor = .lightGray
         
         likeButton.setImage(UIImage(systemName: "heart.circle.fill"), for: .normal)
@@ -111,6 +126,8 @@ class FeedTableViewCell: UITableViewCell {
         
         nicknameLabel.text = "닉네임"
         dateLabel.text = "45분 전"
+        likeCountLabel.text = "230"
+        commentCountLabel.text = "14"
     }
     
     func configureImages(with files: [String]) {
@@ -133,6 +150,8 @@ class FeedTableViewCell: UITableViewCell {
             make.top.equalTo(profileView.snp.bottom)
             make.trailing.bottom.equalToSuperview()
         }
+        
+        hostingView.backgroundColor = .clear
     }
     
 }
