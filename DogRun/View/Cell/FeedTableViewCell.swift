@@ -84,9 +84,9 @@ class FeedTableViewCell: UITableViewCell {
             make.centerX.equalTo(profileView)
             make.size.equalTo(52)
         }
-        likeButton.imageView!.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-        }
+//        likeButton.imageView!.snp.makeConstraints { make in
+//            make.edges.equalTo(likeButton)
+//        }
         
         likeCountLabel.snp.makeConstraints { make in
             make.top.equalTo(likeButton.snp.bottom)
@@ -99,10 +99,12 @@ class FeedTableViewCell: UITableViewCell {
             make.size.equalTo(52)
             make.centerX.equalTo(profileView)
         }
-        commentButton.imageView!.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-        }
         
+
+//        commentButton.imageView!.snp.makeConstraints { make in
+//            make.edges.equalToSuperview()
+//        }
+//        
         commentCountLabel.snp.makeConstraints { make in
             make.top.equalTo(commentButton.snp.bottom)
             make.centerX.equalTo(profileView)
@@ -120,9 +122,11 @@ class FeedTableViewCell: UITableViewCell {
         dateLabel.font = .systemFont(ofSize: 13, weight: .light)
         dateLabel.textColor = .lightGray
         
-        likeButton.setImage(UIImage(systemName: "heart.circle.fill"), for: .normal)
+        let imageConfig = UIImage.SymbolConfiguration(pointSize: 52, weight: .light)
+        
+        likeButton.setImage(UIImage(systemName: "heart.circle.fill", withConfiguration: imageConfig), for: .normal)
         likeButton.tintColor = .systemGray5
-        commentButton.setImage(UIImage(systemName: "bubble.left.circle.fill"), for: .normal)
+        commentButton.setImage(UIImage(systemName: "bubble.left.circle.fill", withConfiguration: imageConfig), for: .normal)
         commentButton.tintColor = .systemGray5
         
         selectionStyle = .none

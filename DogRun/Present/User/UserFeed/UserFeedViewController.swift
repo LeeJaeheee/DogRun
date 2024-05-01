@@ -14,6 +14,21 @@ class UserFeedViewController: UIViewController {
     
     let tableView = UITableView()
     
+    private lazy var viewSpinner: UIView = {
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 100)
+        )
+        let spinner = UIActivityIndicatorView()
+        spinner.center = view.center
+        view.addSubview(spinner)
+        spinner.startAnimating()
+        return view
+    }()
+    
+    private lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        return refreshControl
+    }()
+    
     let disposeBag = DisposeBag()
     
     let viewModel = UserFeedViewModel()
@@ -27,13 +42,15 @@ class UserFeedViewController: UIViewController {
         }
         tableView.register(FeedTableViewCell.self, forCellReuseIdentifier: FeedTableViewCell.identifier)
         tableView.separatorStyle = .none
+        tableView.rowHeight = UITableView.automaticDimension
         
         bind()
     }
     
     private func bind() {
         let input = UserFeedViewModel.Input(
-            loadTrigger: Observable.just(())
+            loadTrigger: BehaviorRelay(value: ()),
+            fetchMoreDatas: tableView.rx.prefetchRows
         )
         
         let output = viewModel.transform(input: input)
@@ -58,9 +75,11 @@ class UserFeedViewController: UIViewController {
                 owner.errorHandler(error)
             }
             .disposed(by: disposeBag)
+        
     }
 
 }
+
 
 extension UserFeedViewController {
     func showImageFullscreen(_ imageURL: String, index: Int) {
