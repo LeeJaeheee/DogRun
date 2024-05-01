@@ -49,6 +49,7 @@ extension UIViewController {
     func captureMapSnapshot(mapView: MKMapView, completionHandler: @escaping (UIImage?) -> Void) {
         let options = MKMapSnapshotter.Options()
         options.mapType = mapView.mapType
+        //options.mapRect = mapView.visibleMapRect
         options.region = mapView.region
         options.size = mapView.frame.size
         

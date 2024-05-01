@@ -19,6 +19,8 @@ final class MapViewController: BaseViewController<MapView> {
     var trackData: TrackData = TrackData(traces: [])
     //let motionManager = CMMotionActivityManager()
     
+    var isWalkingEnded = false
+    
     lazy var locationManager: CLLocationManager = {
         let manager = CLLocationManager()
         manager.desiredAccuracy = kCLLocationAccuracyKilometer
@@ -50,20 +52,19 @@ final class MapViewController: BaseViewController<MapView> {
     }
     
     override func configureView() {
+        
+        mainView.startButton.addTarget(self, action: #selector(startWalk), for: .touchUpInside)
+        mainView.stopButton.addTarget(self, action: #selector(endWalk), for: .touchUpInside)
+        
         mainView.heartButton.addTarget(self, action: #selector(heartButtonTapped(_:)), for: .touchUpInside)
         mainView.numOneButton.addTarget(self, action: #selector(numOneButtonTapped(_:)), for: .touchUpInside)
         mainView.numTwoButton.addTarget(self, action: #selector(numTwoButtonTapped(_:)), for: .touchUpInside)
+        mainView.currentLocationButton.addTarget(self, action: #selector(touchUpShowCurrentLocation), for: .touchUpInside)
         
-        mainView.startButton.addTarget(self, action: #selector(convertViewToImage), for: .touchUpInside)
+        //mainView.startButton.addTarget(self, action: #selector(convertViewToImage), for: .touchUpInside)
     }
     
-    @objc func convertViewToImage() {
-        //mainView.testImageView.image = mainView.asImage()
-        captureMapSnapshot(mapView: mainView.mapView) { [weak self] image in
-            guard let image else { return }
-            self?.mainView.testImageView.image = image
-        }
-    }
+
     
     @objc func heartButtonTapped(_ sender: UIButton) {
         addAnnotation(buttonImage: .heart)
@@ -77,38 +78,96 @@ final class MapViewController: BaseViewController<MapView> {
         addAnnotation(buttonImage: .numTwo)
     }
     
-    func startWalk() {
+    @objc func startWalk() {
         walkStartTime = Date()
+        locationManager.startUpdatingLocation()
+        mainView.toggleHidden()
     }
     
-    func endWalk() {
-        guard let startTime = walkStartTime else {
-            print("산책을 시작하지 않았습니다.")
-            return
+    @objc func endWalk() {
+        
+        showAlert(message: "산책을 종료하시겠습니까?", okTitle: "종료", showCancelButton: true) { [weak self] in
+            guard let self else { return }
+            
+            locationManager.stopUpdatingLocation()
+            mainView.toggleHidden()
+            
+            var minLatitude = CLLocationDegrees(90)
+            var maxLatitude = CLLocationDegrees(-90)
+            var minLongitude = CLLocationDegrees(180)
+            var maxLongitude = CLLocationDegrees(-180)
+            
+            for trace in trackData.traces {
+                minLatitude = min(minLatitude, trace.latitude)
+                maxLatitude = max(maxLatitude, trace.latitude)
+                minLongitude = min(minLongitude, trace.longitude)
+                maxLongitude = max(maxLongitude, trace.longitude)
+            }
+            
+            let centerLatitude = (minLatitude + maxLatitude) / 2
+            let centerLongitude = (minLongitude + maxLongitude) / 2
+            let centerCoordinate = CLLocationCoordinate2D(latitude: centerLatitude, longitude: centerLongitude)
+
+            let latitudeDelta = maxLatitude - minLatitude
+            let longitudeDelta = maxLongitude - minLongitude
+            let span = MKCoordinateSpan(latitudeDelta: latitudeDelta, longitudeDelta: longitudeDelta)
+            
+            let padding = 0.1
+            let latitudeDeltaWithPadding = latitudeDelta * (1 + padding)
+            let longitudeDeltaWithPadding = longitudeDelta * (1 + padding)
+            let paddedSpan = MKCoordinateSpan(latitudeDelta: latitudeDeltaWithPadding, longitudeDelta: longitudeDeltaWithPadding)
+
+            let paddedRegion = MKCoordinateRegion(center: centerCoordinate, span: paddedSpan)
+            isWalkingEnded = true
+            mainView.mapView.setRegion(paddedRegion, animated: true)
+
+
+            
+//            let topLeftCoordinate = CLLocationCoordinate2D(latitude: maxLatitude, longitude: minLongitude)
+//            let bottomRightCoordinate = CLLocationCoordinate2D(latitude: minLatitude, longitude: maxLongitude)
+//            
+//            let topLeftMapPoint = MKMapPoint(topLeftCoordinate)
+//            let bottomRightMapPoint = MKMapPoint(bottomRightCoordinate)
+//            
+//            // 모든 좌표를 포함하는 MKMapRect 생성
+//            let mapRect = MKMapRect(
+//                x: min(topLeftMapPoint.x, bottomRightMapPoint.x),
+//                y: min(topLeftMapPoint.y, bottomRightMapPoint.y),
+//                width: abs(topLeftMapPoint.x - bottomRightMapPoint.x),
+//                height: abs(topLeftMapPoint.y - bottomRightMapPoint.y))
+//            
+//            let padding: CGFloat = 20.0
+//            let mapRectPadded = mapRect.insetBy(dx: -padding, dy: -padding)
+//            
+//            mainView.mapView.setVisibleMapRect(mapRectPadded, animated: true)
+            
+
+            guard let startTime = walkStartTime else {
+                print("산책을 시작하지 않았습니다.")
+                return
+            }
+            
+            walkEndTime = Date()
+            
+            guard let endTime = walkEndTime else {
+                print("산책 종료 시간을 기록하지 못했습니다.")
+                return
+            }
+            
+
+            
+//            captureMapSnapshot(mapView: mainView.mapView) { [weak self] image in
+//                guard let image else { return }
+//                self?.mainView.testImageView.image = image
+//            }
         }
         
-        walkEndTime = Date()
+
+    }
+    
+    @objc func convertViewToImage() {
+        //mainView.testImageView.image = mainView.asImage()
         
-        guard let endTime = walkEndTime else {
-            print("산책 종료 시간을 기록하지 못했습니다.")
-            return
-        }
-        
-        let timeInterval = endTime.timeIntervalSince(startTime)
-//        let timeFormatter = DateComponentsFormatter()
-//        timeFormatter.unitsStyle = .short
-//        timeFormatter.allowedUnits = [.hour, .minute, .second]
-//        timeFormatter.zeroFormattingBehavior = .default
-//        let formattedTime = timeFormatter.string(from: timeInterval)
-        
-        let timeFormatter = DateComponentsFormatter()
-        timeFormatter.unitsStyle = .positional
-        timeFormatter.allowedUnits = [.hour, .minute, .second]
-        timeFormatter.zeroFormattingBehavior = .pad
-        let formattedTime = timeFormatter.string(from: timeInterval)
-        
-        print("산책 시간: \(formattedTime ?? "기록 실패")")
-        print("이동 거리: \(totalDistance) meters")
     }
     
     private func addAnnotation(buttonImage: ButtonImages) {
@@ -162,6 +221,50 @@ extension MapViewController: MKMapViewDelegate {
         return annotationView
 
     }
+    
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        guard let polyLine = overlay as? MKPolyline
+        else {
+            print("can't draw polyline")
+            return MKOverlayRenderer()
+        }
+        let renderer = MKPolylineRenderer(polyline: polyLine)
+            renderer.strokeColor = .systemYellow
+            renderer.lineWidth = 8.0
+            renderer.alpha = 1.0
+ 
+        return renderer
+    }
+    
+    func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+        if isWalkingEnded {
+            isWalkingEnded = false
+            
+            captureMapSnapshot(mapView: mapView) { [weak self] image in
+                guard let self else { return }
+                guard let image else { return }
+                
+                guard let startTime = walkStartTime else {
+                    print("산책을 시작하지 않았습니다.")
+                    return
+                }
+                
+                walkEndTime = Date()
+                
+                guard let endTime = walkEndTime else {
+                    print("산책 종료 시간을 기록하지 못했습니다.")
+                    return
+                }
+                
+                mainView.testImageView.image = image
+                let vc = MapRecordPopUpViewContoller()
+                vc.mapRecord = .init(mapImage: image, time: DateFormatterManager.shared.formatTimeInterval(endTime.timeIntervalSince(startTime)) ?? "기록 실패", distance: NumberFormatterManager.shared.formatDistance(totalDistance))
+
+                vc.modalPresentationStyle = .overFullScreen
+                present(vc, animated: false, completion: nil)
+            }
+        }
+    }
 }
 
 extension MapViewController: CLLocationManagerDelegate {
@@ -213,3 +316,4 @@ extension MapViewController: CLLocationManagerDelegate {
         self.trackData.appendTrace(trace: newTrace)
     }
 }
+

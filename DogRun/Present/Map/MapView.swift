@@ -19,7 +19,7 @@ final class MapView: BaseView {
     let numTwoButton = DRRoundImageButton(buttonImage: .numTwo)
     
     let currentLocationButton = UIButton()
-    let stopButton = UIButton()
+    let stopButton = DRRoundImageButton(imageName: "stop.fill", tintColor: .black, backgroundWhite: 1.0, alpha: 1.0)
     
     let testImageView = UIImageView()
     
@@ -31,7 +31,7 @@ final class MapView: BaseView {
     }()
     
     override func configureHierarchy() {
-        [mapView, startButton, buttonsStackView].forEach { addSubview($0) }
+        [mapView, startButton, buttonsStackView, currentLocationButton, stopButton].forEach { addSubview($0) }
         
         addSubview(testImageView)
         testImageView.snp.makeConstraints { make in
@@ -39,14 +39,16 @@ final class MapView: BaseView {
             make.width.equalTo(300)
             make.height.equalTo(500)
         }
-        testImageView.backgroundColor = .white
+        //testImageView.backgroundColor = .white
     }
     
     override func configureLayout() {
         mapView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+            make.top.horizontalEdges.equalToSuperview()
+            make.bottom.equalTo(safeAreaLayoutGuide)
         }
         
+
         startButton.snp.makeConstraints { make in
             make.horizontalEdges.equalToSuperview().inset(40)
             make.bottom.equalTo(safeAreaLayoutGuide).inset(70)
@@ -69,6 +71,18 @@ final class MapView: BaseView {
         numTwoButton.snp.makeConstraints { make in
             make.size.equalTo(48)
         }
+        
+        currentLocationButton.snp.makeConstraints { make in
+            make.centerX.equalTo(buttonsStackView)
+            make.top.equalTo(safeAreaLayoutGuide)
+            make.size.equalTo(48)
+        }
+        
+        stopButton.snp.makeConstraints { make in
+            make.centerX.equalTo(buttonsStackView)
+            make.centerY.equalTo(startButton)
+            make.size.equalTo(48)
+        }
     }
     
     override func configureView() {
@@ -76,23 +90,15 @@ final class MapView: BaseView {
         mapView.showsUserLocation = true
         mapView.setUserTrackingMode(.follow, animated: true)
         mapView.isZoomEnabled = true
-        mapView.delegate = self
         
+        currentLocationButton.setImage(UIImage(systemName: "dot.circle.viewfinder", withConfiguration: UIImage.SymbolConfiguration(pointSize: 30, weight: .regular)), for: .normal)
+        currentLocationButton.tintColor = .systemBlue
+        
+        [currentLocationButton, buttonsStackView, stopButton].forEach { $0.isHidden = true }
+    }
+    
+    func toggleHidden() {
+        [currentLocationButton, buttonsStackView, stopButton, startButton].forEach { $0.isHidden.toggle() }
     }
 }
 
-extension MapView: MKMapViewDelegate {
-    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
-        guard let polyLine = overlay as? MKPolyline
-        else {
-            print("can't draw polyline")
-            return MKOverlayRenderer()
-        }
-        let renderer = MKPolylineRenderer(polyline: polyLine)
-            renderer.strokeColor = .systemYellow
-            renderer.lineWidth = 8.0
-            renderer.alpha = 1.0
- 
-        return renderer
-    }
-}

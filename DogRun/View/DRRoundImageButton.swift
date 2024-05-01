@@ -9,12 +9,12 @@ import UIKit
 
 class DRRoundImageButton: UIButton {
     
-    init(imageName: String, tintColor: UIColor = .accent, backgroundWhite: CGFloat = 0) {
+    init(imageName: String, tintColor: UIColor = .accent, backgroundWhite: CGFloat = 0, alpha: CGFloat = 0.4) {
         super.init(frame: .zero)
         
         setImage(UIImage(systemName: imageName), for: .normal)
         self.tintColor = tintColor
-        backgroundColor = UIColor(white: backgroundWhite, alpha: 0.4)
+        backgroundColor = UIColor(white: backgroundWhite, alpha: alpha)
     }
     
     init(buttonImage: ButtonImages) {

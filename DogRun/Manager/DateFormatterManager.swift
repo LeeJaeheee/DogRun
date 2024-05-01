@@ -18,7 +18,19 @@ final class DateFormatterManager {
         return formatter
     }()
     
+    lazy var timeFormatter: DateComponentsFormatter = {
+        let formatter = DateComponentsFormatter()
+        formatter.unitsStyle = .positional
+        formatter.allowedUnits = [.hour, .minute, .second]
+        formatter.zeroFormattingBehavior = .pad
+        return formatter
+    }()
+    
     func string(from date: Date) -> String {
         return dateFormatter.string(from: date)
+    }
+    
+    func formatTimeInterval(_ timeInterval: TimeInterval) -> String? {
+        return timeFormatter.string(from: timeInterval)
     }
 }
