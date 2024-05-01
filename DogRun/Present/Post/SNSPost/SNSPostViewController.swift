@@ -17,6 +17,10 @@ final class SNSPostViewController: BaseViewController<SNSPostView> {
     
     var postVC: UserFeedViewController!
     
+    override func bind() {
+
+    }
+    
     override func configureView() {
         
         postVC = UserFeedViewController()

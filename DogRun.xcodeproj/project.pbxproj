@@ -83,6 +83,7 @@
 		D26190AA2BE125C6009BD5C5 /* JoinGreetingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26190A92BE125C6009BD5C5 /* JoinGreetingView.swift */; };
 		D26190AC2BE125D8009BD5C5 /* JoinGreetingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26190AB2BE125D8009BD5C5 /* JoinGreetingViewController.swift */; };
 		D26190AE2BE125E3009BD5C5 /* JoinGreetingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26190AD2BE125E3009BD5C5 /* JoinGreetingViewModel.swift */; };
+		D26190B02BE16132009BD5C5 /* UserFeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26190AF2BE16132009BD5C5 /* UserFeedViewModel.swift */; };
 		D2EA5B912BDB99320055884C /* UserGalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EA5B902BDB99320055884C /* UserGalleryViewController.swift */; };
 		D2EA5B932BDBFBCF0055884C /* UserFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EA5B922BDBFBCF0055884C /* UserFeedViewController.swift */; };
 		D2EA5B962BDBFC050055884C /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EA5B952BDBFC050055884C /* ImageCollectionViewCell.swift */; };
@@ -180,6 +181,7 @@
 		D26190A92BE125C6009BD5C5 /* JoinGreetingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinGreetingView.swift; sourceTree = "<group>"; };
 		D26190AB2BE125D8009BD5C5 /* JoinGreetingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinGreetingViewController.swift; sourceTree = "<group>"; };
 		D26190AD2BE125E3009BD5C5 /* JoinGreetingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinGreetingViewModel.swift; sourceTree = "<group>"; };
+		D26190AF2BE16132009BD5C5 /* UserFeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFeedViewModel.swift; sourceTree = "<group>"; };
 		D2EA5B902BDB99320055884C /* UserGalleryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserGalleryViewController.swift; sourceTree = "<group>"; };
 		D2EA5B922BDBFBCF0055884C /* UserFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFeedViewController.swift; sourceTree = "<group>"; };
 		D2EA5B952BDBFC050055884C /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -540,6 +542,7 @@
 			children = (
 				D2EA5B902BDB99320055884C /* UserGalleryViewController.swift */,
 				D2EA5B922BDBFBCF0055884C /* UserFeedViewController.swift */,
+				D26190AF2BE16132009BD5C5 /* UserFeedViewModel.swift */,
 				D2EA5B9B2BDC2D700055884C /* UserChallengeViewController.swift */,
 			);
 			path = UserFeed;
@@ -799,6 +802,7 @@
 				D23E77FE2BD3CECD00A386A0 /* MultipartEncoder.swift in Sources */,
 				D2EA5BA32BDCEE8F0055884C /* LaunchScreenView.swift in Sources */,
 				D23E78322BD54E6C00A386A0 /* PasswordView.swift in Sources */,
+				D26190B02BE16132009BD5C5 /* UserFeedViewModel.swift in Sources */,
 				D23E77FC2BD3CE8600A386A0 /* APIKey.swift in Sources */,
 				D23E77AB2BD1290F00A386A0 /* SceneDelegate.swift in Sources */,
 				D23E781B2BD4C54700A386A0 /* ViewModelType.swift in Sources */,

@@ -21,9 +21,9 @@ class BaseViewController<T: BaseView>: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         
-        bind()
         configureNavigation()
         configureView()
+        bind()
     }
     
     func bind() { }

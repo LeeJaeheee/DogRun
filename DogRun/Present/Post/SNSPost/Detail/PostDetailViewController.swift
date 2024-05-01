@@ -17,7 +17,7 @@ final class PostDetailViewController: UIViewController {
     var index: Int = 0
     
     // 이미지 URL 배열
-    var imageUrls: [String] = ["https://picsum.photos/200", "https://picsum.photos/300"]
+    var imageUrls: [String] = ["https://picsum.photos/200", "https://picsum.photos/300", "https://picsum.photos/300", "https://picsum.photos/300", "https://picsum.photos/300"]
     
     override func viewDidLoad() {
         super.viewDidLoad()

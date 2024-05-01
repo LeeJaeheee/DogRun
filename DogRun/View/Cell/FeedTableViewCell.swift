@@ -107,13 +107,14 @@ class FeedTableViewCell: UITableViewCell {
             make.top.equalTo(commentButton.snp.bottom)
             make.centerX.equalTo(profileView)
             make.height.equalTo(16)
-            make.bottom.equalToSuperview().inset(20)
+            make.bottom.equalToSuperview().inset(24)
         }
     }
     
     func configureView() {
         profileView.backgroundColor = .yellow
-        profileView.layer.cornerRadius = 30
+        profileView.layer.cornerRadius = 20
+        profileView.clipsToBounds = true
         
         nicknameLabel.font = .systemFont(ofSize: 16, weight: .medium)
         dateLabel.font = .systemFont(ofSize: 13, weight: .light)
@@ -124,15 +125,12 @@ class FeedTableViewCell: UITableViewCell {
         commentButton.setImage(UIImage(systemName: "bubble.left.circle.fill"), for: .normal)
         commentButton.tintColor = .systemGray5
         
-        nicknameLabel.text = "닉네임"
-        dateLabel.text = "45분 전"
-        likeCountLabel.text = "230"
-        commentCountLabel.text = "14"
+        selectionStyle = .none
     }
     
     func configureImages(with files: [String]) {
         let cardStack = CardStack(files, currentIndex: .constant(0)) { imageURLString, index in
-            ImageCardView(imageURLString: "https://picsum.photos/200"){
+            ImageCardView(imageURLString: APIKey.baseURL.rawValue+"/"+imageURLString){
                 print("\(index) ImageCardView 탭됨")
                 self.tapImageCardSubject.onNext(index)
             }
@@ -147,11 +145,27 @@ class FeedTableViewCell: UITableViewCell {
         
         hostingView.snp.makeConstraints { make in
             make.leading.equalTo(likeButton.snp.trailing).offset(-30)
-            make.top.equalTo(profileView.snp.bottom)
+            make.top.equalTo(profileView.snp.bottom).offset(12)
             make.trailing.bottom.equalToSuperview()
         }
         
         hostingView.backgroundColor = .clear
+    }
+    
+    func configureData(data: PostResponse) {
+        if let profileImage = data.creator.profileImage {
+            profileView.kf.setImage(with: URL(string: APIKey.baseURL.rawValue+"/"+profileImage))
+        } else {
+            profileView.image = UIImage(systemName: "person")
+        }
+        nicknameLabel.text = data.creator.nick
+        dateLabel.text = data.createdAt
+        likeCountLabel.text = String(data.likes.count)
+        commentCountLabel.text = String(data.comments.count)
+        
+        if let files = data.files {
+            configureImages(with: files)
+        }
     }
     
 }
