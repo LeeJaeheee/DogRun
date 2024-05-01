@@ -20,11 +20,18 @@ final class MapRecordPopUpViewContoller: BasePopUpViewController<MapRecordPopUpV
     let viewModel = MapRecordViewModel()
     
     var mapRecord: MapRecordModel?
+    var dismissAction: ((MapRecordModel) -> Void)?
     
     override func bind() {
         mainView.okButton.rx.tap
             .bind(with: self) { owner, _ in
-                owner.mainView.captureView.asImage()
+
+                owner.dismiss(animated: false) {
+                    if var record = owner.mapRecord {
+                        record.mapImage = owner.mainView.captureView.asImage()
+                        owner.dismissAction?(record)
+                    }
+                }
             }
             .disposed(by: disposeBag)
         

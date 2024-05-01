@@ -90,6 +90,15 @@
 		D26190B92BE22FE8009BD5C5 /* MapRecordPopUpViewContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26190B82BE22FE8009BD5C5 /* MapRecordPopUpViewContoller.swift */; };
 		D26190BB2BE230F2009BD5C5 /* MapRecordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26190BA2BE230F2009BD5C5 /* MapRecordViewModel.swift */; };
 		D26190BD2BE23CFF009BD5C5 /* NumberFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26190BC2BE23CFF009BD5C5 /* NumberFormatter.swift */; };
+		D26190BF2BE24624009BD5C5 /* UploadPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26190BE2BE24623009BD5C5 /* UploadPostView.swift */; };
+		D26190C12BE24630009BD5C5 /* UploadPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26190C02BE24630009BD5C5 /* UploadPostViewController.swift */; };
+		D26190C32BE2463E009BD5C5 /* UploadPostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26190C22BE2463E009BD5C5 /* UploadPostViewModel.swift */; };
+		D26190C52BE24F6A009BD5C5 /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26190C42BE24F6A009BD5C5 /* BaseCollectionViewCell.swift */; };
+		D26190C72BE24F91009BD5C5 /* TextViewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26190C62BE24F91009BD5C5 /* TextViewCollectionViewCell.swift */; };
+		D26190C92BE25029009BD5C5 /* LabelCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26190C82BE25029009BD5C5 /* LabelCollectionViewCell.swift */; };
+		D26190CB2BE25152009BD5C5 /* DROpaqueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26190CA2BE25152009BD5C5 /* DROpaqueView.swift */; };
+		D26190CD2BE26B37009BD5C5 /* UploadModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26190CC2BE26B37009BD5C5 /* UploadModel.swift */; };
+		D26190CF2BE276B2009BD5C5 /* UIImage+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26190CE2BE276B2009BD5C5 /* UIImage+Ext.swift */; };
 		D2EA5B912BDB99320055884C /* UserGalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EA5B902BDB99320055884C /* UserGalleryViewController.swift */; };
 		D2EA5B932BDBFBCF0055884C /* UserFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EA5B922BDBFBCF0055884C /* UserFeedViewController.swift */; };
 		D2EA5B962BDBFC050055884C /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EA5B952BDBFC050055884C /* ImageCollectionViewCell.swift */; };
@@ -194,6 +203,15 @@
 		D26190B82BE22FE8009BD5C5 /* MapRecordPopUpViewContoller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapRecordPopUpViewContoller.swift; sourceTree = "<group>"; };
 		D26190BA2BE230F2009BD5C5 /* MapRecordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapRecordViewModel.swift; sourceTree = "<group>"; };
 		D26190BC2BE23CFF009BD5C5 /* NumberFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberFormatter.swift; sourceTree = "<group>"; };
+		D26190BE2BE24623009BD5C5 /* UploadPostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadPostView.swift; sourceTree = "<group>"; };
+		D26190C02BE24630009BD5C5 /* UploadPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadPostViewController.swift; sourceTree = "<group>"; };
+		D26190C22BE2463E009BD5C5 /* UploadPostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadPostViewModel.swift; sourceTree = "<group>"; };
+		D26190C42BE24F6A009BD5C5 /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
+		D26190C62BE24F91009BD5C5 /* TextViewCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewCollectionViewCell.swift; sourceTree = "<group>"; };
+		D26190C82BE25029009BD5C5 /* LabelCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelCollectionViewCell.swift; sourceTree = "<group>"; };
+		D26190CA2BE25152009BD5C5 /* DROpaqueView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DROpaqueView.swift; sourceTree = "<group>"; };
+		D26190CC2BE26B37009BD5C5 /* UploadModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadModel.swift; sourceTree = "<group>"; };
+		D26190CE2BE276B2009BD5C5 /* UIImage+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Ext.swift"; sourceTree = "<group>"; };
 		D2EA5B902BDB99320055884C /* UserGalleryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserGalleryViewController.swift; sourceTree = "<group>"; };
 		D2EA5B922BDBFBCF0055884C /* UserFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFeedViewController.swift; sourceTree = "<group>"; };
 		D2EA5B952BDBFC050055884C /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -332,6 +350,7 @@
 				D261908E2BDF7E92009BD5C5 /* CustomAnnotataion.swift */,
 				D26190902BDF81C7009BD5C5 /* CustomAnnotationView.swift */,
 				D26190922BDF93A3009BD5C5 /* DRRoundImageButton.swift */,
+				D26190CA2BE25152009BD5C5 /* DROpaqueView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -363,6 +382,7 @@
 				D26190192BDE28DD009BD5C5 /* ModeBaseViewController.swift */,
 				D26190B12BE22DB9009BD5C5 /* BasePopUpViewController.swift */,
 				D26190B32BE22E74009BD5C5 /* BasePopUpView.swift */,
+				D26190C42BE24F6A009BD5C5 /* BaseCollectionViewCell.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -382,6 +402,7 @@
 				D2EA5B992BDC2BFA0055884C /* UIView+Ext.swift */,
 				D2EA5BA82BDCF1810055884C /* UIViewController+Ext.swift */,
 				D26190222BDE3B38009BD5C5 /* String+Ext.swift */,
+				D26190CE2BE276B2009BD5C5 /* UIImage+Ext.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -579,6 +600,8 @@
 				D2EA5B952BDBFC050055884C /* ImageCollectionViewCell.swift */,
 				D2EA5B972BDC00020055884C /* FeedTableViewCell.swift */,
 				D2EA5B9D2BDC355C0055884C /* UserChallengeTableViewCell.swift */,
+				D26190C62BE24F91009BD5C5 /* TextViewCollectionViewCell.swift */,
+				D26190C82BE25029009BD5C5 /* LabelCollectionViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -623,6 +646,10 @@
 		D2EDA3412BD5809E009CB0D7 /* UploadPost */ = {
 			isa = PBXGroup;
 			children = (
+				D26190BE2BE24623009BD5C5 /* UploadPostView.swift */,
+				D26190C02BE24630009BD5C5 /* UploadPostViewController.swift */,
+				D26190C22BE2463E009BD5C5 /* UploadPostViewModel.swift */,
+				D26190CC2BE26B37009BD5C5 /* UploadModel.swift */,
 			);
 			path = UploadPost;
 			sourceTree = "<group>";
@@ -766,6 +793,7 @@
 			files = (
 				D2EDA3482BD5810F009CB0D7 /* MapViewModel.swift in Sources */,
 				D25DE0382BD982F70045C259 /* UserViewController.swift in Sources */,
+				D26190CD2BE26B37009BD5C5 /* UploadModel.swift in Sources */,
 				D2EA5B962BDBFC050055884C /* ImageCollectionViewCell.swift in Sources */,
 				D2EA5BB22BDD16280055884C /* DRVariableButton.swift in Sources */,
 				D26190212BDE369E009BD5C5 /* PhoneNumberViewModel.swift in Sources */,
@@ -796,13 +824,16 @@
 				D2EA5BA02BDCE9C80055884C /* MainTabbarController.swift in Sources */,
 				D23E78212BD5400400A386A0 /* DRButton.swift in Sources */,
 				D25DE02D2BD93EFF0045C259 /* UserProfileViewModel.swift in Sources */,
+				D26190C72BE24F91009BD5C5 /* TextViewCollectionViewCell.swift in Sources */,
 				D25DDFFF2BD6CC700045C259 /* SNSPostViewController.swift in Sources */,
 				D23E782D2BD5485E00A386A0 /* EmailView.swift in Sources */,
+				D26190CB2BE25152009BD5C5 /* DROpaqueView.swift in Sources */,
 				D25DE02B2BD93A890045C259 /* SectionModel.swift in Sources */,
 				D26190912BDF81C7009BD5C5 /* CustomAnnotationView.swift in Sources */,
 				D26190182BDE28D0009BD5C5 /* ModeBaseView.swift in Sources */,
 				D2EA5BAE2BDD14FF0055884C /* WelcomeViewController.swift in Sources */,
 				D2EA5BA52BDCEEB80055884C /* LaunchScreenViewController.swift in Sources */,
+				D26190C32BE2463E009BD5C5 /* UploadPostViewModel.swift in Sources */,
 				D26190B42BE22E74009BD5C5 /* BasePopUpView.swift in Sources */,
 				D23E780E2BD40EC700A386A0 /* BaseViewController.swift in Sources */,
 				D26190BD2BE23CFF009BD5C5 /* NumberFormatter.swift in Sources */,
@@ -817,6 +848,7 @@
 				D2EA5B912BDB99320055884C /* UserGalleryViewController.swift in Sources */,
 				D23E77A92BD1290F00A386A0 /* AppDelegate.swift in Sources */,
 				D26190AA2BE125C6009BD5C5 /* JoinGreetingView.swift in Sources */,
+				D26190C12BE24630009BD5C5 /* UploadPostViewController.swift in Sources */,
 				D26190952BDF9708009BD5C5 /* ButtonImages.swift in Sources */,
 				D2EA5B9E2BDC355C0055884C /* UserChallengeTableViewCell.swift in Sources */,
 				D26190932BDF93A3009BD5C5 /* DRRoundImageButton.swift in Sources */,
@@ -826,6 +858,7 @@
 				D261900D2BDD6E78009BD5C5 /* ValidationView.swift in Sources */,
 				D26190262BDE7873009BD5C5 /* PostDetailViewController.swift in Sources */,
 				D2EA5B9A2BDC2BFA0055884C /* UIView+Ext.swift in Sources */,
+				D26190C92BE25029009BD5C5 /* LabelCollectionViewCell.swift in Sources */,
 				D23E781D2BD4E4E700A386A0 /* DRTextField.swift in Sources */,
 				D25DE0012BD6CC800045C259 /* SNSPostViewModel.swift in Sources */,
 				D2EA5B9C2BDC2D700055884C /* UserChallengeViewController.swift in Sources */,
@@ -849,10 +882,13 @@
 				D26190B62BE22FCC009BD5C5 /* MapRecordPopUpView.swift in Sources */,
 				D26190992BE0096E009BD5C5 /* ErrorResponse.swift in Sources */,
 				D261901D2BDE3685009BD5C5 /* PhoneNumberView.swift in Sources */,
+				D26190BF2BE24624009BD5C5 /* UploadPostView.swift in Sources */,
 				D25DE0332BD94CD40045C259 /* UserProfileTableViewCell.swift in Sources */,
 				D23E78392BD54EA200A386A0 /* NicknameViewModel.swift in Sources */,
 				D23E78002BD3CF3900A386A0 /* TokenRefreshInterceptor.swift in Sources */,
 				D23E78262BD5479500A386A0 /* EmailViewController.swift in Sources */,
+				D26190C52BE24F6A009BD5C5 /* BaseCollectionViewCell.swift in Sources */,
+				D26190CF2BE276B2009BD5C5 /* UIImage+Ext.swift in Sources */,
 				D261901A2BDE28DD009BD5C5 /* ModeBaseViewController.swift in Sources */,
 				D23E78052BD3D04F00A386A0 /* AuthModel.swift in Sources */,
 				D2EDA3672BD6A3D9009CB0D7 /* PostModel.swift in Sources */,

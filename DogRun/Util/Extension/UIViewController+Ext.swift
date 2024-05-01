@@ -45,6 +45,18 @@ extension UIViewController {
         }
     }
     
+    func showDeleteAlert(title: String, message: String, handler: @escaping (UIAlertAction) -> Void) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        let cancel = UIAlertAction(title: "취소", style: .cancel)
+        let delete = UIAlertAction(title: "삭제", style: .destructive, handler: handler)
+        
+        alert.addAction(cancel)
+        alert.addAction(delete)
+        
+        present(alert, animated: true)
+    }
+    
     
     func captureMapSnapshot(mapView: MKMapView, completionHandler: @escaping (UIImage?) -> Void) {
         let options = MKMapSnapshotter.Options()

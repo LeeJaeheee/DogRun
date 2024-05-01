@@ -17,6 +17,9 @@ final class PasswordViewController: ModeBaseViewController<PasswordView> {
     var email: String = ""
     
     override func bind() {
+        viewModel.email = email
+        viewModel.isModify = mainView.mode == .modify
+        
         let input = PasswordViewModel.Input(
             password: mainView.passwordTextField.rx.text,
             nextButtonTap: mainView.nextButton.rx.tap)
@@ -51,12 +54,15 @@ final class PasswordViewController: ModeBaseViewController<PasswordView> {
                 .drive(mainView.nextButton.rx.isEnabled, mainView.passwordTextField.rx.isValid)
                 .disposed(by: disposeBag)
             
-            // TODO: 네트워크 연결
-            output.nextButtonTap
-                .drive(with: self) { owner, _ in
-                    //let nextVC = NicknameViewController()
-                    // TODO: 로그인 로직
-                    //owner.navigationController?.pushViewController(nextVC, animated: true)
+            output.signInSuccess
+                .bind(with: self) { owner, _ in
+                    owner.dismiss(animated: true)
+                }
+                .disposed(by: disposeBag)
+            
+            output.signInFailure
+                .bind(with: self) { owner, error in
+                    owner.errorHandler(error)
                 }
                 .disposed(by: disposeBag)
         }

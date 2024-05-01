@@ -39,7 +39,7 @@ final class MapRecordPopUpView: BasePopUpView {
         
         labelContainerView.snp.makeConstraints { make in
             make.bottom.horizontalEdges.equalToSuperview().inset(20)
-            make.height.equalTo(120)
+            make.height.equalTo(100)
         }
         
         timeTitleLabel.snp.makeConstraints { make in

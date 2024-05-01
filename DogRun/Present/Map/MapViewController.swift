@@ -259,6 +259,11 @@ extension MapViewController: MKMapViewDelegate {
                 mainView.testImageView.image = image
                 let vc = MapRecordPopUpViewContoller()
                 vc.mapRecord = .init(mapImage: image, time: DateFormatterManager.shared.formatTimeInterval(endTime.timeIntervalSince(startTime)) ?? "기록 실패", distance: NumberFormatterManager.shared.formatDistance(totalDistance))
+                vc.dismissAction = { [weak self] record in
+                    let nextVC = UploadPostViewController()
+                    nextVC.mapRecord = record
+                    self?.navigationController?.pushViewController(nextVC, animated: true)
+                }
 
                 vc.modalPresentationStyle = .overFullScreen
                 present(vc, animated: false, completion: nil)

@@ -23,4 +23,24 @@ class ImageCollectionViewCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    func configureImageCell() {
+        backgroundColor = .init(white: 1.0, alpha: 0.5)
+        clipsToBounds = true
+        layer.cornerRadius = 12
+        
+        imageView.snp.updateConstraints { make in
+            make.edges.equalToSuperview().inset(8)
+        }
+        imageView.clipsToBounds = true
+        imageView.layer.cornerRadius = 12
+    }
+    
+    func configure(imageName: String) {
+        imageView.image = UIImage(named: imageName)
+    }
+    
+    func configure(image: UIImage) {
+        imageView.image = image
+    }
 }

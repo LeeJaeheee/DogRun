@@ -13,6 +13,9 @@ final class PasswordViewModel: ViewModelType {
     
     var disposeBag = DisposeBag()
     
+    var email = ""
+    var isModify = false
+    
     struct Input {
         let password: ControlProperty<String?>
         let nextButtonTap: ControlEvent<Void>
@@ -24,9 +27,14 @@ final class PasswordViewModel: ViewModelType {
         let isPasswordValid: Driver<Bool>
         let nextButtonTap: Driver<Void>
         let isNotEmpty: Driver<Bool>
+        let signInSuccess: PublishRelay<Void>
+        let signInFailure: PublishRelay<DRError>
     }
     
     func transform(input: Input) -> Output {
+        let signInSuccess = PublishRelay<Void>()
+        let signInFailure = PublishRelay<DRError>()
+        
         let password = input.password.orEmpty.share()
         
         let lengthRule = password
@@ -46,11 +54,35 @@ final class PasswordViewModel: ViewModelType {
             .map { !$0.isEmpty }
             .asDriver(onErrorJustReturn: false)
         
+        if isModify {
+            input.nextButtonTap
+                .debounce(.seconds(1), scheduler: MainScheduler.instance)
+                .withLatestFrom(password)
+                .flatMap { password in
+                    NetworkManager.request2(type: LoginResponse.self, router: UserRouter.login(model: .init(email: self.email, password: password)))
+                }
+                .bind(with: self) { owner, response in
+                    switch response {
+                    case .success(let success):
+                        dump(success)
+                        UserDefaultsManager.accessToken = success.accessToken
+                        UserDefaultsManager.refreshToken = success.refreshToken
+                        signInSuccess.accept(())
+                    case .failure(let failure):
+                        print(failure)
+                        signInFailure.accept(failure)
+                    }
+                }
+                .disposed(by: disposeBag)
+        }
+        
         return Output(lengthValidation: lengthRule,
                        alphanumericValidation: alphanumericRule,
                       isPasswordValid: isPasswordValid,
                       nextButtonTap: input.nextButtonTap.asDriver(),
-                      isNotEmpty: isNotEmpty)
+                      isNotEmpty: isNotEmpty,
+                      signInSuccess: signInSuccess,
+                      signInFailure: signInFailure)
     }
     
 }
