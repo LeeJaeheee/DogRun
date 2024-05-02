@@ -13,7 +13,10 @@ final class CommentViewController: BaseViewController<CommentView> {
     let viewModel = CommentViewModel()
     
     override func bind() {
-        let input = CommentViewModel.Input()
+        let input = CommentViewModel.Input(
+            textInput: mainView.textView.rx.text,
+            sendButtonTap: mainView.sendButton.rx.tap
+        )
         
         let output = viewModel.transform(input: input)
         
@@ -23,17 +26,15 @@ final class CommentViewController: BaseViewController<CommentView> {
             }
             .disposed(by: disposeBag)
         
-        mainView.textView.rx.didChange
-            .bind(with: self) { owner, _ in
-                let size = CGSize(width: owner.mainView.textView.frame.width, height: .infinity)
-                let estimatedSize = owner.mainView.textView.sizeThatFits(size)
-                let isMaxHeight = estimatedSize.height >= 85
-                
-                guard isMaxHeight != owner.mainView.textView.isScrollEnabled else { return }
-                owner.mainView.textView.isScrollEnabled = isMaxHeight
-                owner.mainView.textView.reloadInputViews()
-                owner.mainView.setNeedsUpdateConstraints()
+        output.isTextEmpty
+            .drive(mainView.sendButton.rx.isHidden)
+            .disposed(by: disposeBag)
+        
+        output.commentFailure
+            .bind(with: self) { owner, error in
+                owner.errorHandler(error)
             }
             .disposed(by: disposeBag)
+        
     }
 }

@@ -67,6 +67,7 @@ final class PasswordViewModel: ViewModelType {
                         dump(success)
                         UserDefaultsManager.accessToken = success.accessToken
                         UserDefaultsManager.refreshToken = success.refreshToken
+                        UserDefaultsManager.userId = success.user_id
                         signInSuccess.accept(())
                     case .failure(let failure):
                         print(failure)

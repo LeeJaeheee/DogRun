@@ -53,6 +53,9 @@ class FeedTableViewCell: UITableViewCell {
         super.prepareForReuse()
         hostingController?.view.removeFromSuperview()
         hostingController = nil
+        
+        likeButton.tintColor = .white
+        profileView.backgroundColor = .systemGray6
     }
     
     func configureHierarchy() {
@@ -84,9 +87,6 @@ class FeedTableViewCell: UITableViewCell {
             make.centerX.equalTo(profileView)
             make.size.equalTo(52)
         }
-//        likeButton.imageView!.snp.makeConstraints { make in
-//            make.edges.equalTo(likeButton)
-//        }
         
         likeCountLabel.snp.makeConstraints { make in
             make.top.equalTo(likeButton.snp.bottom)
@@ -100,11 +100,6 @@ class FeedTableViewCell: UITableViewCell {
             make.centerX.equalTo(profileView)
         }
         
-
-//        commentButton.imageView!.snp.makeConstraints { make in
-//            make.edges.equalToSuperview()
-//        }
-//        
         commentCountLabel.snp.makeConstraints { make in
             make.top.equalTo(commentButton.snp.bottom)
             make.centerX.equalTo(profileView)
@@ -114,7 +109,7 @@ class FeedTableViewCell: UITableViewCell {
     }
     
     func configureView() {
-        profileView.backgroundColor = .yellow
+        
         profileView.layer.cornerRadius = 20
         profileView.clipsToBounds = true
         
@@ -122,12 +117,17 @@ class FeedTableViewCell: UITableViewCell {
         dateLabel.font = .systemFont(ofSize: 13, weight: .light)
         dateLabel.textColor = .lightGray
         
-        let imageConfig = UIImage.SymbolConfiguration(pointSize: 52, weight: .light)
+        var imageConfig = UIImage.SymbolConfiguration(pointSize: 36, weight: .light)
+        likeButton.setImage(UIImage(systemName: "bolt.heart.fill", withConfiguration: imageConfig), for: .normal)
+        likeButton.backgroundColor = .systemGray6
+        likeButton.layer.cornerRadius = 26
+        likeButton.tintColor = .white
         
-        likeButton.setImage(UIImage(systemName: "heart.circle.fill", withConfiguration: imageConfig), for: .normal)
-        likeButton.tintColor = .systemGray5
-        commentButton.setImage(UIImage(systemName: "bubble.left.circle.fill", withConfiguration: imageConfig), for: .normal)
-        commentButton.tintColor = .systemGray5
+        imageConfig = UIImage.SymbolConfiguration(pointSize: 32, weight: .light)
+        commentButton.setImage(UIImage(systemName: "ellipsis.bubble.fill", withConfiguration: imageConfig), for: .normal)
+        commentButton.backgroundColor = .systemGray6
+        commentButton.layer.cornerRadius = 26
+        commentButton.tintColor = .white
         
         selectionStyle = .none
     }
@@ -164,6 +164,7 @@ class FeedTableViewCell: UITableViewCell {
         }
         nicknameLabel.text = data.creator.nick
         dateLabel.text = data.createdAt
+        likeButton.tintColor = data.likes.contains( UserDefaultsManager.userId) ? .systemRed : .white
         likeCountLabel.text = String(data.likes.count)
         commentCountLabel.text = String(data.comments.count)
         
@@ -173,3 +174,34 @@ class FeedTableViewCell: UITableViewCell {
     }
     
 }
+
+/*
+final class FeedTableViewCellViewModel {
+    let disposeBag = DisposeBag()
+    
+    let likeButtonTap: ControlEvent<Void>
+    let post = PublishRelay<PostResponse>()
+    let likeSuccess = PublishRelay<Bool>()
+    let likeFailure = PublishRelay<DRError>()
+    
+    init(likeButtonTap: ControlEvent<Void>) {
+        self.likeButtonTap = likeButtonTap
+        
+        likeButtonTap
+            .debounce(.seconds(1), scheduler: MainScheduler.asyncInstance)
+            .flatMap { self.post }
+            .flatMap { value in
+                return NetworkManager.request2(type: LikeModel.self, router: LikeRouter.like(postId: value.post_id, model: .init(like_status: !value.likes.contains(UserDefaultsManager.userId))))
+            }
+            .bind(with: self) { owner, response in
+                switch response {
+                case .success(let success):
+                    owner.likeSuccess.accept(success.like_status)
+                case .failure(let failure):
+                    owner.likeFailure.accept(failure)
+                }
+            }
+            .disposed(by: disposeBag)
+    }
+}
+*/

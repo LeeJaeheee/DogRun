@@ -34,7 +34,8 @@ final class UserFeedViewModel: ViewModelType {
         input.loadTrigger
             .flatMapLatest { _ in
                 isLoadingSpinnerAvaliable.accept(true)
-                return NetworkManager.request2(type: PostsResponse.self, router: PostRouter.fetchPost(query: .init(next: nextCursor.value, limit: nil, product_id: nil, hashTag: nil)))
+                return NetworkManager.request2(type: PostsResponse.self, router: PostRouter.fetchPost(query: .init(next: nextCursor.value, limit: nil, product_id: "dr_sns", hashTag: nil)))
+                
             }
             .bind(with: self) { owner, response in
                 switch response {

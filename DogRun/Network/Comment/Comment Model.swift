@@ -6,3 +6,8 @@
 //
 
 import Foundation
+
+struct CommentRequest: Encodable {
+    let content: String
+}
+

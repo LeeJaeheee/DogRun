@@ -56,6 +56,7 @@ final class PasswordViewController: ModeBaseViewController<PasswordView> {
             
             output.signInSuccess
                 .bind(with: self) { owner, _ in
+                    // TODO: present한거면 dismiss하고 원래 호출 다시 / 런치스크린에서 들어온거면 changeVC로 변경해주기
                     owner.dismiss(animated: true)
                 }
                 .disposed(by: disposeBag)

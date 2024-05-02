@@ -45,6 +45,9 @@ struct NetworkManager {
             do {
                 let urlRequest = try router.asURLRequest()
                 
+                print("--리퀘스트--")
+                print(urlRequest)
+                
                 AF.request(urlRequest, interceptor: TokenRefreshInterceptor.shared)
                     .validate(statusCode: 200..<300)
                     .responseDecodable(of: T.self) { response in

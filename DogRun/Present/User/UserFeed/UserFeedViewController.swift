@@ -48,6 +48,8 @@ class UserFeedViewController: UIViewController {
     }
     
     private func bind() {
+        var changedLikeId: [Int: Void] = [:]
+        
         let input = UserFeedViewModel.Input(
             loadTrigger: BehaviorRelay(value: ()),
             fetchMoreDatas: tableView.rx.prefetchRows
@@ -57,18 +59,49 @@ class UserFeedViewController: UIViewController {
         
         output.posts
             .drive(tableView.rx.items(cellIdentifier: FeedTableViewCell.identifier, cellType: FeedTableViewCell.self)) { index, post, cell in
-            cell.configureData(data: post)
-            cell.tapImageCardSubject
-                .bind(with: self, onNext: { owner, imageIndex in
-                    print("\(imageIndex) in cell: \(index)")
-
-                    if let files = post.files {
-                        owner.showImageFullscreen(files[imageIndex], index: imageIndex)
+                cell.configureData(data: post)
+                cell.likeButton.rx.tap
+                    .debounce(.seconds(1), scheduler: MainScheduler.asyncInstance)
+                    .flatMap { _ in
+                        print(post.post_id)
+                        print(!post.likes.contains(UserDefaultsManager.userId))
+                        return NetworkManager.request2(type: LikeModel.self, router: LikeRouter.like(postId: post.post_id, model: .init(like_status: !post.likes.contains(UserDefaultsManager.userId))))
                     }
-                })
-                .disposed(by: cell.disposeBag)
-        }
-        .disposed(by: disposeBag)
+                    .bind(with: self, onNext: { owner, response in
+                        switch response {
+                        case .success(let success):
+                            cell.likeButton.tintColor = success.like_status ? .systemRed : .white
+                            if let _ = changedLikeId[index] {
+                                changedLikeId.removeValue(forKey: index)
+                            } else {
+                                changedLikeId[index] = ()
+                            }
+                        case .failure(let failure):
+                            owner.errorHandler(failure)
+                        }
+                    })
+                    .disposed(by: cell.disposeBag)
+                
+                cell.commentButton.rx.tap
+                    .bind(with: self) { owner, _ in
+                        let vc = CommentViewController()
+                        vc.viewModel.productId = post.post_id
+                        vc.viewModel.comments.accept(post.comments)
+                        owner.present(vc, animated: true)
+                    }
+                    .disposed(by: cell.disposeBag)
+                
+                cell.tapImageCardSubject
+                    .bind(with: self, onNext: { owner, imageIndex in
+                        print("\(imageIndex) in cell: \(index)")
+                        
+                        if let files = post.files {
+                            owner.showImageFullscreen(files[imageIndex], index: imageIndex)
+                        }
+                    })
+                    .disposed(by: cell.disposeBag)
+            }
+            .disposed(by: disposeBag)
         
         output.fetchFailure
             .bind(with: self) { owner, error in
