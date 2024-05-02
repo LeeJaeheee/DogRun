@@ -24,8 +24,17 @@ protocol TargetType: URLRequestConvertible {
 extension TargetType {
     
     func asURLRequest() throws -> URLRequest {
+
         let url = try baseURL.asURL()
-        var urlRequest = try URLRequest(url: url.appendingPathComponent(path), method: method)
+        var urlComponents = URLComponents(url: url.appendingPathComponent(path), resolvingAgainstBaseURL: false)
+        urlComponents?.queryItems = queryItems
+        
+        guard let composedURL = urlComponents?.url else {
+            throw DRError(statusCode: 0, errorMessage: "url 실패")
+        }
+        
+        var urlRequest = URLRequest(url: composedURL)
+        urlRequest.httpMethod = method.rawValue
         urlRequest.headers = header
         urlRequest.httpBody = parameters?.data(using: .utf8)
         urlRequest.httpBody = body
