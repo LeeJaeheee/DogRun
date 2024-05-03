@@ -56,8 +56,13 @@ final class PasswordViewController: ModeBaseViewController<PasswordView> {
             
             output.signInSuccess
                 .bind(with: self) { owner, _ in
-                    // TODO: present한거면 dismiss하고 원래 호출 다시 / 런치스크린에서 들어온거면 changeVC로 변경해주기
-                    owner.dismiss(animated: true)
+                    // present한거면 dismiss하고 런치스크린에서 들어온거면 changeVC로 변경해주기
+                    // TODO: present한 경우 dismiss하고나서 실패한 호출 다시 진행? 피드는 다시 로드해와야됨
+                    if owner.presentingViewController != nil {
+                        owner.dismiss(animated: true)
+                    } else {
+                        owner.changeRootView(to: MainTabbarController())
+                    }
                 }
                 .disposed(by: disposeBag)
             
