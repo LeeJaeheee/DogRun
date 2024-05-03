@@ -85,7 +85,7 @@ class UserFeedViewController: UIViewController {
                 cell.commentButton.rx.tap
                     .bind(with: self) { owner, _ in
                         let vc = CommentViewController()
-                        vc.viewModel.productId = post.post_id
+                        vc.viewModel.postId = post.post_id
                         vc.viewModel.comments.accept(post.comments)
                         owner.present(vc, animated: true)
                     }

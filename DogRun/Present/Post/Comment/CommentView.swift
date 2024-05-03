@@ -52,7 +52,7 @@ final class CommentView: BaseView {
     override func configureView() {
         tableView.register(CommentTableViewCell.self, forCellReuseIdentifier: CommentTableViewCell.identifier)
         sendButton.setImage(UIImage(systemName: "paperplane.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: 28)), for: .normal)
-        sendButton.isHidden = true
+        sendButton.isEnabled = false
         
         textBackgroundView.backgroundColor = .white
         

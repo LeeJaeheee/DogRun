@@ -124,7 +124,7 @@ extension UIViewController {
                 self?.present(nav, animated: true, completion: nil)
             }
         case .developerFaultSorry:
-            showAlert(title: "오류 발생", message: "\n개발자에게 돌을 던져주세요...🪨")
+            showAlert(title: "오류 발생", message: "\n\(error.errorMessage)\n개발자에게 돌을 던져주세요...🪨")
         }
         
     }
