@@ -28,6 +28,7 @@ class UserTabmanViewController: TabmanViewController {
     private func setupViewControllers() {
         let firstVC = UserGalleryViewController()
         let secondVC = UserFeedViewController()
+        secondVC.viewModel.usertype = .specific
         let thirdVC = UserChallengeViewController()
         
         viewControllers = [firstVC, secondVC, thirdVC]
