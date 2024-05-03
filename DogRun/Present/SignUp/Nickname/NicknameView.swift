@@ -8,7 +8,7 @@
 import Foundation
 import SnapKit
 
-final class NicknameView: BaseView {
+final class NicknameView: ModeBaseView {
     
     let titleLabel = DRLabel(text: "닉네임을\n입력해주세요.", style: .title)
     let nicknameTextField = DRTextField(title: "닉네임")

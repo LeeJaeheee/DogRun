@@ -13,8 +13,11 @@ import RxDataSources
 
 class UserProfileViewController: UIViewController {
     
-    var viewModel: UserProfileViewModel!
+    var viewModel = UserProfileViewModel()
+    
+    let headerView = UserProfileHeaderView()
     let tableView = UITableView(frame: .zero, style: .insetGrouped)
+    
     let disposeBag = DisposeBag()
 
     override func viewDidLoad() {
@@ -31,19 +34,18 @@ class UserProfileViewController: UIViewController {
             make.edges.equalToSuperview()
         }
         tableView.register(UserProfileTableViewCell.self, forCellReuseIdentifier: UserProfileTableViewCell.identifier)
-        
-        // TODO: 동적으로 height 잡기
-        let headerView = UserProfileHeaderView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 200))
-        headerView.configureData(image: UIImage(systemName: "person")!, email: "aaa@aaa.com", sinceBirthDate: "태어난지 +364일🐾")
+ 
         tableView.tableHeaderView = headerView
         
         tableView.rowHeight = UITableView.automaticDimension
     }
 
     private func bindViewModel() {
-        viewModel = UserProfileViewModel()
+        let updateTrigger = PublishRelay<ProfileResponse>()
         
         let input = UserProfileViewModel.Input(
+            loadTrigger: BehaviorRelay<Void>(value: ()), 
+            updateTrigger: updateTrigger,
             itemSelected: tableView.rx.itemSelected.asObservable()
         )
         
@@ -55,11 +57,48 @@ class UserProfileViewController: UIViewController {
         
         output.navigateToDetail
             .subscribe(onNext: { [weak self] item in
-                let detailVC = UIViewController()
-                detailVC.view.backgroundColor = .white
-                detailVC.title = item.title
-                self?.navigationController?.pushViewController(detailVC, animated: true)
+                switch ProfileTitle(rawValue: item.title) {
+                case .none:
+                    break
+                case .some(let value):
+                    switch value {
+                    case .nickname:
+                        let detailVC = NicknameViewController(mode: .modify)
+                        detailVC.nickname = item.content ?? ""
+                        detailVC.popAction = {
+                            updateTrigger.accept($0)
+                        }
+                        self?.navigationController?.pushViewController(detailVC, animated: true)
+                    case .phoneNumber:
+                        let detailVC = UIViewController()
+                        detailVC.view.backgroundColor = .white
+                        detailVC.title = item.title
+                        self?.navigationController?.pushViewController(detailVC, animated: true)
+                    case .birthdate:
+                        let detailVC = UIViewController()
+                        detailVC.view.backgroundColor = .white
+                        detailVC.title = item.title
+                        self?.navigationController?.pushViewController(detailVC, animated: true)
+                    }
+                }
+                
             })
+            .disposed(by: disposeBag)
+        
+        output.fetchSuccess
+            .bind(with: self) { owner, response in
+                owner.headerView.configureData(data: response)
+                
+                owner.headerView.layoutIfNeeded()
+                let height = owner.headerView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).height
+                owner.headerView.frame.size.height = height
+            }
+            .disposed(by: disposeBag)
+        
+        output.fetchFailure
+            .bind(with: self) { owner, error in
+                owner.errorHandler(error)
+            }
             .disposed(by: disposeBag)
     }
 

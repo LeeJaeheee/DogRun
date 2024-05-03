@@ -24,9 +24,9 @@ enum ProfileTitle: String, CaseIterable {
         case .nickname:
                 .init(title: self.rawValue, content: data.nick)
         case .phoneNumber:
-                .init(title: self.rawValue, content: data.phoneNum)
+                .init(title: self.rawValue, content: data.phoneNum ?? "")
         case .birthdate:
-                .init(title: self.rawValue, content: data.birthDay)
+                .init(title: self.rawValue, content: data.birthDay ?? "")
         }
     }
 }
@@ -50,35 +50,73 @@ final class UserProfileViewModel: ViewModelType {
     var disposeBag = DisposeBag()
 
     struct Input {
+        let loadTrigger: BehaviorRelay<Void>
+        let updateTrigger: PublishRelay<ProfileResponse>
         let itemSelected: Observable<IndexPath>
     }
 
     struct Output {
-        let sections: Observable<[SectionModel<ProfileItem>]>
+        let sections: BehaviorRelay<[SectionModel<ProfileItem>]>
         let navigateToDetail: Observable<ProfileItem>
+        let fetchSuccess: PublishRelay<ProfileResponse>
+        let fetchFailure: PublishRelay<DRError>
     }
 
     func transform(input: Input) -> Output {
-        var sectionModels: [SectionModel<ProfileItem>] = []
+        var sectionRelay = BehaviorRelay<[SectionModel<ProfileItem>]>(value: [])
+        let fetchSuccessRelay = PublishRelay<ProfileResponse>()
+        let fetchFailureRelay = PublishRelay<DRError>()
         
-        for section in ProfileSection.allCases {
-            var items: [ProfileItem] = []
-            
-            for title in section.titles {
-                items.append(title.getProfileItem(data: .init(user_id: "1", email: "test@test.com", nick: "닉네임", phoneNum: "010-0000-0000", birthDay: "2024년 1월 1일", profileImage: nil, followers: [], following: [], posts: [])))
+        input.loadTrigger
+            .flatMap { _ in
+                return NetworkManager.request2(type: ProfileResponse.self, router: UserRouter.getMyProfile)
             }
-            
-            let sectionModel = SectionModel<ProfileItem>(items: items)
-            sectionModels.append(sectionModel)
-        }
-        
-        let sections = Observable.just(sectionModels)
+            .bind(with: self) { owner, response in
+                switch response {
+                case .success(let success):
+                    let sectionModels = owner.createSectionModels(success)
+                    sectionRelay.accept(sectionModels)
+                    fetchSuccessRelay.accept(success)
+                case .failure(let failure):
+                    fetchFailureRelay.accept(failure)
+                }
+            }
+            .disposed(by: disposeBag)
         
         let navigateToDetail = input.itemSelected
-            .withLatestFrom(sections) { indexPath, sections in
+            .withLatestFrom(sectionRelay) { indexPath, sections in
                 return sections[indexPath.section].items[indexPath.row]
             }
         
-        return Output(sections: sections, navigateToDetail: navigateToDetail)
+        input.updateTrigger
+            .bind(with: self) { owner, response in
+                let sectionModels = owner.createSectionModels(response)
+                sectionRelay.accept(sectionModels)
+            }
+            .disposed(by: disposeBag)
+        
+        return Output(sections: sectionRelay,
+                      navigateToDetail: navigateToDetail,
+                      fetchSuccess: fetchSuccessRelay,
+                      fetchFailure: fetchFailureRelay)
     }
+    
+    private func createSectionModels(_ profileResponse: ProfileResponse) -> [SectionModel<ProfileItem>] {
+            var sectionModels: [SectionModel<ProfileItem>] = []
+            
+            for section in ProfileSection.allCases {
+                var items: [ProfileItem] = []
+                
+                for title in section.titles {
+                    items.append(title.getProfileItem(data: profileResponse))
+                }
+                
+                let sectionModel = SectionModel<ProfileItem>(items: items)
+                sectionModels.append(sectionModel)
+            }
+            
+            return sectionModels
+        }
+    
+
 }

@@ -70,7 +70,7 @@ struct Follower: Decodable {
 
 // MARK: - EditProfile
 
-struct EditProfileRequest: MultipartFormEncodable {
+struct EditProfileRequest: MultipartFormEncodable, Decodable {
     let nick: String?
     let phoneNum: String?
     let birthDay: String?

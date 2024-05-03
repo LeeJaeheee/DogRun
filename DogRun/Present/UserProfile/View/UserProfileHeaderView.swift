@@ -7,53 +7,47 @@
 
 import UIKit
 import SnapKit
+import Kingfisher
 
 final class UserProfileHeaderView: BaseView {
 
-    let profileImageView = UIImageView()
+    let profileImageButton = UIButton()
     let emailLabel = UILabel()
-    let sinceBirthDateLabel = UILabel()
     
     override func configureHierarchy() {
-        [profileImageView, emailLabel, sinceBirthDateLabel].forEach { addSubview($0) }
+        [profileImageButton, emailLabel].forEach { addSubview($0) }
     }
     
     override func configureLayout() {
-        profileImageView.snp.makeConstraints { make in
+        profileImageButton.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.top.equalToSuperview().inset(20)
-            make.size.equalTo(100)
+            make.top.equalToSuperview()
+            make.size.equalTo(160)
         }
         emailLabel.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.top.equalTo(profileImageView.snp.bottom).offset(12)
+            make.top.equalTo(profileImageButton.snp.bottom).offset(12)
             make.height.equalTo(20)
-        }
-        sinceBirthDateLabel.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
-            make.top.equalTo(emailLabel.snp.bottom).offset(8)
-            make.bottom.equalToSuperview().inset(20)
-            make.height.equalTo(20)
+            make.bottom.equalToSuperview().inset(32)
         }
     }
     
     override func configureView() {
-        profileImageView.isUserInteractionEnabled = true
-        profileImageView.layer.cornerRadius = 50
-        profileImageView.contentMode = .scaleAspectFill
-        profileImageView.backgroundColor = .systemGray5
+        profileImageButton.layer.cornerRadius = 20
+        profileImageButton.clipsToBounds = true
+        profileImageButton.contentMode = .scaleAspectFill
+        profileImageButton.backgroundColor = .systemGray5
         
-        emailLabel.font = .systemFont(ofSize: 18, weight: .semibold)
-        
-        sinceBirthDateLabel.font = .systemFont(ofSize: 15)
+        emailLabel.font = .systemFont(ofSize: 16, weight: .medium)
+        emailLabel.textColor = .gray
     }
     
-    func configureData(image: UIImage, email: String, sinceBirthDate: String) {
-        profileImageView.image = image
-        emailLabel.text = email
-        sinceBirthDateLabel.text = sinceBirthDate
+    func configureData(data: ProfileResponse) {
+        if let profileImage = data.profileImage {
+            profileImageButton.kf.setImage(with: URL(string: APIKey.baseURL.rawValue+"/"+profileImage), for: .normal)
+        }
         
-        layoutIfNeeded()
+        emailLabel.text = data.email
     }
 
 }
