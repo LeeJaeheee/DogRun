@@ -11,11 +11,11 @@ import RxSwift
 import RxCocoa
 import Kingfisher
 
-class UserGalleryViewController: UIViewController {
+final class UserGalleryViewController: UIViewController {
+    
+    let viewModel = UserGalleryViewModel()
     
     lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: createLayout())
-    
-    let images = Observable.just(Array(repeating: "https://picsum.photos/200/300", count: 20))
     
     let disposeBag = DisposeBag()
 
@@ -34,8 +34,15 @@ class UserGalleryViewController: UIViewController {
     }
     
     func bind() {
-        images.bind(to: collectionView.rx.items(cellIdentifier: ImageCollectionViewCell.identifier, cellType: ImageCollectionViewCell.self)) { index, imageURL, cell in
-            cell.imageView.kf.setImage(with: URL(string: imageURL))
+        let input = UserGalleryViewModel.Input(
+            loadTrigger: BehaviorRelay(value: ())
+        )
+        
+        let output = viewModel.transform(input: input)
+        
+        output.files
+            .drive(collectionView.rx.items(cellIdentifier: ImageCollectionViewCell.identifier, cellType: ImageCollectionViewCell.self)) { index, imageURL, cell in
+                cell.imageView.kf.setImage(with: URL(string: APIKey.baseURL.rawValue+"/"+imageURL))
         }
         .disposed(by: disposeBag)
     }

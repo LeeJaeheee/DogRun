@@ -14,6 +14,8 @@ class UserTabmanViewController: TabmanViewController {
     
     private var viewControllers: [UIViewController] = []
     
+    var userId = UserDefaultsManager.userId
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -27,6 +29,7 @@ class UserTabmanViewController: TabmanViewController {
     
     private func setupViewControllers() {
         let firstVC = UserGalleryViewController()
+        firstVC.viewModel.userId = userId
         let secondVC = UserFeedViewController()
         secondVC.viewModel.usertype = .specific
         let thirdVC = UserChallengeViewController()

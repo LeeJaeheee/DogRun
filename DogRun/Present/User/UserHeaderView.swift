@@ -69,6 +69,7 @@ final class UserHeaderView: BaseView {
     override func configureView() {
         //profileImageView.isUserInteractionEnabled = true
         profileImageView.layer.cornerRadius = 20
+        profileImageView.clipsToBounds = true
         profileImageView.contentMode = .scaleAspectFill
         profileImageView.backgroundColor = .systemGray5
         
