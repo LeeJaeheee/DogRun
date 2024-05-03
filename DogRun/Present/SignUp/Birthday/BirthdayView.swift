@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-final class BirthdayView: BaseView {
+final class BirthdayView: ModeBaseView {
     
     let titleLabel = DRLabel(text: "생년월일을\n입력해주세요.", style: .title)
     let birthdayTextField = DRTextField(title: "생년월일")

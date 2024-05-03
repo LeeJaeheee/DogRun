@@ -5,19 +5,37 @@
 //  Created by 이재희 on 4/28/24.
 //
 
-import Foundation
+import UIKit
 import RxSwift
 import RxCocoa
 
-final class BirthdayViewController: BaseViewController<BirthdayView> {
+final class BirthdayViewController: ModeBaseViewController<BirthdayView> {
     let viewModel = BirthdayViewModel()
+    
+    let barbuttonItem = UIBarButtonItem(systemItem: .done)
+    
+    var popAction: ((ProfileResponse) -> Void)?
+    
+    override func configureNavigation() {
+        if mainView.mode == .modify {
+            navigationItem.rightBarButtonItem = barbuttonItem
+        }
+    }
+    
+    override func configureView() {
+        if mainView.mode == .modify {
+            mainView.nextButton.isHidden = true
+            mainView.birthdayTextField.text = viewModel.phoneNumber
+        }
+    }
     
     override func bind() {
         let input = BirthdayViewModel.Input(
             birthday: mainView.birthdayTextField.rx.text,
             dateChanged: mainView.datePicker.rx.date,
             doneButtonTap: mainView.doneButton.rx.tap,
-            nextButtonTap: mainView.nextButton.rx.tap
+            nextButtonTap: mainView.nextButton.rx.tap,
+            barDoneButtonTap: barbuttonItem.rx.tap
         )
         
         let output = viewModel.transform(input: input)
@@ -27,7 +45,7 @@ final class BirthdayViewController: BaseViewController<BirthdayView> {
             .disposed(by: disposeBag)
 
         output.isNextButtonEnabled
-            .drive(mainView.birthdayTextField.rx.isValid, mainView.nextButton.rx.isEnabled)
+            .drive(mainView.birthdayTextField.rx.isValid, mainView.nextButton.rx.isEnabled, barbuttonItem.rx.isEnabled)
             .disposed(by: disposeBag)
         
         output.doneButtonTap
@@ -53,6 +71,19 @@ final class BirthdayViewController: BaseViewController<BirthdayView> {
             .disposed(by: disposeBag)
         
         output.signUpFailure
+            .bind(with: self) { owner, error in
+                owner.errorHandler(error)
+            }
+            .disposed(by: disposeBag)
+        
+        output.updateSuccess
+            .bind(with: self) { owner, updatedProfile in
+                owner.popAction?(updatedProfile)
+                owner.navigationController?.popViewController(animated: true)
+            }
+            .disposed(by: disposeBag)
+        
+        output.updateFailure
             .bind(with: self) { owner, error in
                 owner.errorHandler(error)
             }

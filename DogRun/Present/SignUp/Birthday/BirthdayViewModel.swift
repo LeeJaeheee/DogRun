@@ -9,6 +9,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 
+// TODO: 생일 초기값 있으면 datepicker에서 해당 날짜 선택해주기
 final class BirthdayViewModel: ViewModelType {
     
     var disposeBag = DisposeBag()
@@ -24,6 +25,7 @@ final class BirthdayViewModel: ViewModelType {
         let dateChanged: ControlProperty<Date>
         let doneButtonTap: ControlEvent<Void>
         let nextButtonTap: ControlEvent<Void>
+        let barDoneButtonTap: ControlEvent<Void>
     }
 
     struct Output {
@@ -33,11 +35,16 @@ final class BirthdayViewModel: ViewModelType {
         let nextButtonTap: Driver<Void>
         let signUpSuccess: PublishRelay<LoginRequest>
         let signUpFailure: PublishRelay<DRError>
+        let updateSuccess: PublishRelay<ProfileResponse>
+        let updateFailure: PublishRelay<DRError>
     }
 
     func transform(input: Input) -> Output {
         let signUpSuccess = PublishRelay<LoginRequest>()
         let signUpFailure = PublishRelay<DRError>()
+        
+        let updateSuccess = PublishRelay<ProfileResponse>()
+        let updateFailure = PublishRelay<DRError>()
         
         let formattedDate = input.dateChanged
             .skip(1)
@@ -75,13 +82,31 @@ final class BirthdayViewModel: ViewModelType {
             }
             .disposed(by: disposeBag)
         
+        input.barDoneButtonTap
+            .debounce(.seconds(1), scheduler: MainScheduler.asyncInstance)
+            .withLatestFrom(formattedDate)
+            .flatMap { value in
+                return NetworkManager.requestMultipart(type: ProfileResponse.self, router: UserRouter.editMyProfile(model: .init(nick: nil, phoneNum: nil, birthDay: value, profile: nil)))
+            }
+            .bind(with: self) { owner, value in
+                switch value {
+                case .success(let success):
+                    updateSuccess.accept((success))
+                case .failure(let failure):
+                    updateFailure.accept(failure)
+                }
+            }
+            .disposed(by: disposeBag)
+        
         return Output(
             formattedDate: formattedDate,
             doneButtonTap: input.doneButtonTap.asDriver(),
             isNextButtonEnabled: isNextButtonEnabled,
             nextButtonTap: input.nextButtonTap.asDriver(),
             signUpSuccess: signUpSuccess,
-            signUpFailure: signUpFailure
+            signUpFailure: signUpFailure,
+            updateSuccess: updateSuccess,
+            updateFailure: updateFailure
         )
     }
     

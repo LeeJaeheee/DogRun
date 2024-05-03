@@ -77,9 +77,11 @@ class UserProfileViewController: UIViewController {
                         }
                         self?.navigationController?.pushViewController(detailVC, animated: true)
                     case .birthdate:
-                        let detailVC = UIViewController()
-                        detailVC.view.backgroundColor = .white
-                        detailVC.title = item.title
+                        let detailVC = BirthdayViewController(mode: .modify)
+                        detailVC.viewModel.phoneNumber = item.content ?? ""
+                        detailVC.popAction = {
+                            updateTrigger.accept($0)
+                        }
                         self?.navigationController?.pushViewController(detailVC, animated: true)
                     }
                 }
