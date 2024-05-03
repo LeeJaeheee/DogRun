@@ -70,9 +70,11 @@ class UserProfileViewController: UIViewController {
                         }
                         self?.navigationController?.pushViewController(detailVC, animated: true)
                     case .phoneNumber:
-                        let detailVC = UIViewController()
-                        detailVC.view.backgroundColor = .white
-                        detailVC.title = item.title
+                        let detailVC = PhoneNumberViewController(mode: .modify)
+                        detailVC.phoneNumber = item.content ?? ""
+                        detailVC.popAction = {
+                            updateTrigger.accept($0)
+                        }
                         self?.navigationController?.pushViewController(detailVC, animated: true)
                     case .birthdate:
                         let detailVC = UIViewController()
