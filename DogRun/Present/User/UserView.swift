@@ -12,7 +12,7 @@ final class UserView: BaseView {
     let scrollView = UIScrollView()
     let contentView = UIView()
     
-    let profileView = UserProfileHeaderView()
+    let profileView = UserHeaderView()
     let containerView = UIView()
     
     override func configureHierarchy() {

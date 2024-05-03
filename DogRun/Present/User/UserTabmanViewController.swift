@@ -10,28 +10,6 @@ import SnapKit
 import Tabman
 import Pageboy
 
-class ExampleViewController: UIViewController {
-    let tableView = UITableView()
-    
-    init(backgroundColor: UIColor) {
-        super.init(nibName: nil, bundle: nil)
-        self.view.backgroundColor = backgroundColor
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.addSubview(tableView)
-        tableView.snp.makeConstraints { make in
-            make.edges.equalTo(view.safeAreaLayoutGuide)
-        }
-    }
-    
-}
-
 class UserTabmanViewController: TabmanViewController {
     
     private var viewControllers: [UIViewController] = []

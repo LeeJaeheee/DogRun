@@ -52,14 +52,20 @@ struct WithdrawResponse: Decodable {
 
 struct ProfileResponse: Decodable {
     let user_id: String
-    let email: String
+    let email: String?
     let nick: String
     let phoneNum: String?
     let birthDay: String?
     let profileImage: String?
-    let followers: [String]
-    let following: [String]
+    let followers: [Follower]
+    let following: [Follower]
     let posts: [String]
+}
+
+struct Follower: Decodable {
+    let user_id: String
+    let nick: String
+    let profileImage: String?
 }
 
 // MARK: - EditProfile
