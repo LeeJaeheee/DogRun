@@ -15,13 +15,14 @@ final class PostDetailViewController: UIViewController {
     var imageView = UIImageView()
     
     var index: Int = 0
+    var post: PostResponse!
     
     // 이미지 URL 배열
-    var imageUrls: [String] = ["https://picsum.photos/200", "https://picsum.photos/300", "https://picsum.photos/300", "https://picsum.photos/300", "https://picsum.photos/300"]
+    lazy var imageUrls: [String] = post.files ?? []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .black
+        view.backgroundColor = .white
         setupScrollView()
         setupPageControl()
         loadImages()
@@ -47,7 +48,7 @@ final class PostDetailViewController: UIViewController {
     }
     
     @objc func presentNewViewController() {
-        let newViewController = UIViewController()
+        let newViewController = PostDetailContentViewController(post: post)
         newViewController.view.backgroundColor = .systemBackground
         if let sheet = newViewController.sheetPresentationController {
             sheet.detents = [.medium(), .large()]
@@ -107,7 +108,7 @@ final class PostDetailViewController: UIViewController {
         var previousImageView: UIImageView? = nil
         for (index, imageUrl) in imageUrls.enumerated() {
             let imageView = UIImageView()
-            imageView.kf.setImage(with: URL(string: imageUrl))
+            imageView.kf.setImage(with: URL(string: APIKey.baseURL.rawValue+"/"+imageUrl))
             imageView.contentMode = .scaleAspectFill
             imageView.clipsToBounds = true
             scrollView.addSubview(imageView)
@@ -149,10 +150,13 @@ extension PostDetailViewController: UIScrollViewDelegate {
 extension PostDetailViewController: UIAdaptivePresentationControllerDelegate {
     
     func presentationControllerWillDismiss(_ presentationController: UIPresentationController) {
-        scrollView.snp.remakeConstraints { make in
-            make.top.horizontalEdges.equalToSuperview()
-            make.bottom.equalTo(presentationController.presentedView!.snp.top)
-        }
+        UIView.animate(withDuration: 0.3, animations: {
+            self.scrollView.snp.remakeConstraints { make in
+                make.top.horizontalEdges.equalToSuperview()
+                make.bottom.equalTo(presentationController.presentedView!.snp.top).offset(12)
+            }
+            self.view.layoutIfNeeded()
+        })
     }
     
     func presentationControllerDidDismiss(_ presentationController: UIPresentationController) {

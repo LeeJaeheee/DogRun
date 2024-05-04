@@ -96,7 +96,7 @@ class UserFeedViewController: UIViewController {
                         print("\(imageIndex) in cell: \(index)")
                         
                         if let files = post.files {
-                            owner.showImageFullscreen(files[imageIndex], index: imageIndex)
+                            owner.showImageFullscreen(files[imageIndex], post: post, index: imageIndex)
                         }
                     })
                     .disposed(by: cell.disposeBag)
@@ -115,9 +115,10 @@ class UserFeedViewController: UIViewController {
 
 
 extension UserFeedViewController {
-    func showImageFullscreen(_ imageURL: String, index: Int) {
+    func showImageFullscreen(_ imageURL: String, post: PostResponse, index: Int) {
         let fullscreenVC = PostDetailViewController()
         fullscreenVC.index = index
+        fullscreenVC.post = post
         fullscreenVC.modalPresentationStyle = .fullScreen
         
         // TODO: 프레임 계산 다시하기

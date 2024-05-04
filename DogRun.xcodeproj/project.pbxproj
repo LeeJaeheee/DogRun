@@ -54,6 +54,11 @@
 		D258DCC62BE4EF1600A13F0E /* FollowModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D258DCC52BE4EF1600A13F0E /* FollowModel.swift */; };
 		D258DCC82BE4EF2000A13F0E /* FollowRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D258DCC72BE4EF2000A13F0E /* FollowRouter.swift */; };
 		D258DCCA2BE50A9800A13F0E /* UserGalleryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D258DCC92BE50A9800A13F0E /* UserGalleryViewModel.swift */; };
+		D258DCCC2BE5C51E00A13F0E /* ProfileInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D258DCCB2BE5C51E00A13F0E /* ProfileInfoView.swift */; };
+		D258DCCF2BE5CA8F00A13F0E /* PostDetailContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D258DCCE2BE5CA8F00A13F0E /* PostDetailContentView.swift */; };
+		D258DCD12BE5CA9900A13F0E /* PostDetailContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D258DCD02BE5CA9900A13F0E /* PostDetailContentViewController.swift */; };
+		D258DCD32BE5CAC000A13F0E /* PostDetailContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D258DCD22BE5CAC000A13F0E /* PostDetailContentViewModel.swift */; };
+		D258DCD52BE5D62B00A13F0E /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D258DCD42BE5D62B00A13F0E /* ArrayExtension.swift */; };
 		D25DDFFD2BD6CC5F0045C259 /* SNSPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25DDFFC2BD6CC5F0045C259 /* SNSPostView.swift */; };
 		D25DDFFF2BD6CC700045C259 /* SNSPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25DDFFE2BD6CC6F0045C259 /* SNSPostViewController.swift */; };
 		D25DE0012BD6CC800045C259 /* SNSPostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25DE0002BD6CC800045C259 /* SNSPostViewModel.swift */; };
@@ -185,6 +190,11 @@
 		D258DCC52BE4EF1600A13F0E /* FollowModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowModel.swift; sourceTree = "<group>"; };
 		D258DCC72BE4EF2000A13F0E /* FollowRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowRouter.swift; sourceTree = "<group>"; };
 		D258DCC92BE50A9800A13F0E /* UserGalleryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserGalleryViewModel.swift; sourceTree = "<group>"; };
+		D258DCCB2BE5C51E00A13F0E /* ProfileInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInfoView.swift; sourceTree = "<group>"; };
+		D258DCCE2BE5CA8F00A13F0E /* PostDetailContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailContentView.swift; sourceTree = "<group>"; };
+		D258DCD02BE5CA9900A13F0E /* PostDetailContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailContentViewController.swift; sourceTree = "<group>"; };
+		D258DCD22BE5CAC000A13F0E /* PostDetailContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailContentViewModel.swift; sourceTree = "<group>"; };
+		D258DCD42BE5D62B00A13F0E /* ArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
 		D25DDFFC2BD6CC5F0045C259 /* SNSPostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNSPostView.swift; sourceTree = "<group>"; };
 		D25DDFFE2BD6CC6F0045C259 /* SNSPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNSPostViewController.swift; sourceTree = "<group>"; };
 		D25DE0002BD6CC800045C259 /* SNSPostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNSPostViewModel.swift; sourceTree = "<group>"; };
@@ -384,6 +394,7 @@
 				D26190902BDF81C7009BD5C5 /* CustomAnnotationView.swift */,
 				D26190922BDF93A3009BD5C5 /* DRRoundImageButton.swift */,
 				D26190CA2BE25152009BD5C5 /* DROpaqueView.swift */,
+				D258DCCB2BE5C51E00A13F0E /* ProfileInfoView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -438,6 +449,7 @@
 				D26190222BDE3B38009BD5C5 /* String+Ext.swift */,
 				D26190CE2BE276B2009BD5C5 /* UIImage+Ext.swift */,
 				D258DCC02BE4DDFB00A13F0E /* UIButton+Ext.swift */,
+				D258DCD42BE5D62B00A13F0E /* ArrayExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -511,6 +523,16 @@
 				D258DCC72BE4EF2000A13F0E /* FollowRouter.swift */,
 			);
 			path = Follow;
+			sourceTree = "<group>";
+		};
+		D258DCCD2BE5CA6900A13F0E /* Content */ = {
+			isa = PBXGroup;
+			children = (
+				D258DCCE2BE5CA8F00A13F0E /* PostDetailContentView.swift */,
+				D258DCD02BE5CA9900A13F0E /* PostDetailContentViewController.swift */,
+				D258DCD22BE5CAC000A13F0E /* PostDetailContentViewModel.swift */,
+			);
+			path = Content;
 			sourceTree = "<group>";
 		};
 		D25DDFF92BD6CB7F0045C259 /* Post */ = {
@@ -605,6 +627,7 @@
 		D26190242BDE7839009BD5C5 /* Detail */ = {
 			isa = PBXGroup;
 			children = (
+				D258DCCD2BE5CA6900A13F0E /* Content */,
 				D26190252BDE7873009BD5C5 /* PostDetailViewController.swift */,
 			);
 			path = Detail;
@@ -892,8 +915,10 @@
 				D23E78342BD54E7A00A386A0 /* PasswordViewModel.swift in Sources */,
 				D23E780A2BD402A300A386A0 /* UserDefaultsManager.swift in Sources */,
 				D2EDA35F2BD69212009CB0D7 /* CardStackViewWrapper.swift in Sources */,
+				D258DCCC2BE5C51E00A13F0E /* ProfileInfoView.swift in Sources */,
 				D25DE03A2BD9832D0045C259 /* UserTabmanViewController.swift in Sources */,
 				D2EDA3622BD6A357009CB0D7 /* UserModel.swift in Sources */,
+				D258DCD52BE5D62B00A13F0E /* ArrayExtension.swift in Sources */,
 				D26190DF2BE2CA84009BD5C5 /* CommentViewModel.swift in Sources */,
 				D26190E42BE3AE7C009BD5C5 /* CommentRouter.swift in Sources */,
 				D23E78192BD4C3FA00A386A0 /* ReusableIdentifier.swift in Sources */,
@@ -901,6 +926,7 @@
 				D2EA5BB52BDD30150055884C /* ValidationModel.swift in Sources */,
 				D23E77AD2BD1290F00A386A0 /* ViewController.swift in Sources */,
 				D23E782A2BD547BB00A386A0 /* NicknameViewController.swift in Sources */,
+				D258DCCF2BE5CA8F00A13F0E /* PostDetailContentView.swift in Sources */,
 				D25DE0152BD7F4860045C259 /* UserView.swift in Sources */,
 				D261908F2BDF7E92009BD5C5 /* CustomAnnotataion.swift in Sources */,
 				D23E781F2BD53E3F00A386A0 /* DRLabel.swift in Sources */,
@@ -915,12 +941,14 @@
 				D23E782D2BD5485E00A386A0 /* EmailView.swift in Sources */,
 				D26190CB2BE25152009BD5C5 /* DROpaqueView.swift in Sources */,
 				D25DE02B2BD93A890045C259 /* SectionModel.swift in Sources */,
+				D258DCD32BE5CAC000A13F0E /* PostDetailContentViewModel.swift in Sources */,
 				D26190912BDF81C7009BD5C5 /* CustomAnnotationView.swift in Sources */,
 				D26190182BDE28D0009BD5C5 /* ModeBaseView.swift in Sources */,
 				D2EA5BAE2BDD14FF0055884C /* WelcomeViewController.swift in Sources */,
 				D258DCCA2BE50A9800A13F0E /* UserGalleryViewModel.swift in Sources */,
 				D2EA5BA52BDCEEB80055884C /* LaunchScreenViewController.swift in Sources */,
 				D26190C32BE2463E009BD5C5 /* UploadPostViewModel.swift in Sources */,
+				D258DCD12BE5CA9900A13F0E /* PostDetailContentViewController.swift in Sources */,
 				D26190B42BE22E74009BD5C5 /* BasePopUpView.swift in Sources */,
 				D23E780E2BD40EC700A386A0 /* BaseViewController.swift in Sources */,
 				D26190BD2BE23CFF009BD5C5 /* NumberFormatter.swift in Sources */,
