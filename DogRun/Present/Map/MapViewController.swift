@@ -79,6 +79,15 @@ final class MapViewController: BaseViewController<MapView> {
     }
     
     @objc func startWalk() {
+        // 기존 데이터 초기화
+        trackData.traces = []
+        totalDistance = 0
+        previousLocation = nil
+        let allAnnotations = mainView.mapView.annotations
+        mainView.mapView.removeAnnotations(allAnnotations)
+        let allOverlays = mainView.mapView.overlays
+        mainView.mapView.removeOverlays(allOverlays)
+        
         walkStartTime = Date()
         locationManager.startUpdatingLocation()
         mainView.toggleHidden()
@@ -140,21 +149,6 @@ final class MapViewController: BaseViewController<MapView> {
 //            let mapRectPadded = mapRect.insetBy(dx: -padding, dy: -padding)
 //            
 //            mainView.mapView.setVisibleMapRect(mapRectPadded, animated: true)
-            
-
-            guard let startTime = walkStartTime else {
-                print("산책을 시작하지 않았습니다.")
-                return
-            }
-            
-            walkEndTime = Date()
-            
-            guard let endTime = walkEndTime else {
-                print("산책 종료 시간을 기록하지 못했습니다.")
-                return
-            }
-            
-
             
 //            captureMapSnapshot(mapView: mainView.mapView) { [weak self] image in
 //                guard let image else { return }
