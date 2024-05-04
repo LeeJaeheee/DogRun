@@ -12,7 +12,7 @@ import RxCocoa
 final class SearchViewController: BaseViewController<SearchView> {
     let viewModel = SearchViewModel()
     
-    var imageSizes: [Int: CGSize] = [:]
+    var imageSizes: [Int: (CGSize, UIImage?)] = [:]
     
     override func bind() {
         let input = SearchViewModel.Input(
@@ -21,7 +21,34 @@ final class SearchViewController: BaseViewController<SearchView> {
             modelSelected: mainView.collectionView.rx.modelSelected(PostResponse.self))
         
         let output = viewModel.transform(input: input)
-        //해시태그
+        //해시태그 도그런
+        
+        output.searchResults
+            .observe(on: MainScheduler.instance)
+            .withUnretained(self)
+            .flatMapLatest { owner, posts in
+                owner.imageSizes = [:]
+                let urlStrings = posts.compactMap { $0.files?.first }.map { $0 }
+                return Observable.create { observer in
+                    self.preloadImages(urlStrings: urlStrings) { imageInfo in
+                        observer.onNext(imageInfo)
+                        observer.onCompleted()
+                    }
+                    return Disposables.create()
+                }
+            }
+            .do { [weak self] imageInfo in
+                self?.imageSizes = imageInfo
+            }
+            .withLatestFrom(output.searchResults)
+            .bind(to: mainView.collectionView.rx.items(cellIdentifier: PinterestCollectionViewCell.identifier, cellType: PinterestCollectionViewCell.self)) { index, post, cell in
+                cell.profileView.configureData(data: post)
+                cell.hashtagLabel.text = post.hashTags.hashtagsString()
+                cell.imageView.image = self.imageSizes[index]?.1
+            }
+            .disposed(by: disposeBag)
+        
+        /*
         output.searchResults
             .bind(to: mainView.collectionView.rx.items(cellIdentifier: PinterestCollectionViewCell.identifier, cellType: PinterestCollectionViewCell.self)) { index, post, cell in
                 cell.profileView.configureData(data: post)
@@ -40,6 +67,7 @@ final class SearchViewController: BaseViewController<SearchView> {
                 }
             }
             .disposed(by: disposeBag)
+         */
         
         output.searchFailure
             .bind(with: self) { owner, error in
@@ -70,10 +98,10 @@ extension SearchViewController: PinterestLayoutDelegate {
             return 0
         }
         print(indexPath, imageSize)
-//        let aspectRatio = imageSize.width / imageSize.height
-//        let targetWidth = collectionView.frame.width
-//        let targetHeight = targetWidth / aspectRatio
-        return imageSize.height
+        let aspectRatio = imageSize.0.width / imageSize.0.height
+        let targetWidth = collectionView.frame.width / 2
+        let targetHeight = targetWidth / aspectRatio
+        return targetHeight
     }
     
 }

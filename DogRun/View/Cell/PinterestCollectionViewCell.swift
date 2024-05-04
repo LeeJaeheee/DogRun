@@ -15,7 +15,7 @@ final class PinterestCollectionViewCell: BaseCollectionViewCell {
     
     override func configureHierarchy() {
         contentView.addSubview(containerView)
-        [imageView, profileView, hashtagLabel].forEach { addSubview($0) }
+        [imageView, profileView, hashtagLabel].forEach { containerView.addSubview($0) }
     }
     
     override func configureLayout() {

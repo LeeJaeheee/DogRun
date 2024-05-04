@@ -64,6 +64,7 @@
 		D258DCDC2BE5DC1B00A13F0E /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D258DCDB2BE5DC1B00A13F0E /* SearchViewModel.swift */; };
 		D258DCDE2BE5E3C000A13F0E /* PinterestLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D258DCDD2BE5E3C000A13F0E /* PinterestLayout.swift */; };
 		D258DCE02BE5E50100A13F0E /* PinterestCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D258DCDF2BE5E50100A13F0E /* PinterestCollectionViewCell.swift */; };
+		D258DCE32BE65A7900A13F0E /* UIImageView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D258DCE22BE65A7900A13F0E /* UIImageView+Ext.swift */; };
 		D25DDFFD2BD6CC5F0045C259 /* SNSPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25DDFFC2BD6CC5F0045C259 /* SNSPostView.swift */; };
 		D25DDFFF2BD6CC700045C259 /* SNSPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25DDFFE2BD6CC6F0045C259 /* SNSPostViewController.swift */; };
 		D25DE0012BD6CC800045C259 /* SNSPostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25DE0002BD6CC800045C259 /* SNSPostViewModel.swift */; };
@@ -205,6 +206,7 @@
 		D258DCDB2BE5DC1B00A13F0E /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		D258DCDD2BE5E3C000A13F0E /* PinterestLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinterestLayout.swift; sourceTree = "<group>"; };
 		D258DCDF2BE5E50100A13F0E /* PinterestCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinterestCollectionViewCell.swift; sourceTree = "<group>"; };
+		D258DCE22BE65A7900A13F0E /* UIImageView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Ext.swift"; sourceTree = "<group>"; };
 		D25DDFFC2BD6CC5F0045C259 /* SNSPostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNSPostView.swift; sourceTree = "<group>"; };
 		D25DDFFE2BD6CC6F0045C259 /* SNSPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNSPostViewController.swift; sourceTree = "<group>"; };
 		D25DE0002BD6CC800045C259 /* SNSPostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNSPostViewModel.swift; sourceTree = "<group>"; };
@@ -463,6 +465,7 @@
 				D26190CE2BE276B2009BD5C5 /* UIImage+Ext.swift */,
 				D258DCC02BE4DDFB00A13F0E /* UIButton+Ext.swift */,
 				D258DCD42BE5D62B00A13F0E /* ArrayExtension.swift */,
+				D258DCE22BE65A7900A13F0E /* UIImageView+Ext.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1008,6 +1011,7 @@
 				D26190B92BE22FE8009BD5C5 /* MapRecordPopUpViewContoller.swift in Sources */,
 				D261900D2BDD6E78009BD5C5 /* ValidationView.swift in Sources */,
 				D26190262BDE7873009BD5C5 /* PostDetailViewController.swift in Sources */,
+				D258DCE32BE65A7900A13F0E /* UIImageView+Ext.swift in Sources */,
 				D2EA5B9A2BDC2BFA0055884C /* UIView+Ext.swift in Sources */,
 				D26190C92BE25029009BD5C5 /* LabelCollectionViewCell.swift in Sources */,
 				D258DCC62BE4EF1600A13F0E /* FollowModel.swift in Sources */,

@@ -8,6 +8,7 @@
 import UIKit
 import Toast
 import MapKit
+import Kingfisher
 
 extension UIViewController {
     
@@ -130,4 +131,32 @@ extension UIViewController {
     }
     
 
+}
+
+extension UIViewController {
+    
+    func preloadImages(urlStrings: [String], completion: @escaping ([Int: (CGSize, UIImage?)]) -> Void) {
+        var imageInfo: [Int: (CGSize, UIImage?)] = [:]
+        let group = DispatchGroup()
+        
+        for (index, urlString) in urlStrings.enumerated() {
+            if let url = URL(string: APIKey.baseURL.rawValue + "/" + urlString) {
+                group.enter()
+                KingfisherManager.shared.retrieveImage(with: url) { result in
+                    switch result {
+                    case .success(let value):
+                        imageInfo[index] = (value.image.size, value.image)
+                    case .failure:
+                        imageInfo[index] = (CGSize(width: 100, height: 100), nil)
+                    }
+                    group.leave()
+                }
+            }
+        }
+        
+        group.notify(queue: .main) {
+            completion(imageInfo)
+        }
+    }
+    
 }
