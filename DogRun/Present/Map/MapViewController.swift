@@ -256,7 +256,6 @@ extension MapViewController: MKMapViewDelegate {
                     return
                 }
                 
-                mainView.testImageView.image = image
                 let vc = MapRecordPopUpViewContoller()
                 vc.mapRecord = .init(mapImage: image, time: DateFormatterManager.shared.formatTimeInterval(endTime.timeIntervalSince(startTime)) ?? "기록 실패", distance: NumberFormatterManager.shared.formatDistance(totalDistance))
                 vc.dismissAction = { [weak self] record in

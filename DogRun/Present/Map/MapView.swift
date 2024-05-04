@@ -12,6 +12,8 @@ import SnapKit
 final class MapView: BaseView {
     
     let mapView = MKMapView()
+    let dimView = UIView()
+    let titleLabel = DRLabel(text: "오늘도\n달려볼까요?🐶", style: .largeTitle)
     let startButton = DRButton(title: "산책 시작")
     
     let heartButton = DRRoundImageButton(buttonImage: .heart)
@@ -21,8 +23,6 @@ final class MapView: BaseView {
     let currentLocationButton = UIButton()
     let stopButton = DRRoundImageButton(imageName: "stop.fill", tintColor: .black, backgroundWhite: 1.0, alpha: 1.0)
     
-    let testImageView = UIImageView()
-    
     private lazy var buttonsStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [heartButton, numOneButton, numTwoButton])
         stackView.axis = .vertical
@@ -31,15 +31,7 @@ final class MapView: BaseView {
     }()
     
     override func configureHierarchy() {
-        [mapView, startButton, buttonsStackView, currentLocationButton, stopButton].forEach { addSubview($0) }
-        
-        addSubview(testImageView)
-        testImageView.snp.makeConstraints { make in
-            make.top.leading.equalToSuperview()
-            make.width.equalTo(300)
-            make.height.equalTo(500)
-        }
-        //testImageView.backgroundColor = .white
+        [mapView, dimView, titleLabel, startButton, buttonsStackView, currentLocationButton, stopButton].forEach { addSubview($0) }
     }
     
     override func configureLayout() {
@@ -48,6 +40,14 @@ final class MapView: BaseView {
             make.bottom.equalTo(safeAreaLayoutGuide)
         }
         
+        dimView.snp.makeConstraints { make in
+            make.edges.equalTo(mapView)
+        }
+        
+        titleLabel.snp.makeConstraints { make in
+            make.leading.equalToSuperview().inset(40)
+            make.top.equalTo(safeAreaLayoutGuide).inset(80)
+        }
 
         startButton.snp.makeConstraints { make in
             make.horizontalEdges.equalToSuperview().inset(40)
@@ -91,6 +91,8 @@ final class MapView: BaseView {
         mapView.setUserTrackingMode(.follow, animated: true)
         mapView.isZoomEnabled = true
         
+        dimView.backgroundColor = .init(white: 1.0, alpha: 0.75)
+        
         currentLocationButton.setImage(UIImage(systemName: "dot.circle.viewfinder", withConfiguration: UIImage.SymbolConfiguration(pointSize: 30, weight: .regular)), for: .normal)
         currentLocationButton.tintColor = .systemBlue
         
@@ -98,7 +100,7 @@ final class MapView: BaseView {
     }
     
     func toggleHidden() {
-        [currentLocationButton, buttonsStackView, stopButton, startButton].forEach { $0.isHidden.toggle() }
+        [currentLocationButton, buttonsStackView, stopButton, dimView, titleLabel, startButton].forEach { $0.isHidden.toggle() }
     }
 }
 

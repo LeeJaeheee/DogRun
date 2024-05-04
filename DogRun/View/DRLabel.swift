@@ -12,6 +12,7 @@ enum TextStyle {
     case subtitle
     case body
     case count
+    case largeTitle
 }
 
 final class DRLabel: UILabel {
@@ -41,6 +42,8 @@ final class DRLabel: UILabel {
         case .count:
             font = UIFont.systemFont(ofSize: 12, weight: .medium)
             textColor = .lightGray
+        case .largeTitle:
+            font = UIFont.systemFont(ofSize: 36, weight: .heavy)
         }
         
         numberOfLines = 0
