@@ -22,7 +22,7 @@ final class WelcomeView: BaseView {
     
     override func configureLayout() {
         logoImageView.snp.makeConstraints { make in
-            make.top.equalToSuperview().inset(200)
+            make.centerY.equalToSuperview().multipliedBy(0.6)
             make.centerX.equalToSuperview()
             make.size.equalTo(150)
         }

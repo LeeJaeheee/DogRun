@@ -21,13 +21,24 @@ final class LaunchScreenViewModel: ViewModelType {
     }
     
     func transform(input: Input) -> Output {
-        // TODO: accessToken 갱신해주기
-        let isValidUser = input.checkLoginStatus
-            .map {
-                !UserDefaultsManager.accessToken.isEmpty
-            }
-            .asDriver(onErrorJustReturn: false)
+        let isValidUser = PublishRelay<Bool>()
         
-        return Output(isValidUser: isValidUser)
+        input.checkLoginStatus
+            .flatMap { _ in
+                return NetworkManager.requestTokenRefresh(type: AuthResponse.self, router: AuthRouter.refresh)
+            }
+            .bind(with: self) { owner, response in
+                switch response {
+                case .success(let success):
+                    UserDefaultsManager.accessToken = success.accessToken
+                    isValidUser.accept(true)
+                case .failure(let failure):
+                    isValidUser.accept(false)
+                }
+            }
+            .disposed(by: disposeBag)
+        
+        return Output(
+            isValidUser: isValidUser.asDriver(onErrorJustReturn: false))
     }
 }
