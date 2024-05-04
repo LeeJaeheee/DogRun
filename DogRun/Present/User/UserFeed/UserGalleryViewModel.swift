@@ -17,12 +17,14 @@ final class UserGalleryViewModel: ViewModelType {
     struct Input {
         let loadTrigger: BehaviorRelay<Void>
         //let fetchMoreDatas: ControlEvent<[IndexPath]>
+        let refreshTrigger: ControlEvent<Void>
     }
     
     struct Output {
         let posts: Driver<[PostResponse]>
         let fetchFailure: PublishRelay<DRError>
         let files: Driver<[String]>
+        //let endRefresh: Driver<Void>
     }
     
     func transform(input: Input) -> Output {
@@ -58,11 +60,19 @@ final class UserGalleryViewModel: ViewModelType {
                 print(fileList.flatMap { $0 })
             }
             .disposed(by: disposeBag)
+        
+        input.refreshTrigger
+            .bind(onNext: { _ in
+                postsRelay.accept([])
+                nextCursor.accept(nil)
+                input.loadTrigger.accept(())
+            })
+            .disposed(by: disposeBag)
             
         
         return Output(posts: postsRelay.asDriver(),
-               fetchFailure: fetchFailureRelay,
-               files: filesRelay.asDriver())
+                      fetchFailure: fetchFailureRelay,
+                      files: filesRelay.asDriver())
     }
     
 }

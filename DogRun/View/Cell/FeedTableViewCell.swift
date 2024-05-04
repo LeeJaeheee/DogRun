@@ -51,6 +51,8 @@ class FeedTableViewCell: UITableViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
+        disposeBag = DisposeBag()
+        
         hostingController?.view.removeFromSuperview()
         hostingController = nil
         
@@ -112,6 +114,7 @@ class FeedTableViewCell: UITableViewCell {
         
         profileView.layer.cornerRadius = 20
         profileView.clipsToBounds = true
+        profileView.backgroundColor = .systemGray5
         
         nicknameLabel.font = .systemFont(ofSize: 16, weight: .medium)
         dateLabel.font = .systemFont(ofSize: 13, weight: .light)
@@ -160,7 +163,7 @@ class FeedTableViewCell: UITableViewCell {
         if let profileImage = data.creator.profileImage {
             profileView.kf.setImage(with: URL(string: APIKey.baseURL.rawValue+"/"+profileImage))
         } else {
-            profileView.image = UIImage(systemName: "person")
+            profileView.image = nil
         }
         nicknameLabel.text = data.creator.nick
         dateLabel.text = data.createdAt

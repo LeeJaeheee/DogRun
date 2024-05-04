@@ -35,7 +35,7 @@ class BasePopUpView: UIView {
         containerView.snp.makeConstraints { make in
             make.center.equalToSuperview()
             make.horizontalEdges.equalToSuperview().inset(32)
-            make.verticalEdges.equalToSuperview().inset(120)
+            make.verticalEdges.equalToSuperview().inset(90)
         }
         containerView.clipsToBounds = true
         containerView.backgroundColor = .white

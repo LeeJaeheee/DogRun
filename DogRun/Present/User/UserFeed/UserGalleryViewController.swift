@@ -16,6 +16,7 @@ final class UserGalleryViewController: UIViewController {
     let viewModel = UserGalleryViewModel()
     
     lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: createLayout())
+    let refreshControl = UIRefreshControl()
     
     let disposeBag = DisposeBag()
 
@@ -30,12 +31,15 @@ final class UserGalleryViewController: UIViewController {
             make.edges.equalToSuperview()
         }
         
+        collectionView.refreshControl = refreshControl
+        
         bind()
     }
     
     func bind() {
         let input = UserGalleryViewModel.Input(
-            loadTrigger: BehaviorRelay(value: ())
+            loadTrigger: BehaviorRelay(value: ()), 
+            refreshTrigger: refreshControl.rx.controlEvent(.valueChanged)
         )
         
         let output = viewModel.transform(input: input)
@@ -45,6 +49,12 @@ final class UserGalleryViewController: UIViewController {
                 cell.imageView.kf.setImage(with: URL(string: APIKey.baseURL.rawValue+"/"+imageURL))
         }
         .disposed(by: disposeBag)
+        
+        output.posts
+            .drive(with: self) { owner, _ in
+                owner.collectionView.refreshControl?.endRefreshing()
+            }
+            .disposed(by: disposeBag)
     }
     
     func createLayout() -> UICollectionViewLayout {

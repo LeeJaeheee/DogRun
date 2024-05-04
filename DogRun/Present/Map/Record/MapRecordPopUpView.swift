@@ -39,7 +39,7 @@ final class MapRecordPopUpView: BasePopUpView {
         
         labelContainerView.snp.makeConstraints { make in
             make.bottom.horizontalEdges.equalToSuperview().inset(20)
-            make.height.equalTo(100)
+            make.height.equalTo(80)
         }
         
         timeTitleLabel.snp.makeConstraints { make in
@@ -82,10 +82,16 @@ final class MapRecordPopUpView: BasePopUpView {
         labelContainerView.layer.cornerRadius = 12
         
         timeTitleLabel.text = "산책 시간"
-        timeTitleLabel.font = .systemFont(ofSize: 17, weight: .medium)
+        timeTitleLabel.font = .systemFont(ofSize: 15)
+        timeTitleLabel.textColor = .gray
+        
+        timeLabel.font = .systemFont(ofSize: 20, weight: .medium)
         
         distanceTitleLabel.text = "이동 거리"
-        distanceTitleLabel.font = .systemFont(ofSize: 17, weight: .medium)
+        distanceTitleLabel.font = .systemFont(ofSize: 15)
+        distanceTitleLabel.textColor = .gray
+        
+        distanceLabel.font = .systemFont(ofSize: 20, weight: .medium)
         
         [timeTitleLabel, timeLabel, distanceTitleLabel, distanceLabel].forEach { $0.textAlignment = .center }
         

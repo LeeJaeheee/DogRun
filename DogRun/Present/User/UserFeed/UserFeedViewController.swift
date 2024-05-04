@@ -13,6 +13,7 @@ import Kingfisher
 class UserFeedViewController: UIViewController {
     
     let tableView = UITableView()
+    let refreshControl = UIRefreshControl()
     
     private lazy var viewSpinner: UIView = {
         let view = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 100)
@@ -24,14 +25,11 @@ class UserFeedViewController: UIViewController {
         return view
     }()
     
-    private lazy var refreshControl: UIRefreshControl = {
-        let refreshControl = UIRefreshControl()
-        return refreshControl
-    }()
-    
     let disposeBag = DisposeBag()
     
     let viewModel = UserFeedViewModel()
+    
+    let loadTrigger = BehaviorRelay(value: ())
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,6 +42,7 @@ class UserFeedViewController: UIViewController {
         tableView.register(FeedTableViewCell.self, forCellReuseIdentifier: FeedTableViewCell.identifier)
         tableView.separatorStyle = .none
         tableView.rowHeight = UITableView.automaticDimension
+        tableView.refreshControl = refreshControl
         
         bind()
     }
@@ -53,6 +52,7 @@ class UserFeedViewController: UIViewController {
         if viewModel.usertype != .specific {
             self.navigationController?.setNavigationBarHidden(true, animated: animated)
         }
+        //loadTrigger.accept(())
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -66,8 +66,9 @@ class UserFeedViewController: UIViewController {
         var changedLikeId: [Int: Void] = [:]
         
         let input = UserFeedViewModel.Input(
-            loadTrigger: BehaviorRelay(value: ()),
-            fetchMoreDatas: tableView.rx.prefetchRows
+            loadTrigger: loadTrigger,
+            fetchMoreDatas: tableView.rx.prefetchRows, 
+            refreshTrigger: refreshControl.rx.controlEvent(.valueChanged)
         )
         
         let output = viewModel.transform(input: input)
@@ -122,6 +123,12 @@ class UserFeedViewController: UIViewController {
             .bind(with: self) { owner, error in
                 owner.errorHandler(error)
             }
+            .disposed(by: disposeBag)
+        
+        output.isLoadingSpinnerAvaliable
+            .bind(with: self, onNext: { owner, value in
+                owner.tableView.refreshControl?.endRefreshing()
+            })
             .disposed(by: disposeBag)
         
     }

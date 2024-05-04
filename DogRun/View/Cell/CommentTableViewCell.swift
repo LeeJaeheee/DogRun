@@ -6,12 +6,18 @@
 //
 
 import UIKit
+import RxSwift
 
 final class CommentTableViewCell: BaseTableViewCell {
     let profileImageView = UIImageView()
     let nicknameLabel = UILabel()
     let commentLabel = UILabel()
     let deleteButton = UIButton()
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        disposeBag = DisposeBag()
+    }
     
     override func configureHierarchy() {
         [profileImageView, nicknameLabel, commentLabel, deleteButton].forEach { contentView.addSubview($0) }

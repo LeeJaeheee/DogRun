@@ -24,6 +24,7 @@ final class UserFeedViewModel: ViewModelType {
     struct Input {
         let loadTrigger: BehaviorRelay<Void>
         let fetchMoreDatas: ControlEvent<[IndexPath]>
+        let refreshTrigger: ControlEvent<Void>
     }
     
     struct Output {
@@ -31,7 +32,7 @@ final class UserFeedViewModel: ViewModelType {
         let fetchFailure: PublishRelay<DRError>
 //        let refreshControlAction: PublishSubject<Void>
 //        let refreshControlCompelted: PublishSubject<Void>
-//        let isLoadingSpinnerAvaliable: PublishSubject<Bool>
+        let isLoadingSpinnerAvaliable: PublishRelay<Bool>
     }
     
     func transform(input: Input) -> Output {
@@ -103,6 +104,14 @@ final class UserFeedViewModel: ViewModelType {
                 }
                 .disposed(by: disposeBag)
         }
+        
+        input.refreshTrigger
+            .bind(with: self) { owner, _ in
+                postsRelay.accept([])
+                nextCursor.accept(nil)
+                input.loadTrigger.accept(())
+            }
+            .disposed(by: disposeBag)
 
         
 //        input.fetchMoreDatas
@@ -116,6 +125,10 @@ final class UserFeedViewModel: ViewModelType {
 //            })
 //            .disposed(by: disposeBag)
         
-        return Output(posts: postsRelay.asDriver(), fetchFailure: fetchFailureRelay)
+        return Output(
+            posts: postsRelay.asDriver(),
+            fetchFailure: fetchFailureRelay,
+            isLoadingSpinnerAvaliable: isLoadingSpinnerAvaliable
+        )
     }
 }
