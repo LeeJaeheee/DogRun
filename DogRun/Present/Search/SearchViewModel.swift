@@ -23,7 +23,7 @@ final class SearchViewModel: ViewModelType {
     struct Output {
         let searchButtonTap: Driver<Void>
         let searchResults: BehaviorRelay<[PostResponse]>
-        let modelSelected: ControlEvent<PostResponse>
+        let modelSelected: Driver<PostResponse>
         let searchFailure: PublishRelay<DRError>
     }
     
@@ -51,7 +51,7 @@ final class SearchViewModel: ViewModelType {
         return Output(
             searchButtonTap: input.searchButtonTap.asDriver(),
             searchResults: searchResults,
-            modelSelected: input.modelSelected,
+            modelSelected: input.modelSelected.asDriver(),
             searchFailure: searchFailure)
     }
 }

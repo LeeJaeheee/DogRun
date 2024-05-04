@@ -56,26 +56,14 @@ final class SearchViewController: BaseViewController<SearchView> {
             }
             .disposed(by: disposeBag)
         
-        /*
-        output.searchResults
-            .bind(to: mainView.collectionView.rx.items(cellIdentifier: PinterestCollectionViewCell.identifier, cellType: PinterestCollectionViewCell.self)) { index, post, cell in
-                cell.profileView.configureData(data: post)
-                cell.hashtagLabel.text = post.hashTags.hashtagsString()
-                
-                if let image = post.files?.first {
-                    cell.imageView.kf.setImage(with: URL(string: APIKey.baseURL.rawValue+"/"+image)) { result in
-                        switch result {
-                        case .success(let success):
-                            self.imageSizes[index] = success.image.size
-                            print("이미지사이즈으으으", success.image.size)
-                        case .failure(_):
-                            break
-                        }
-                    }
-                }
+        output.modelSelected
+            .drive(with: self) { owner, post in
+                let vc = PostDetailViewController()
+                vc.post = post
+                vc.modalPresentationStyle = .fullScreen
+                owner.present(vc, animated: false)
             }
             .disposed(by: disposeBag)
-         */
         
         output.searchFailure
             .bind(with: self) { owner, error in
