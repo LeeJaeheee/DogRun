@@ -6,12 +6,15 @@
 //
 
 import UIKit
+import RxSwift
 
 final class PinterestCollectionViewCell: BaseCollectionViewCell {
     let containerView = UIView()
     let imageView = UIImageView()
-    let profileView = ProfileInfoView(imageSize: 36, cornerRadius: 12, nicknameFontSize: 13, dateFontSize: 12, spacing: 8)
+    let profileView = ProfileInfoView(imageSize: 36, cornerRadius: 12, nicknameFontSize: 13, dateFontSize: 12, spacing: 8, labelSpacing: 2)
     let hashtagLabel = UILabel()
+    
+    var disposeBag = DisposeBag()
     
     override func configureHierarchy() {
         contentView.addSubview(containerView)
@@ -37,6 +40,11 @@ final class PinterestCollectionViewCell: BaseCollectionViewCell {
             make.top.horizontalEdges.equalToSuperview()
             make.bottom.equalTo(profileView.snp.top)
         }
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        disposeBag = DisposeBag()
     }
     
     override func configureView() {

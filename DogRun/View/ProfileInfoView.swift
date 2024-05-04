@@ -15,6 +15,7 @@ class ProfileInfoView: UIView {
         imageView.clipsToBounds = true
         imageView.layer.cornerRadius = 20
         imageView.backgroundColor = .systemGray6
+        imageView.isUserInteractionEnabled = true
         return imageView
     }()
     
@@ -33,13 +34,16 @@ class ProfileInfoView: UIView {
         return label
     }()
     
+    let tapGesture = UITapGestureRecognizer()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         configureHierarchy()
         configureLayout()
+        addGestureRecognizer(tapGesture)
     }
     
-    convenience init(imageSize: Int, cornerRadius: CGFloat, nicknameFontSize: CGFloat, dateFontSize: CGFloat, spacing: Int) {
+    convenience init(imageSize: Int, cornerRadius: CGFloat, nicknameFontSize: CGFloat, dateFontSize: CGFloat, spacing: Int, labelSpacing: Int) {
         self.init(frame: .zero)
         profileImageView.layer.cornerRadius = cornerRadius
         profileImageView.snp.updateConstraints { make in
@@ -47,7 +51,13 @@ class ProfileInfoView: UIView {
             make.size.equalTo(imageSize)
         }
         nicknameLabel.font = .systemFont(ofSize: nicknameFontSize, weight: .medium)
+        nicknameLabel.snp.updateConstraints { make in
+            make.bottom.equalTo(profileImageView.snp.centerY).offset(-labelSpacing/2)
+        }
         dateLabel.font = .systemFont(ofSize: dateFontSize, weight: .light)
+        dateLabel.snp.updateConstraints { make in
+            make.top.equalTo(profileImageView.snp.centerY).offset(labelSpacing)
+        }
     }
     
     required init?(coder: NSCoder) {
@@ -68,14 +78,14 @@ class ProfileInfoView: UIView {
         
         nicknameLabel.snp.makeConstraints { make in
             make.leading.equalTo(profileImageView.snp.trailing).offset(12)
-            make.top.equalTo(profileImageView.snp.top).offset(4)
+            make.bottom.equalTo(profileImageView.snp.centerY).offset(-2)
             make.trailing.equalToSuperview().inset(16)
         }
         
         dateLabel.snp.makeConstraints { make in
             make.leading.equalTo(profileImageView.snp.trailing).offset(12)
             make.trailing.equalToSuperview().inset(16)
-            make.top.equalTo(nicknameLabel.snp.bottom)
+            make.top.equalTo(profileImageView.snp.centerY).offset(4)
         }
     }
     
@@ -86,6 +96,6 @@ class ProfileInfoView: UIView {
             profileImageView.image = nil
         }
         nicknameLabel.text = data.creator.nick
-        dateLabel.text = data.createdAt
+        dateLabel.text = data.createdAtDescription
     }
 }

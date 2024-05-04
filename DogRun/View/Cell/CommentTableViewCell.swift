@@ -70,7 +70,7 @@ final class CommentTableViewCell: BaseTableViewCell {
             profileImageView.backgroundColor = .systemGray6
         }
         
-        nicknameLabel.text = "\(data.creator.nick) • \(data.createdAt)"
+        nicknameLabel.text = "\(data.creator.nick) • \(data.createdAtDescription)"
         
         commentLabel.text = data.content
         

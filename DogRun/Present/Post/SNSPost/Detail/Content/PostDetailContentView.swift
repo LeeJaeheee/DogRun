@@ -56,7 +56,7 @@ final class PostDetailContentView: BaseView {
         profileView.configureData(data: data)
         
         // TODO: 데이터 연결하기
-        hashtagLabel.text = data.hashTags.hashtagsString()
+        hashtagLabel.text = data.hashTagsString
         contentTextView.text = data.content
         textView.backgroundColor = .blue
     }

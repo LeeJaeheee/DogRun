@@ -51,8 +51,17 @@ final class SearchViewController: BaseViewController<SearchView> {
             .withLatestFrom(output.searchResults)
             .bind(to: mainView.collectionView.rx.items(cellIdentifier: PinterestCollectionViewCell.identifier, cellType: PinterestCollectionViewCell.self)) { index, post, cell in
                 cell.profileView.configureData(data: post)
-                cell.hashtagLabel.text = post.hashTags.hashtagsString()
+                cell.hashtagLabel.text = post.hashTagsString
                 cell.imageView.image = self.imageSizes[index]?.1
+                
+                cell.profileView.tapGesture.rx.event
+                    .debounce(.milliseconds(5), scheduler: MainScheduler.asyncInstance)
+                    .bind(with: self) { owner, _ in
+                        let vc = UserViewController()
+                        vc.viewModel.userId = post.creator.user_id
+                        owner.navigationController?.pushViewController(vc, animated: true)
+                    }
+                    .disposed(by: cell.disposeBag)
             }
             .disposed(by: disposeBag)
         
@@ -77,6 +86,7 @@ final class SearchViewController: BaseViewController<SearchView> {
                 owner.errorHandler(error)
             }
             .disposed(by: disposeBag)
+        
     }
     
     override func configureNavigation() {

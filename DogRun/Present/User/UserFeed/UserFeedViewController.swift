@@ -76,6 +76,7 @@ class UserFeedViewController: UIViewController {
         output.posts
             .drive(tableView.rx.items(cellIdentifier: FeedTableViewCell.identifier, cellType: FeedTableViewCell.self)) { index, post, cell in
                 cell.configureData(data: post)
+                
                 cell.likeButton.rx.tap
                     .debounce(.seconds(1), scheduler: MainScheduler.asyncInstance)
                     .flatMap { _ in
@@ -116,6 +117,15 @@ class UserFeedViewController: UIViewController {
                             owner.showImageFullscreen(files[imageIndex], post: post, index: imageIndex, cellFrame: cellFrameInSuperview)
                         }
                     })
+                    .disposed(by: cell.disposeBag)
+                
+                cell.profileView.tapGesture.rx.event
+                    .debounce(.milliseconds(5), scheduler: MainScheduler.asyncInstance)
+                    .bind(with: self) { owner, _ in
+                        let vc = UserViewController()
+                        vc.viewModel.userId = post.creator.user_id
+                        owner.navigationController?.pushViewController(vc, animated: true)
+                    }
                     .disposed(by: cell.disposeBag)
             }
             .disposed(by: disposeBag)

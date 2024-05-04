@@ -49,6 +49,14 @@ struct PostResponse: Decodable {
     let hashTags: [String]
     let comments: [Comment]
 }
+extension PostResponse {
+    var createdAtDescription: String {
+        return DateFormatterManager.shared.timeAgo(from: createdAt)
+    }
+    var hashTagsString: String {
+        hashTags.hashtagsString()
+    }
+}
 
 struct Creator: Decodable {
     let user_id: String
@@ -61,6 +69,11 @@ struct Comment: Decodable {
     let content: String
     let createdAt: String
     let creator: Creator
+}
+extension Comment {
+    var createdAtDescription: String {
+        return DateFormatterManager.shared.timeAgo(from: createdAt)
+    }
 }
 
 // MARK: - FetchPosts
