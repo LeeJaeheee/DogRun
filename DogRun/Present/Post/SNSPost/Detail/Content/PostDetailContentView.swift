@@ -56,8 +56,8 @@ final class PostDetailContentView: BaseView {
         profileView.configureData(data: data)
         
         // TODO: 데이터 연결하기
-        hashtagLabel.text = ["댕스타그램","카페","서울"].hashtagsString()
-        contentTextView.text = "dfw\nfewfds\nfnhekwnfkjbajhbghrbkjensfjkianiejbfkjbnkw\nee\ne\nwwww\ndd\na\na\na\na\na\na\na\na\na\na\na\na"
+        hashtagLabel.text = data.hashTags.hashtagsString()
+        contentTextView.text = data.content
         textView.backgroundColor = .blue
     }
 }

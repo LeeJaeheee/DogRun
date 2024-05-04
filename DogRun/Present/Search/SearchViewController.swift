@@ -61,7 +61,14 @@ final class SearchViewController: BaseViewController<SearchView> {
                 let vc = PostDetailViewController()
                 vc.post = post
                 vc.modalPresentationStyle = .fullScreen
-                owner.present(vc, animated: false)
+                vc.view.backgroundColor = UIColor.clear
+                owner.present(vc, animated: false) {
+                    vc.view.alpha = 0.5
+                    UIView.animate(withDuration: 0.8, animations: {
+                        vc.view.backgroundColor = UIColor.white.withAlphaComponent(1.0)
+                        vc.view.alpha = 1.0
+                    })
+                }
             }
             .disposed(by: disposeBag)
         

@@ -110,9 +110,10 @@ class UserFeedViewController: UIViewController {
                 cell.tapImageCardSubject
                     .bind(with: self, onNext: { owner, imageIndex in
                         print("\(imageIndex) in cell: \(index)")
+                        let cellFrameInSuperview = owner.tableView.convert(cell.frame, to: owner.tableView.superview)
                         
                         if let files = post.files {
-                            owner.showImageFullscreen(files[imageIndex], post: post, index: imageIndex)
+                            owner.showImageFullscreen(files[imageIndex], post: post, index: imageIndex, cellFrame: cellFrameInSuperview)
                         }
                     })
                     .disposed(by: cell.disposeBag)
@@ -137,14 +138,14 @@ class UserFeedViewController: UIViewController {
 
 
 extension UserFeedViewController {
-    func showImageFullscreen(_ imageURL: String, post: PostResponse, index: Int) {
+    func showImageFullscreen(_ imageURL: String, post: PostResponse, index: Int, cellFrame: CGRect) {
         let fullscreenVC = PostDetailViewController()
         fullscreenVC.index = index
         fullscreenVC.post = post
         fullscreenVC.modalPresentationStyle = .fullScreen
         
         // TODO: 프레임 계산 다시하기
-        let startingFrame = CGRect(x: UIScreen.main.bounds.width/6, y: UIScreen.main.bounds.height/6, width: 200, height: 300)
+        let startingFrame = CGRect(x: 60, y: cellFrame.minY+60, width: cellFrame.width-80, height: cellFrame.height-80)
         let finalFrame = UIScreen.main.bounds
         
         let transitionImageView = UIImageView(frame: startingFrame)
