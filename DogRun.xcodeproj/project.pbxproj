@@ -378,6 +378,7 @@
 			isa = PBXGroup;
 			children = (
 				D2EA5BA12BDCEE400055884C /* LaunchScreen */,
+				D258DCE12BE61BCB00A13F0E /* Like */,
 				D258DCD62BE5DBA800A13F0E /* Search */,
 				D25DE01B2BD9313D0045C259 /* UserProfile */,
 				D25DE0132BD7F4320045C259 /* User */,
@@ -555,6 +556,13 @@
 				D258DCDB2BE5DC1B00A13F0E /* SearchViewModel.swift */,
 			);
 			path = Search;
+			sourceTree = "<group>";
+		};
+		D258DCE12BE61BCB00A13F0E /* Like */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Like;
 			sourceTree = "<group>";
 		};
 		D25DDFF92BD6CB7F0045C259 /* Post */ = {

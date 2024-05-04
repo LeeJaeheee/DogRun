@@ -15,7 +15,9 @@ class MainTabbarController: UITabBarController {
         let feedNavigation = configureNavigationController(controller: SNSPostViewController(), title: "피드", imageName: "doc.text.image")
         let searchNavigation = configureNavigationController(controller: SearchViewController(), title: "검색", imageName: "number")
         let mapNavigation = configureNavigationController(controller: MapViewController(), title: "산책", imageName: "pawprint.circle.fill")
-        let likeNavigation = configureNavigationController(controller: UIViewController(), title: "좋아요", imageName: "bolt.heart.fill")
+        let feedVC = UserFeedViewController()
+        feedVC.viewModel.usertype = .like
+        let likeNavigation = configureNavigationController(controller: feedVC, title: "좋아요", imageName: "bolt.heart.fill")
         let myPageNavigation = configureNavigationController(controller: UserViewController(), title: "마이페이지", imageName: "person")
         
         viewControllers = [feedNavigation, searchNavigation, mapNavigation, likeNavigation, myPageNavigation]

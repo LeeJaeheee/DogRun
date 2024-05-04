@@ -11,6 +11,7 @@ import RxCocoa
 
 final class UserFeedViewModel: ViewModelType {
     enum UserType {
+        case like
         case specific
         case all
     }
@@ -66,6 +67,26 @@ final class UserFeedViewModel: ViewModelType {
                     isLoadingSpinnerAvaliable.accept(true)
                     return NetworkManager.request2(type: PostsResponse.self, router: PostRouter.fetchPost(query: .init(next: nextCursor.value, limit: nil, product_id: "dr_sns", hashTag: nil)))
                     
+                }
+                .bind(with: self) { owner, response in
+                    switch response {
+                    case .success(let success):
+                        //dump(success.data)
+                        var updatedPosts = postsRelay.value
+                        updatedPosts.append(contentsOf: success.data)
+                        postsRelay.accept(updatedPosts)
+                        nextCursor.accept(success.next_cursor)
+                    case .failure(let failure):
+                        fetchFailureRelay.accept(failure)
+                    }
+                    isLoadingSpinnerAvaliable.accept(false)
+                }
+                .disposed(by: disposeBag)
+        case .like:
+            input.loadTrigger
+                .flatMapLatest { _ in
+                    isLoadingSpinnerAvaliable.accept(true)
+                    return NetworkManager.request2(type: PostsResponse.self, router: LikeRouter.fetchLike(query: .init(next: nextCursor.value, limit: nil)))
                 }
                 .bind(with: self) { owner, response in
                     switch response {
