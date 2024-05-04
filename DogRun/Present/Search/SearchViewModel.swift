@@ -21,6 +21,7 @@ final class SearchViewModel: ViewModelType {
     }
     
     struct Output {
+        let searchButtonTap: Driver<Void>
         let searchResults: BehaviorRelay<[PostResponse]>
         let modelSelected: ControlEvent<PostResponse>
         let searchFailure: PublishRelay<DRError>
@@ -32,6 +33,7 @@ final class SearchViewModel: ViewModelType {
         input.searchButtonTap
             .throttle(.seconds(1), scheduler: MainScheduler.instance)
             .withLatestFrom(input.searchText)
+            .distinctUntilChanged()
             .withUnretained(self)
             .flatMapLatest { owner, value in
                 return NetworkManager.request2(type: PostsResponse.self, router: PostRouter.searchHashTag(query: .init(next: nil, limit: "15", product_id: nil, hashTag: value)))
@@ -47,6 +49,7 @@ final class SearchViewModel: ViewModelType {
             .disposed(by: disposeBag)
         
         return Output(
+            searchButtonTap: input.searchButtonTap.asDriver(),
             searchResults: searchResults,
             modelSelected: input.modelSelected,
             searchFailure: searchFailure)

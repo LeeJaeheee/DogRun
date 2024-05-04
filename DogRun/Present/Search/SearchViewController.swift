@@ -21,7 +21,15 @@ final class SearchViewController: BaseViewController<SearchView> {
             modelSelected: mainView.collectionView.rx.modelSelected(PostResponse.self))
         
         let output = viewModel.transform(input: input)
-        //해시태그 도그런
+        //해시태그 도그런 먹방
+        
+        output.searchButtonTap
+            .drive(with: self) { owner, _ in
+                if let layout = owner.mainView.collectionView.collectionViewLayout as? PinterestLayout {
+                    layout.clearCache()
+                }
+            }
+            .disposed(by: disposeBag)
         
         output.searchResults
             .observe(on: MainScheduler.instance)
@@ -101,7 +109,7 @@ extension SearchViewController: PinterestLayoutDelegate {
         let aspectRatio = imageSize.0.width / imageSize.0.height
         let targetWidth = collectionView.frame.width / 2
         let targetHeight = targetWidth / aspectRatio
-        return targetHeight
+        return targetHeight + 20
     }
     
 }

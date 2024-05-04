@@ -10,7 +10,7 @@ import UIKit
 final class PinterestCollectionViewCell: BaseCollectionViewCell {
     let containerView = UIView()
     let imageView = UIImageView()
-    let profileView = ProfileInfoView()
+    let profileView = ProfileInfoView(imageSize: 36, cornerRadius: 12, nicknameFontSize: 13, dateFontSize: 12, spacing: 8)
     let hashtagLabel = UILabel()
     
     override func configureHierarchy() {
@@ -29,7 +29,7 @@ final class PinterestCollectionViewCell: BaseCollectionViewCell {
         }
         
         profileView.snp.makeConstraints { make in
-            make.bottom.equalTo(hashtagLabel.snp.top)
+            make.bottom.equalTo(hashtagLabel.snp.top).offset(-16)
             make.horizontalEdges.equalToSuperview()
         }
         
@@ -46,5 +46,6 @@ final class PinterestCollectionViewCell: BaseCollectionViewCell {
         containerView.clipsToBounds = true
         
         hashtagLabel.textColor = .accent
+        hashtagLabel.font = .systemFont(ofSize: 13)
     }
 }

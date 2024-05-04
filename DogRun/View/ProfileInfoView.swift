@@ -39,6 +39,17 @@ class ProfileInfoView: UIView {
         configureLayout()
     }
     
+    convenience init(imageSize: Int, cornerRadius: CGFloat, nicknameFontSize: CGFloat, dateFontSize: CGFloat, spacing: Int) {
+        self.init(frame: .zero)
+        profileImageView.layer.cornerRadius = cornerRadius
+        profileImageView.snp.updateConstraints { make in
+            make.leading.verticalEdges.equalTo(spacing)
+            make.size.equalTo(imageSize)
+        }
+        nicknameLabel.font = .systemFont(ofSize: nicknameFontSize, weight: .medium)
+        dateLabel.font = .systemFont(ofSize: dateFontSize, weight: .light)
+    }
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -59,14 +70,12 @@ class ProfileInfoView: UIView {
             make.leading.equalTo(profileImageView.snp.trailing).offset(12)
             make.top.equalTo(profileImageView.snp.top).offset(4)
             make.trailing.equalToSuperview().inset(16)
-            make.height.equalTo(26)
         }
         
         dateLabel.snp.makeConstraints { make in
             make.leading.equalTo(profileImageView.snp.trailing).offset(12)
             make.trailing.equalToSuperview().inset(16)
             make.top.equalTo(nicknameLabel.snp.bottom)
-            make.height.equalTo(20)
         }
     }
     
