@@ -35,11 +35,12 @@ final class UserViewModel: ViewModelType {
         let userFetchFailure: PublishRelay<DRError>
         let followSuccess: PublishRelay<FollowResponse>
         let followFailure: PublishRelay<DRError>
-        let followerButtonTap: Driver<Void>
-        let followingButtonTap: Driver<Void>
+        let followers: Driver<[Follower]>
+        let followings: Driver<[Follower]>
     }
     
     func transform(input: Input) -> Output {
+        var lastProfileResponse = BehaviorRelay<ProfileResponse?>(value: nil)
         let userFetchSuccess = PublishRelay<ProfileResponse>()
         let userFetchFailure = PublishRelay<DRError>()
         let followSuccess = PublishRelay<FollowResponse>()
@@ -87,14 +88,34 @@ final class UserViewModel: ViewModelType {
                 .disposed(by: disposeBag)
         }
         
+        userFetchSuccess
+            .bind(with: self) { owner, response in
+                lastProfileResponse.accept(response)
+            }
+            .disposed(by: disposeBag)
+        
+        let followers = input.followerButtonTap
+            .flatMap { _ -> Observable<[Follower]> in
+                guard let followers = lastProfileResponse.value?.followers else { return .just([]) }
+                return .just(followers)
+            }
+            .asDriver(onErrorJustReturn: [])
+                
+        let followings = input.followingButtonTap
+            .flatMap { _ -> Observable<[Follower]> in
+                guard let followings = lastProfileResponse.value?.following else { return .just([]) }
+                return .just(followings)
+            }
+            .asDriver(onErrorJustReturn: [])
+        
         return Output(
             settingButtonTap: settingButtonTap.asDriver(onErrorJustReturn: ()),
             userFetchSuccess: userFetchSuccess,
             userFetchFailure: userFetchFailure,
             followSuccess: followSuccess,
             followFailure: followFailure,
-            followerButtonTap: input.followerButtonTap.asDriver(),
-            followingButtonTap: input.followingButtonTap.asDriver()
+            followers: followers,
+            followings: followings
         )
     }
 }

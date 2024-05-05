@@ -65,6 +65,8 @@
 		D258DCDE2BE5E3C000A13F0E /* PinterestLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D258DCDD2BE5E3C000A13F0E /* PinterestLayout.swift */; };
 		D258DCE02BE5E50100A13F0E /* PinterestCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D258DCDF2BE5E50100A13F0E /* PinterestCollectionViewCell.swift */; };
 		D258DCE32BE65A7900A13F0E /* UIImageView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D258DCE22BE65A7900A13F0E /* UIImageView+Ext.swift */; };
+		D258DCE62BE738C000A13F0E /* FollowerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D258DCE52BE738C000A13F0E /* FollowerViewController.swift */; };
+		D258DCE82BE739EE00A13F0E /* FollowerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D258DCE72BE739EE00A13F0E /* FollowerTableViewCell.swift */; };
 		D25DDFFD2BD6CC5F0045C259 /* SNSPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25DDFFC2BD6CC5F0045C259 /* SNSPostView.swift */; };
 		D25DDFFF2BD6CC700045C259 /* SNSPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25DDFFE2BD6CC6F0045C259 /* SNSPostViewController.swift */; };
 		D25DE0012BD6CC800045C259 /* SNSPostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25DE0002BD6CC800045C259 /* SNSPostViewModel.swift */; };
@@ -207,6 +209,8 @@
 		D258DCDD2BE5E3C000A13F0E /* PinterestLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinterestLayout.swift; sourceTree = "<group>"; };
 		D258DCDF2BE5E50100A13F0E /* PinterestCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinterestCollectionViewCell.swift; sourceTree = "<group>"; };
 		D258DCE22BE65A7900A13F0E /* UIImageView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Ext.swift"; sourceTree = "<group>"; };
+		D258DCE52BE738C000A13F0E /* FollowerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowerViewController.swift; sourceTree = "<group>"; };
+		D258DCE72BE739EE00A13F0E /* FollowerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowerTableViewCell.swift; sourceTree = "<group>"; };
 		D25DDFFC2BD6CC5F0045C259 /* SNSPostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNSPostView.swift; sourceTree = "<group>"; };
 		D25DDFFE2BD6CC6F0045C259 /* SNSPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNSPostViewController.swift; sourceTree = "<group>"; };
 		D25DE0002BD6CC800045C259 /* SNSPostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNSPostViewModel.swift; sourceTree = "<group>"; };
@@ -568,6 +572,14 @@
 			path = Like;
 			sourceTree = "<group>";
 		};
+		D258DCE42BE7388600A13F0E /* Follow */ = {
+			isa = PBXGroup;
+			children = (
+				D258DCE52BE738C000A13F0E /* FollowerViewController.swift */,
+			);
+			path = Follow;
+			sourceTree = "<group>";
+		};
 		D25DDFF92BD6CB7F0045C259 /* Post */ = {
 			isa = PBXGroup;
 			children = (
@@ -599,6 +611,7 @@
 		D25DE0132BD7F4320045C259 /* User */ = {
 			isa = PBXGroup;
 			children = (
+				D258DCE42BE7388600A13F0E /* Follow */,
 				D2EA5B8F2BDB98F20055884C /* UserFeed */,
 				D25DE0142BD7F4860045C259 /* UserView.swift */,
 				D25DE0372BD982F70045C259 /* UserViewController.swift */,
@@ -736,6 +749,7 @@
 				D26190C82BE25029009BD5C5 /* LabelCollectionViewCell.swift */,
 				D26190D52BE2BFFA009BD5C5 /* CommentTableViewCell.swift */,
 				D258DCDF2BE5E50100A13F0E /* PinterestCollectionViewCell.swift */,
+				D258DCE72BE739EE00A13F0E /* FollowerTableViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -960,6 +974,7 @@
 				D2EA5B982BDC00020055884C /* FeedTableViewCell.swift in Sources */,
 				D2EA5BB52BDD30150055884C /* ValidationModel.swift in Sources */,
 				D23E77AD2BD1290F00A386A0 /* ViewController.swift in Sources */,
+				D258DCE82BE739EE00A13F0E /* FollowerTableViewCell.swift in Sources */,
 				D23E782A2BD547BB00A386A0 /* NicknameViewController.swift in Sources */,
 				D258DCCF2BE5CA8F00A13F0E /* PostDetailContentView.swift in Sources */,
 				D25DE0152BD7F4860045C259 /* UserView.swift in Sources */,
@@ -999,6 +1014,7 @@
 				D2EDA3442BD580F8009CB0D7 /* MapView.swift in Sources */,
 				D2EA5B912BDB99320055884C /* UserGalleryViewController.swift in Sources */,
 				D23E77A92BD1290F00A386A0 /* AppDelegate.swift in Sources */,
+				D258DCE62BE738C000A13F0E /* FollowerViewController.swift in Sources */,
 				D26190D62BE2BFFA009BD5C5 /* CommentTableViewCell.swift in Sources */,
 				D26190AA2BE125C6009BD5C5 /* JoinGreetingView.swift in Sources */,
 				D26190C12BE24630009BD5C5 /* UploadPostViewController.swift in Sources */,

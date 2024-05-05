@@ -49,6 +49,27 @@ final class UserViewController: BaseViewController<UserView> {
 //            .bind(with: self) { owner, response in
 //                owner.mainView.profileView.button.
 //            }
+        
+        output.followers
+            .drive(with: self) { owner, followers in
+                let vc = FollowerViewController()
+                vc.users.accept(followers)
+                vc.title = "팔로워"
+                let nav = UINavigationController(rootViewController: vc)
+                owner.present(nav, animated: true)
+            }
+            .disposed(by: disposeBag)
+        
+        output.followings
+            .drive(with: self) { owner, followings in
+                let vc = FollowerViewController()
+                vc.users.accept(followings)
+                vc.title = "팔로잉"
+                let nav = UINavigationController(rootViewController: vc)
+                owner.present(nav, animated: true)
+            }
+            .disposed(by: disposeBag)
+        
     }
     
     override func configureView() {

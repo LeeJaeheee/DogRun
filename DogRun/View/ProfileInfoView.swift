@@ -98,4 +98,5 @@ class ProfileInfoView: UIView {
         nicknameLabel.text = data.creator.nick
         dateLabel.text = data.createdAtDescription
     }
+    
 }
