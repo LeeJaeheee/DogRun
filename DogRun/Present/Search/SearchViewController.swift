@@ -18,7 +18,8 @@ final class SearchViewController: BaseViewController<SearchView> {
         let input = SearchViewModel.Input(
             searchButtonTap: mainView.searchController.searchBar.rx.searchButtonClicked,
             searchText: mainView.searchController.searchBar.rx.text.orEmpty,
-            modelSelected: mainView.collectionView.rx.modelSelected(PostResponse.self))
+            modelSelected: mainView.collectionView.rx.modelSelected(PostResponse.self), 
+            fetchMoreDatas: mainView.collectionView.rx.willDisplayCell.map { $0.at.item })
         
         let output = viewModel.transform(input: input)
         //해시태그 도그런 먹방
@@ -36,6 +37,7 @@ final class SearchViewController: BaseViewController<SearchView> {
             .withUnretained(self)
             .flatMapLatest { owner, posts in
                 owner.imageSizes = [:]
+                
                 let urlStrings = posts.compactMap { $0.files?.first }.map { $0 }
                 return Observable.create { observer in
                     self.preloadImages(urlStrings: urlStrings) { imageInfo in
@@ -47,9 +49,13 @@ final class SearchViewController: BaseViewController<SearchView> {
             }
             .do { [weak self] imageInfo in
                 self?.imageSizes = imageInfo
+                print("!!!@!@!@!@!@!@!",self?.imageSizes)
             }
-            .withLatestFrom(output.searchResults)
+            .withLatestFrom(output.searchResults) //FIXME: 여기서 새로 방출된 posts가 안들어옴
             .bind(to: mainView.collectionView.rx.items(cellIdentifier: PinterestCollectionViewCell.identifier, cellType: PinterestCollectionViewCell.self)) { index, post, cell in
+                
+                print(post)
+                
                 cell.profileView.configureData(data: post)
                 cell.hashtagLabel.text = post.hashTagsString
                 cell.imageView.image = self.imageSizes[index]?.1
@@ -62,6 +68,8 @@ final class SearchViewController: BaseViewController<SearchView> {
                         owner.navigationController?.pushViewController(vc, animated: true)
                     }
                     .disposed(by: cell.disposeBag)
+                
+                print(post.creator.nick)
             }
             .disposed(by: disposeBag)
         

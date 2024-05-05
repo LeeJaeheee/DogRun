@@ -39,6 +39,7 @@ final class UserGalleryViewController: UIViewController {
     func bind() {
         let input = UserGalleryViewModel.Input(
             loadTrigger: BehaviorRelay(value: ()), 
+            fetchMoreDatas: collectionView.rx.willDisplayCell.map { $0.at.item },
             refreshTrigger: refreshControl.rx.controlEvent(.valueChanged)
         )
         

@@ -16,7 +16,7 @@ final class UserGalleryViewModel: ViewModelType {
     
     struct Input {
         let loadTrigger: BehaviorRelay<Void>
-        //let fetchMoreDatas: ControlEvent<[IndexPath]>
+        let fetchMoreDatas: Observable<Int>
         let refreshTrigger: ControlEvent<Void>
     }
     
@@ -36,7 +36,7 @@ final class UserGalleryViewModel: ViewModelType {
         
         input.loadTrigger
             .flatMapLatest { _ in
-                return NetworkManager.request2(type: PostsResponse.self, router: PostRouter.fetchUserPost(id: self.userId, query: .init(next: nextCursor.value, limit: "15", product_id: nil, hashTag: nil)))
+                return NetworkManager.request2(type: PostsResponse.self, router: PostRouter.fetchUserPost(id: self.userId, query: .init(next: nextCursor.value, limit: "10", product_id: nil, hashTag: nil)))
             }
             .bind(with: self) { owner, response in
                 switch response {
@@ -67,6 +67,13 @@ final class UserGalleryViewModel: ViewModelType {
                 nextCursor.accept(nil)
                 input.loadTrigger.accept(())
             })
+            .disposed(by: disposeBag)
+        
+        input.fetchMoreDatas
+            .bind(with: self) { owner, index in
+                guard nextCursor.value != "0", index == filesRelay.value.count-2 else { return }
+                input.loadTrigger.accept(())
+            }
             .disposed(by: disposeBag)
             
         

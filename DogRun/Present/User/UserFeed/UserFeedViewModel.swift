@@ -23,7 +23,7 @@ final class UserFeedViewModel: ViewModelType {
     
     struct Input {
         let loadTrigger: BehaviorRelay<Void>
-        let fetchMoreDatas: ControlEvent<[IndexPath]>
+        let fetchMoreDatas: ControlEvent<WillDisplayCellEvent>
         let refreshTrigger: ControlEvent<Void>
     }
     
@@ -114,16 +114,13 @@ final class UserFeedViewModel: ViewModelType {
             .disposed(by: disposeBag)
 
         
-//        input.fetchMoreDatas
-//            .compactMap { $0.last?.row }
-//            .bind(with: self, onNext: { owner, index in
-//                print(index)
-//                print("==인덱스==", index, postsRelay.value.count)
-//                guard index == 0 else { return }
-//                print("==인덱스!!!==", index, postsRelay.value.count)
-//                input.loadTrigger.accept(())
-//            })
-//            .disposed(by: disposeBag)
+        input.fetchMoreDatas
+            .compactMap { $0.indexPath }
+            .bind(with: self, onNext: { owner, index in
+                guard nextCursor.value != "0", index.row == postsRelay.value.count-2 else { return }
+                input.loadTrigger.accept(())
+            })
+            .disposed(by: disposeBag)
         
         return Output(
             posts: postsRelay.asDriver(),

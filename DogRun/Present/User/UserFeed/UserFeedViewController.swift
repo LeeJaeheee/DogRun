@@ -67,7 +67,7 @@ class UserFeedViewController: UIViewController {
         
         let input = UserFeedViewModel.Input(
             loadTrigger: loadTrigger,
-            fetchMoreDatas: tableView.rx.prefetchRows, 
+            fetchMoreDatas: tableView.rx.willDisplayCell,
             refreshTrigger: refreshControl.rx.controlEvent(.valueChanged)
         )
         
