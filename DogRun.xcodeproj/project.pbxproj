@@ -71,6 +71,7 @@
 		D258DCEE2BE7773500A13F0E /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = D258DCED2BE7773500A13F0E /* Lottie */; };
 		D258DCF02BE7776B00A13F0E /* NetworkErrorPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D258DCEF2BE7776B00A13F0E /* NetworkErrorPopUpViewController.swift */; };
 		D258DCF22BE778EC00A13F0E /* networkerror.json in Resources */ = {isa = PBXBuildFile; fileRef = D258DCF12BE778EC00A13F0E /* networkerror.json */; };
+		D258DCF42BE7A9DE00A13F0E /* launchPAW.json in Resources */ = {isa = PBXBuildFile; fileRef = D258DCF32BE7A9DE00A13F0E /* launchPAW.json */; };
 		D25DDFFD2BD6CC5F0045C259 /* SNSPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25DDFFC2BD6CC5F0045C259 /* SNSPostView.swift */; };
 		D25DDFFF2BD6CC700045C259 /* SNSPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25DDFFE2BD6CC6F0045C259 /* SNSPostViewController.swift */; };
 		D25DE0012BD6CC800045C259 /* SNSPostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25DE0002BD6CC800045C259 /* SNSPostViewModel.swift */; };
@@ -131,6 +132,7 @@
 		D26190DF2BE2CA84009BD5C5 /* CommentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26190DE2BE2CA84009BD5C5 /* CommentViewModel.swift */; };
 		D26190E22BE3AE72009BD5C5 /* Comment Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26190E12BE3AE72009BD5C5 /* Comment Model.swift */; };
 		D26190E42BE3AE7C009BD5C5 /* CommentRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26190E32BE3AE7C009BD5C5 /* CommentRouter.swift */; };
+		D262E3D22BE7ACB90095AD25 /* launchPaw.png in Resources */ = {isa = PBXBuildFile; fileRef = D262E3D12BE7ACB90095AD25 /* launchPaw.png */; };
 		D2EA5B912BDB99320055884C /* UserGalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EA5B902BDB99320055884C /* UserGalleryViewController.swift */; };
 		D2EA5B932BDBFBCF0055884C /* UserFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EA5B922BDBFBCF0055884C /* UserFeedViewController.swift */; };
 		D2EA5B962BDBFC050055884C /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EA5B952BDBFC050055884C /* ImageCollectionViewCell.swift */; };
@@ -218,6 +220,7 @@
 		D258DCEA2BE75F0F00A13F0E /* FeedTabmanController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedTabmanController.swift; sourceTree = "<group>"; };
 		D258DCEF2BE7776B00A13F0E /* NetworkErrorPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkErrorPopUpViewController.swift; sourceTree = "<group>"; };
 		D258DCF12BE778EC00A13F0E /* networkerror.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = networkerror.json; sourceTree = "<group>"; };
+		D258DCF32BE7A9DE00A13F0E /* launchPAW.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = launchPAW.json; sourceTree = "<group>"; };
 		D25DDFFC2BD6CC5F0045C259 /* SNSPostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNSPostView.swift; sourceTree = "<group>"; };
 		D25DDFFE2BD6CC6F0045C259 /* SNSPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNSPostViewController.swift; sourceTree = "<group>"; };
 		D25DE0002BD6CC800045C259 /* SNSPostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNSPostViewModel.swift; sourceTree = "<group>"; };
@@ -275,6 +278,7 @@
 		D26190DE2BE2CA84009BD5C5 /* CommentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentViewModel.swift; sourceTree = "<group>"; };
 		D26190E12BE3AE72009BD5C5 /* Comment Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Comment Model.swift"; sourceTree = "<group>"; };
 		D26190E32BE3AE7C009BD5C5 /* CommentRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentRouter.swift; sourceTree = "<group>"; };
+		D262E3D12BE7ACB90095AD25 /* launchPaw.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = launchPaw.png; sourceTree = "<group>"; };
 		D2EA5B902BDB99320055884C /* UserGalleryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserGalleryViewController.swift; sourceTree = "<group>"; };
 		D2EA5B922BDBFBCF0055884C /* UserFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFeedViewController.swift; sourceTree = "<group>"; };
 		D2EA5B952BDBFC050055884C /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -439,6 +443,8 @@
 		D23E77E02BD3CC4C00A386A0 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				D262E3D12BE7ACB90095AD25 /* launchPaw.png */,
+				D258DCF32BE7A9DE00A13F0E /* launchPAW.json */,
 				D258DCF12BE778EC00A13F0E /* networkerror.json */,
 			);
 			path = Resource;
@@ -946,7 +952,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D262E3D22BE7ACB90095AD25 /* launchPaw.png in Resources */,
 				D23E77BD2BD1294900A386A0 /* .gitignore in Resources */,
+				D258DCF42BE7A9DE00A13F0E /* launchPAW.json in Resources */,
 				D23E77B22BD1291200A386A0 /* Assets.xcassets in Resources */,
 				D23E77B52BD1291200A386A0 /* Base in Resources */,
 				D258DCF22BE778EC00A13F0E /* networkerror.json in Resources */,
@@ -1249,6 +1257,7 @@
 				DEVELOPMENT_TEAM = 7TH7TS2438;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DogRun/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "이재희";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -1282,6 +1291,7 @@
 				DEVELOPMENT_TEAM = 7TH7TS2438;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DogRun/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "이재희";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

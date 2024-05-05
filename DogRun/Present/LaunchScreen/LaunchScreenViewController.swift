@@ -21,6 +21,7 @@ final class LaunchScreenViewController: BaseViewController<LaunchScreenView> {
         
         output.isValidUser
             .drive(with: self) { owner, isValid in
+                sleep(2)
                 if isValid {
                     owner.changeRootView(to: MainTabbarController())
                 } else {
