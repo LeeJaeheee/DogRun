@@ -35,7 +35,6 @@ final class UserProfileHeaderView: BaseView {
     override func configureView() {
         profileImageButton.layer.cornerRadius = 20
         profileImageButton.clipsToBounds = true
-        profileImageButton.contentMode = .scaleAspectFill
         profileImageButton.backgroundColor = .systemGray5
         
         emailLabel.font = .systemFont(ofSize: 16, weight: .medium)
@@ -44,7 +43,7 @@ final class UserProfileHeaderView: BaseView {
     
     func configureData(data: ProfileResponse) {
         if let profileImage = data.profileImage {
-            profileImageButton.kf.setImage(with: URL(string: APIKey.baseURL.rawValue+"/"+profileImage), for: .normal)
+            profileImageButton.kf.setBackgroundImage(with: URL(string: APIKey.baseURL.rawValue+"/"+profileImage), for: .normal)
         }
         
         emailLabel.text = data.email

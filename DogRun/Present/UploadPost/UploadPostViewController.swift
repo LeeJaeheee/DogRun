@@ -25,7 +25,7 @@ class UploadPostViewController: ModeBaseViewController<UploadPostView> {
     var content: UploadItem = .init(type: .text(""))
     
     override func bind() {
-        let uplodedImageFiles = PublishRelay<[String]>()
+        let uploadedImageFiles = PublishRelay<[String]>()
         
         doneButton.rx.tap
             .debounce(.seconds(1), scheduler: MainScheduler.asyncInstance)
@@ -41,14 +41,14 @@ class UploadPostViewController: ModeBaseViewController<UploadPostView> {
                 switch response {
                 case .success(let success):
                     dump(success)
-                    uplodedImageFiles.accept(success.files)
+                    uploadedImageFiles.accept(success.files)
                 case .failure(let failure):
                     owner.errorHandler(failure)
                 }
             })
             .disposed(by: disposeBag)
         
-        uplodedImageFiles
+        uploadedImageFiles
             .map { $0 }
             .flatMapLatest { [weak self] files in
                 return NetworkManager.request2(type: PostResponse.self, router: PostRouter.uploadPost(model: .init(title: nil, content: self?.content.textContent, content1: self?.mapRecord?.time, content2: self?.mapRecord?.distance, content3: nil, content4: nil, content5: nil, product_id: "dr_sns", files: files)))

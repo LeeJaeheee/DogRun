@@ -127,6 +127,12 @@ class UserFeedViewController: UIViewController {
             })
             .disposed(by: disposeBag)
         
+        viewModel.failureRelay
+            .bind(with: self) { owner, error in
+                owner.errorHandler(error)
+            }
+            .disposed(by: disposeBag)
+        
     }
 
 }

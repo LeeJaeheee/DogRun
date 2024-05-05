@@ -22,6 +22,7 @@ final class UserFeedViewModel: ViewModelType {
     var userId = UserDefaultsManager.userId
     
     let postsRelay = BehaviorRelay<[PostResponse]>(value: [])
+    let failureRelay = PublishRelay<DRError>()
     
     struct Input {
         let loadTrigger: BehaviorRelay<Void>
@@ -145,7 +146,7 @@ extension UserFeedViewModel {
                     updatedPosts[index] = owner.duplicate(post: post, likeStatus: success.like_status)
                     owner.postsRelay.accept(updatedPosts)
                 case .failure(let failure):
-                    print(failure)
+                    owner.failureRelay.accept(failure)
                 }
             }
             .disposed(by: disposeBag)

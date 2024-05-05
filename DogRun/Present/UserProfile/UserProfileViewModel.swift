@@ -53,6 +53,7 @@ final class UserProfileViewModel: ViewModelType {
         let loadTrigger: BehaviorRelay<Void>
         let updateTrigger: PublishRelay<ProfileResponse>
         let itemSelected: Observable<IndexPath>
+        let profileUpdated: PublishRelay<Data>
     }
 
     struct Output {
@@ -60,12 +61,17 @@ final class UserProfileViewModel: ViewModelType {
         let navigateToDetail: Observable<ProfileItem>
         let fetchSuccess: PublishRelay<ProfileResponse>
         let fetchFailure: PublishRelay<DRError>
+        let profileUpdateSuccess: PublishRelay<ProfileResponse>
+        let profileUpdateFailure: PublishRelay<DRError>
     }
 
     func transform(input: Input) -> Output {
         var sectionRelay = BehaviorRelay<[SectionModel<ProfileItem>]>(value: [])
         let fetchSuccessRelay = PublishRelay<ProfileResponse>()
         let fetchFailureRelay = PublishRelay<DRError>()
+        
+        let profileUpdateSuccess = PublishRelay<ProfileResponse>()
+        let profileUpdateFailure = PublishRelay<DRError>()
         
         input.loadTrigger
             .flatMap { _ in
@@ -95,10 +101,27 @@ final class UserProfileViewModel: ViewModelType {
             }
             .disposed(by: disposeBag)
         
+        input.profileUpdated
+            .flatMap { data in
+                return NetworkManager.requestMultipart(type: ProfileResponse.self, router: UserRouter.editMyProfile(model: .init(nick: nil, phoneNum: nil, birthDay: nil, profile: data)))
+            }
+            .bind(with: self) { owner, value in
+                switch value {
+                case .success(let success):
+                    profileUpdateSuccess.accept((success))
+                case .failure(let failure):
+                    profileUpdateFailure.accept(failure)
+                }
+            }
+            .disposed(by: disposeBag)
+        
         return Output(sections: sectionRelay,
                       navigateToDetail: navigateToDetail,
                       fetchSuccess: fetchSuccessRelay,
-                      fetchFailure: fetchFailureRelay)
+                      fetchFailure: fetchFailureRelay,
+                      profileUpdateSuccess: profileUpdateSuccess,
+                      profileUpdateFailure: profileUpdateFailure
+        )
     }
     
     private func createSectionModels(_ profileResponse: ProfileResponse) -> [SectionModel<ProfileItem>] {

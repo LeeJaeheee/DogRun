@@ -23,7 +23,7 @@ final class UserViewModel: ViewModelType {
     }
     
     struct Input {
-        let loadTrigger: BehaviorRelay<Void>
+        let loadTrigger: PublishRelay<Void>
         let buttonTap: ControlEvent<Void>
         let followerButtonTap: ControlEvent<Void>
         let followingButtonTap: ControlEvent<Void>

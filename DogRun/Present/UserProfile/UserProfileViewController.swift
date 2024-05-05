@@ -10,6 +10,7 @@ import SnapKit
 import RxSwift
 import RxCocoa
 import RxDataSources
+import PhotosUI
 
 class UserProfileViewController: UIViewController {
     
@@ -19,6 +20,9 @@ class UserProfileViewController: UIViewController {
     let tableView = UITableView(frame: .zero, style: .insetGrouped)
     
     let disposeBag = DisposeBag()
+    
+    let updateTrigger = PublishRelay<ProfileResponse>()
+    let profileUpdated = PublishRelay<Data>()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,12 +45,12 @@ class UserProfileViewController: UIViewController {
     }
 
     private func bindViewModel() {
-        let updateTrigger = PublishRelay<ProfileResponse>()
         
         let input = UserProfileViewModel.Input(
             loadTrigger: BehaviorRelay<Void>(value: ()), 
             updateTrigger: updateTrigger,
-            itemSelected: tableView.rx.itemSelected.asObservable()
+            itemSelected: tableView.rx.itemSelected.asObservable(), 
+            profileUpdated: profileUpdated
         )
         
         let output = viewModel.transform(input: input)
@@ -66,21 +70,21 @@ class UserProfileViewController: UIViewController {
                         let detailVC = NicknameViewController(mode: .modify)
                         detailVC.nickname = item.content ?? ""
                         detailVC.popAction = {
-                            updateTrigger.accept($0)
+                            self?.updateTrigger.accept($0)
                         }
                         self?.navigationController?.pushViewController(detailVC, animated: true)
                     case .phoneNumber:
                         let detailVC = PhoneNumberViewController(mode: .modify)
                         detailVC.phoneNumber = item.content ?? ""
                         detailVC.popAction = {
-                            updateTrigger.accept($0)
+                            self?.updateTrigger.accept($0)
                         }
                         self?.navigationController?.pushViewController(detailVC, animated: true)
                     case .birthdate:
                         let detailVC = BirthdayViewController(mode: .modify)
                         detailVC.viewModel.phoneNumber = item.content ?? ""
                         detailVC.popAction = {
-                            updateTrigger.accept($0)
+                            self?.updateTrigger.accept($0)
                         }
                         self?.navigationController?.pushViewController(detailVC, animated: true)
                     }
@@ -104,6 +108,24 @@ class UserProfileViewController: UIViewController {
                 owner.errorHandler(error)
             }
             .disposed(by: disposeBag)
+        
+        headerView.profileImageButton.rx.tap
+            .bind(with: self) { owner, _ in
+                owner.presentImagePicker()
+            }
+            .disposed(by: disposeBag)
+        
+        output.profileUpdateSuccess
+            .bind(with: self) { owner, response in
+                owner.headerView.configureData(data: response)
+            }
+            .disposed(by: disposeBag)
+        
+        output.profileUpdateFailure
+            .bind(with: self) { owner, error in
+                owner.errorHandler(error)
+            }
+            .disposed(by: disposeBag)
     }
 
     private func dataSource() -> RxTableViewSectionedReloadDataSource<SectionModel<ProfileItem>> {
@@ -119,4 +141,41 @@ class UserProfileViewController: UIViewController {
                 return dataSource.sectionModels[index].header
             })
     }
+}
+
+extension UserProfileViewController {
+    private func presentImagePicker() {
+        var configuration = PHPickerConfiguration()
+        configuration.selectionLimit = 1
+        configuration.filter = .images
+
+        let picker = PHPickerViewController(configuration: configuration)
+        picker.delegate = self
+        present(picker, animated: true)
+    }
+}
+
+extension UserProfileViewController: PHPickerViewControllerDelegate {
+    
+    func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
+        picker.dismiss(animated: true)
+        processPickedImages(results: results)
+    }
+    
+    private func processPickedImages(results: [PHPickerResult]) {
+        for result in results {
+            let itemProvider = result.itemProvider
+            guard itemProvider.canLoadObject(ofClass: UIImage.self) else { continue }
+            
+            itemProvider.loadObject(ofClass: UIImage.self) { [weak self] (image, error) in
+                if let image = image as? UIImage {
+                    DispatchQueue.main.async {
+                        let data = image.resizedImage(below: 5, compressionQuality: 0.5)
+                        self?.profileUpdated.accept(data ?? Data())
+                    }
+                }
+            }
+        }
+    }
+    
 }

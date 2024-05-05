@@ -14,10 +14,18 @@ final class UserViewController: BaseViewController<UserView> {
     var userTabmanViewController: UserTabmanViewController!
     
     let viewModel = UserViewModel()
+    
+    let loadTrigger = PublishRelay<Void>()
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        // FIXME: viewWillAppear 말고 변경 시에만 load하기
+        loadTrigger.accept(())
+    }
 
     override func bind() {
         let input = UserViewModel.Input(
-            loadTrigger: BehaviorRelay<Void>(value: ()),
+            loadTrigger: loadTrigger,
             buttonTap: mainView.profileView.button.rx.tap,
             followerButtonTap: mainView.profileView.followerButton.rx.tap,
             followingButtonTap: mainView.profileView.followingButton.rx.tap
