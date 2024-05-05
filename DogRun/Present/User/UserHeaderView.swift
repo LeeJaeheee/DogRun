@@ -82,7 +82,6 @@ final class UserHeaderView: BaseView {
     }
     
     func configureData(data: ProfileResponse) {
-        
         if let profileImage = data.profileImage {
             profileImageView.kf.setImage(with: URL(string: APIKey.baseURL.rawValue+"/"+profileImage))
         } else {
@@ -104,4 +103,5 @@ final class UserHeaderView: BaseView {
         
         layoutIfNeeded()
     }
+    
 }

@@ -53,10 +53,17 @@ final class UserViewController: BaseViewController<UserView> {
             .disposed(by: disposeBag)
         
         // TODO: 팔로우 기능 연결하기
-//        output.followSuccess
-//            .bind(with: self) { owner, response in
-//                owner.mainView.profileView.button.
-//            }
+        output.followSuccess
+            .bind(with: self) { owner, response in
+                owner.loadTrigger.accept(())
+            }
+            .disposed(by: disposeBag)
+        
+        output.followFailure
+            .bind(with: self) { owner, error in
+                owner.errorHandler(error)
+            }
+            .disposed(by: disposeBag)
         
         output.followers
             .drive(with: self) { owner, followers in
