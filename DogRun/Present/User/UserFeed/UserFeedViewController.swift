@@ -63,7 +63,6 @@ class UserFeedViewController: UIViewController {
     }
     
     private func bind() {
-        var changedLikeId: [Int: Void] = [:]
         
         let input = UserFeedViewModel.Input(
             loadTrigger: loadTrigger,
@@ -139,6 +138,7 @@ class UserFeedViewController: UIViewController {
 
 
 extension UserFeedViewController {
+    /*
     func showImageFullscreen(_ imageURL: String, post: PostResponse, index: Int, cellFrame: CGRect) {
         let fullscreenVC = PostDetailViewController()
         fullscreenVC.index = index
@@ -157,6 +157,34 @@ extension UserFeedViewController {
         view.addSubview(transitionImageView)
         
         UIView.animate(withDuration: 0.7, animations: {
+            transitionImageView.frame = finalFrame
+            transitionImageView.layer.cornerRadius = 0
+        }) { (finished) in
+            transitionImageView.removeFromSuperview()
+            self.present(fullscreenVC, animated: false)
+        }
+    }*/
+    func showImageFullscreen(_ imageURL: String, post: PostResponse, index: Int, cellFrame: CGRect) {
+        let fullscreenVC = PostDetailViewController()
+        fullscreenVC.index = index
+        fullscreenVC.post = post
+        fullscreenVC.modalPresentationStyle = .fullScreen
+        
+        let startingFrame = CGRect(x: 60, y: cellFrame.minY+60, width: cellFrame.width-80, height: cellFrame.height-80)
+        let finalFrame = UIScreen.main.bounds
+        
+        let transitionImageView = UIImageView(frame: startingFrame)
+        transitionImageView.kf.setImage(with: URL(string: APIKey.baseURL.rawValue+"/"+imageURL))
+        transitionImageView.contentMode = .scaleAspectFill
+        transitionImageView.clipsToBounds = true
+        transitionImageView.layer.cornerRadius = 20
+        
+        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return }
+        guard let window = windowScene.windows.first(where: { $0.isKeyWindow }) else { return }
+        
+        window.addSubview(transitionImageView)
+        
+        UIView.animate(withDuration: 0.9, animations: {
             transitionImageView.frame = finalFrame
             transitionImageView.layer.cornerRadius = 0
         }) { (finished) in

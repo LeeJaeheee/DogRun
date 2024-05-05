@@ -12,7 +12,7 @@ class MainTabbarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let feedNavigation = configureNavigationController(controller: SNSPostViewController(), title: "피드", imageName: "doc.text.image")
+        let feedNavigation = configureNavigationController(controller: UserFeedViewController(), title: "피드", imageName: "doc.text.image")
         let searchNavigation = configureNavigationController(controller: SearchViewController(), title: "검색", imageName: "number")
         let mapNavigation = configureNavigationController(controller: MapViewController(), title: "산책", imageName: "pawprint.circle.fill")
         let feedVC = UserFeedViewController()
@@ -21,6 +21,8 @@ class MainTabbarController: UITabBarController {
         let myPageNavigation = configureNavigationController(controller: UserViewController(), title: "마이페이지", imageName: "person")
         
         viewControllers = [feedNavigation, searchNavigation, mapNavigation, likeNavigation, myPageNavigation]
+        
+        selectedIndex = 2
     }
 
     private func configureNavigationController(controller: UIViewController, title: String, imageName: String) -> UINavigationController {
