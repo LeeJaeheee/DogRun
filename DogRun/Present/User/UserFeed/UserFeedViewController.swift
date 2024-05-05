@@ -78,25 +78,10 @@ class UserFeedViewController: UIViewController {
                 cell.configureData(data: post)
                 
                 cell.likeButton.rx.tap
-                    .debounce(.seconds(1), scheduler: MainScheduler.asyncInstance)
-                    .flatMap { _ in
-                        print(post.post_id)
-                        print(!post.likes.contains(UserDefaultsManager.userId))
-                        return NetworkManager.request2(type: LikeModel.self, router: LikeRouter.like(postId: post.post_id, model: .init(like_status: !post.likes.contains(UserDefaultsManager.userId))))
+                    .debounce(.milliseconds(300), scheduler: MainScheduler.asyncInstance)
+                    .bind(with: self) { owner, _ in
+                        owner.viewModel.tapLikeButton(post: post, index: index)
                     }
-                    .bind(with: self, onNext: { owner, response in
-                        switch response {
-                        case .success(let success):
-                            cell.likeButton.tintColor = success.like_status ? .systemRed : .white
-                            if let _ = changedLikeId[index] {
-                                changedLikeId.removeValue(forKey: index)
-                            } else {
-                                changedLikeId[index] = ()
-                            }
-                        case .failure(let failure):
-                            owner.errorHandler(failure)
-                        }
-                    })
                     .disposed(by: cell.disposeBag)
                 
                 cell.commentButton.rx.tap
@@ -120,7 +105,7 @@ class UserFeedViewController: UIViewController {
                     .disposed(by: cell.disposeBag)
                 
                 cell.profileView.tapGesture.rx.event
-                    .debounce(.milliseconds(5), scheduler: MainScheduler.asyncInstance)
+                    .debounce(.milliseconds(500), scheduler: MainScheduler.asyncInstance)
                     .bind(with: self) { owner, _ in
                         let vc = UserViewController()
                         vc.viewModel.userId = post.creator.user_id
