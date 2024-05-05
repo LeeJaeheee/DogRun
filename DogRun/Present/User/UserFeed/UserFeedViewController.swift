@@ -189,10 +189,12 @@ extension UserFeedViewController {
         
         UIView.animate(withDuration: 0.9, animations: {
             transitionImageView.frame = finalFrame
-            transitionImageView.layer.cornerRadius = 0
+            transitionImageView.layer.cornerRadius = 20
         }) { (finished) in
-            transitionImageView.removeFromSuperview()
-            self.present(fullscreenVC, animated: false)
+            
+            self.present(fullscreenVC, animated: false) {
+                transitionImageView.removeFromSuperview()
+            }
         }
     }
 }
