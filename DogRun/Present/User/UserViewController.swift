@@ -53,6 +53,8 @@ final class UserViewController: BaseViewController<UserView> {
     
     override func configureView() {
         userTabmanViewController = UserTabmanViewController()
+        userTabmanViewController.userId = viewModel.userId
+        
         addChild(userTabmanViewController)
         mainView.containerView.addSubview(userTabmanViewController.view)
         userTabmanViewController.view.snp.makeConstraints { make in

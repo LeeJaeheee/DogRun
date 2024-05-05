@@ -32,6 +32,7 @@ class UserTabmanViewController: TabmanViewController {
         firstVC.viewModel.userId = userId
         let secondVC = UserFeedViewController()
         secondVC.viewModel.usertype = .specific
+        secondVC.viewModel.userId = userId
         let thirdVC = UserChallengeViewController()
         
         viewControllers = [firstVC, secondVC, thirdVC]
