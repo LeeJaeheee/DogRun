@@ -18,6 +18,7 @@ class UserProfileViewController: UIViewController {
     
     let headerView = UserProfileHeaderView()
     let tableView = UITableView(frame: .zero, style: .insetGrouped)
+    let withdrawButton = UIButton()
     
     let disposeBag = DisposeBag()
     
@@ -34,23 +35,36 @@ class UserProfileViewController: UIViewController {
 
     private func setupTableView() {
         view.addSubview(tableView)
+        view.addSubview(withdrawButton)
+        
         tableView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
-        tableView.register(UserProfileTableViewCell.self, forCellReuseIdentifier: UserProfileTableViewCell.identifier)
- 
-        tableView.tableHeaderView = headerView
+        withdrawButton.snp.makeConstraints { make in
+            make.bottom.equalTo(view.safeAreaLayoutGuide).inset(12)
+            make.centerX.equalToSuperview()
+        }
         
+        tableView.register(UserProfileTableViewCell.self, forCellReuseIdentifier: UserProfileTableViewCell.identifier)
+        tableView.tableHeaderView = headerView
         tableView.rowHeight = UITableView.automaticDimension
+        
+        withdrawButton.setTitle("회원 탈퇴", for: .normal)
+        withdrawButton.titleLabel?.font = .systemFont(ofSize: 13)
+        withdrawButton.setTitleColor(.systemRed, for: .normal)
     }
 
     private func bindViewModel() {
+        
+        let withdraw = PublishRelay<Void>()
         
         let input = UserProfileViewModel.Input(
             loadTrigger: BehaviorRelay<Void>(value: ()), 
             updateTrigger: updateTrigger,
             itemSelected: tableView.rx.itemSelected.asObservable(), 
-            profileUpdated: profileUpdated
+            profileUpdated: profileUpdated, 
+            withdrawButtonTap: withdrawButton.rx.tap, 
+            withdraw: withdraw
         )
         
         let output = viewModel.transform(input: input)
@@ -122,6 +136,26 @@ class UserProfileViewController: UIViewController {
             .disposed(by: disposeBag)
         
         output.profileUpdateFailure
+            .bind(with: self) { owner, error in
+                owner.errorHandler(error)
+            }
+            .disposed(by: disposeBag)
+        
+        output.confirmWithdraw
+            .drive(with: self) { owner, _ in
+                owner.showDeleteAlert(title: "회원 탈퇴", message: "\n정말 탈퇴하시겠습니까?\n") { _ in
+                    withdraw.accept(())
+                }
+            }
+            .disposed(by: disposeBag)
+        
+        output.withdrawSuccess
+            .bind(with: self) { owner, _ in
+                owner.changeRootView(to: WelcomeViewController())
+            }
+            .disposed(by: disposeBag)
+        
+        output.withdrawFailure
             .bind(with: self) { owner, error in
                 owner.errorHandler(error)
             }

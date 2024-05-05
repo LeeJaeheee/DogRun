@@ -54,6 +54,8 @@ final class UserProfileViewModel: ViewModelType {
         let updateTrigger: PublishRelay<ProfileResponse>
         let itemSelected: Observable<IndexPath>
         let profileUpdated: PublishRelay<Data>
+        let withdrawButtonTap: ControlEvent<Void>
+        let withdraw: PublishRelay<Void>
     }
 
     struct Output {
@@ -63,6 +65,9 @@ final class UserProfileViewModel: ViewModelType {
         let fetchFailure: PublishRelay<DRError>
         let profileUpdateSuccess: PublishRelay<ProfileResponse>
         let profileUpdateFailure: PublishRelay<DRError>
+        let confirmWithdraw: Driver<Void>
+        let withdrawSuccess: PublishRelay<Void>
+        let withdrawFailure: PublishRelay<DRError>
     }
 
     func transform(input: Input) -> Output {
@@ -72,6 +77,9 @@ final class UserProfileViewModel: ViewModelType {
         
         let profileUpdateSuccess = PublishRelay<ProfileResponse>()
         let profileUpdateFailure = PublishRelay<DRError>()
+        
+        let withdrawSuccess = PublishRelay<Void>()
+        let withdrawFailure = PublishRelay<DRError>()
         
         input.loadTrigger
             .flatMap { _ in
@@ -115,12 +123,32 @@ final class UserProfileViewModel: ViewModelType {
             }
             .disposed(by: disposeBag)
         
+        input.withdraw
+            .flatMap { _ in
+                NetworkManager.request2(type: WithdrawResponse.self, router: UserRouter.withdraw)
+            }
+            .bind(with: self) { owner, response in
+                switch response {
+                case .success(_):
+                    UserDefaultsManager.accessToken = ""
+                    UserDefaultsManager.refreshToken = ""
+                    UserDefaultsManager.userId = ""
+                    withdrawSuccess.accept(())
+                case .failure(let failure):
+                    withdrawFailure.accept(failure)
+                }
+            }
+            .disposed(by: disposeBag)
+        
         return Output(sections: sectionRelay,
                       navigateToDetail: navigateToDetail,
                       fetchSuccess: fetchSuccessRelay,
                       fetchFailure: fetchFailureRelay,
                       profileUpdateSuccess: profileUpdateSuccess,
-                      profileUpdateFailure: profileUpdateFailure
+                      profileUpdateFailure: profileUpdateFailure, 
+                      confirmWithdraw: input.withdrawButtonTap.asDriver(),
+                      withdrawSuccess: withdrawSuccess,
+                      withdrawFailure: withdrawFailure
         )
     }
     
