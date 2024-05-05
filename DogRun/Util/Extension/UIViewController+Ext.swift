@@ -126,6 +126,11 @@ extension UIViewController {
             }
         case .developerFaultSorry:
             showAlert(title: "오류 발생", message: "\n\(error.errorMessage)\n개발자에게 돌을 던져주세요...🪨")
+        case .internetInvalid:
+            let errorVC = NetworkErrorPopUpViewController()
+            errorVC.errorType = error
+            errorVC.modalPresentationStyle = .overFullScreen
+            self.present(errorVC, animated: false, completion: nil)
         }
         
     }

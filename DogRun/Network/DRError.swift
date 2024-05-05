@@ -25,6 +25,8 @@ enum DRError: Error {
     case accessTokenExpired(message: String)
     case unauthorized(message: String)
     
+    case internetInvalid(message: String)
+    
     init(statusCode: Int, errorMessage: String = "알 수 없는 에러가 발생했습니다.") {
         switch statusCode {
         case 420:
@@ -60,7 +62,7 @@ enum DRError: Error {
         switch self {
         case .sesacKey(let message), .overCall(let message), .url(let message), .unknown(let message),
                 .missingRequired(let message), .inValidToken(let message), .forbidden(let message), .alreadyExist(let message),
-                .serverError(let message), .refreshTokenExpired(let message), .accessTokenExpired(let message), .unauthorized(let message):
+                .serverError(let message), .refreshTokenExpired(let message), .accessTokenExpired(let message), .unauthorized(let message), .internetInvalid(message: let message):
             return message
         }
     }
@@ -78,6 +80,7 @@ enum DRError: Error {
         case showToast
         case showLogin
         case developerFaultSorry
+        case internetInvalid
     }
     
     var handlingRule: HandlingRule {
@@ -88,6 +91,8 @@ enum DRError: Error {
                 .showToast
         case .inValidToken, .refreshTokenExpired, .accessTokenExpired: // TODO: 인터셉터 실패하면 419와서..다시 체크하기!
                 .showLogin
+        case .internetInvalid:
+                .internetInvalid
         }
     }
 

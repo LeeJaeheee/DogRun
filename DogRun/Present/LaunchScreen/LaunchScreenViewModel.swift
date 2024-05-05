@@ -33,7 +33,9 @@ final class LaunchScreenViewModel: ViewModelType {
                     UserDefaultsManager.accessToken = success.accessToken
                     isValidUser.accept(true)
                 case .failure(let failure):
+                    print(failure)
                     isValidUser.accept(false)
+                    print(isValidUser)
                 }
             }
             .disposed(by: disposeBag)

@@ -68,6 +68,9 @@
 		D258DCE62BE738C000A13F0E /* FollowerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D258DCE52BE738C000A13F0E /* FollowerViewController.swift */; };
 		D258DCE82BE739EE00A13F0E /* FollowerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D258DCE72BE739EE00A13F0E /* FollowerTableViewCell.swift */; };
 		D258DCEB2BE75F0F00A13F0E /* FeedTabmanController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D258DCEA2BE75F0F00A13F0E /* FeedTabmanController.swift */; };
+		D258DCEE2BE7773500A13F0E /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = D258DCED2BE7773500A13F0E /* Lottie */; };
+		D258DCF02BE7776B00A13F0E /* NetworkErrorPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D258DCEF2BE7776B00A13F0E /* NetworkErrorPopUpViewController.swift */; };
+		D258DCF22BE778EC00A13F0E /* networkerror.json in Resources */ = {isa = PBXBuildFile; fileRef = D258DCF12BE778EC00A13F0E /* networkerror.json */; };
 		D25DDFFD2BD6CC5F0045C259 /* SNSPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25DDFFC2BD6CC5F0045C259 /* SNSPostView.swift */; };
 		D25DDFFF2BD6CC700045C259 /* SNSPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25DDFFE2BD6CC6F0045C259 /* SNSPostViewController.swift */; };
 		D25DE0012BD6CC800045C259 /* SNSPostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25DE0002BD6CC800045C259 /* SNSPostViewModel.swift */; };
@@ -213,6 +216,8 @@
 		D258DCE52BE738C000A13F0E /* FollowerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowerViewController.swift; sourceTree = "<group>"; };
 		D258DCE72BE739EE00A13F0E /* FollowerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowerTableViewCell.swift; sourceTree = "<group>"; };
 		D258DCEA2BE75F0F00A13F0E /* FeedTabmanController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedTabmanController.swift; sourceTree = "<group>"; };
+		D258DCEF2BE7776B00A13F0E /* NetworkErrorPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkErrorPopUpViewController.swift; sourceTree = "<group>"; };
+		D258DCF12BE778EC00A13F0E /* networkerror.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = networkerror.json; sourceTree = "<group>"; };
 		D25DDFFC2BD6CC5F0045C259 /* SNSPostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNSPostView.swift; sourceTree = "<group>"; };
 		D25DDFFE2BD6CC6F0045C259 /* SNSPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNSPostViewController.swift; sourceTree = "<group>"; };
 		D25DE0002BD6CC800045C259 /* SNSPostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNSPostViewModel.swift; sourceTree = "<group>"; };
@@ -305,6 +310,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D258DCEE2BE7773500A13F0E /* Lottie in Frameworks */,
 				D23E77F62BD3CDE100A386A0 /* Kingfisher in Frameworks */,
 				D23E78142BD4C2F900A386A0 /* TextFieldEffects in Frameworks */,
 				D23E77F32BD3CDD300A386A0 /* Alamofire in Frameworks */,
@@ -433,6 +439,7 @@
 		D23E77E02BD3CC4C00A386A0 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				D258DCF12BE778EC00A13F0E /* networkerror.json */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -449,6 +456,7 @@
 				D26190B32BE22E74009BD5C5 /* BasePopUpView.swift */,
 				D26190C42BE24F6A009BD5C5 /* BaseCollectionViewCell.swift */,
 				D26190D72BE2C02B009BD5C5 /* BaseTableViewCell.swift */,
+				D258DCEF2BE7776B00A13F0E /* NetworkErrorPopUpViewController.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -881,6 +889,7 @@
 				D25DE0172BD92FA90045C259 /* Differentiator */,
 				D25DE0192BD92FA90045C259 /* RxDataSources */,
 				D25DE0352BD980680045C259 /* Tabman */,
+				D258DCED2BE7773500A13F0E /* Lottie */,
 			);
 			productName = DogRun;
 			productReference = D23E77A52BD1290F00A386A0 /* DogRun.app */;
@@ -921,6 +930,7 @@
 				D23E78152BD4C32200A386A0 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 				D25DE0162BD92FA90045C259 /* XCRemoteSwiftPackageReference "RxDataSources" */,
 				D25DE0342BD980680045C259 /* XCRemoteSwiftPackageReference "Tabman" */,
+				D258DCEC2BE7773500A13F0E /* XCRemoteSwiftPackageReference "lottie-ios" */,
 			);
 			productRefGroup = D23E77A62BD1290F00A386A0 /* Products */;
 			projectDirPath = "";
@@ -939,6 +949,7 @@
 				D23E77BD2BD1294900A386A0 /* .gitignore in Resources */,
 				D23E77B22BD1291200A386A0 /* Assets.xcassets in Resources */,
 				D23E77B52BD1291200A386A0 /* Base in Resources */,
+				D258DCF22BE778EC00A13F0E /* networkerror.json in Resources */,
 				D23E77B02BD1290F00A386A0 /* Base in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -992,6 +1003,7 @@
 				D25DE0152BD7F4860045C259 /* UserView.swift in Sources */,
 				D261908F2BDF7E92009BD5C5 /* CustomAnnotataion.swift in Sources */,
 				D23E781F2BD53E3F00A386A0 /* DRLabel.swift in Sources */,
+				D258DCF02BE7776B00A13F0E /* NetworkErrorPopUpViewController.swift in Sources */,
 				D25DE01D2BD931F10045C259 /* UserProfileViewController.swift in Sources */,
 				D26190E22BE3AE72009BD5C5 /* Comment Model.swift in Sources */,
 				D2EA5BA02BDCE9C80055884C /* MainTabbarController.swift in Sources */,
@@ -1381,6 +1393,14 @@
 				minimumVersion = 7.0.2;
 			};
 		};
+		D258DCEC2BE7773500A13F0E /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.4.3;
+			};
+		};
 		D25DE0162BD92FA90045C259 /* XCRemoteSwiftPackageReference "RxDataSources" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/RxSwiftCommunity/RxDataSources.git";
@@ -1444,6 +1464,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D23E78152BD4C32200A386A0 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
 			productName = IQKeyboardManagerSwift;
+		};
+		D258DCED2BE7773500A13F0E /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D258DCEC2BE7773500A13F0E /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
 		};
 		D25DE0172BD92FA90045C259 /* Differentiator */ = {
 			isa = XCSwiftPackageProductDependency;

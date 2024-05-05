@@ -11,13 +11,18 @@ import Alamofire
 
 struct NetworkManager {
     
+    static let reachabilityManager = NetworkReachabilityManager()
+    
     static func request2<T: Decodable>(type: T.Type, router: TargetType) -> Single<Result<T, DRError>> {
         return Single<Result<T, DRError>>.create { single in
+            
+            if reachabilityManager?.isReachable == false {
+                single(.success(.failure(.internetInvalid(message: "네트워크 연결 후 다시 시도해주세요!"))))
+                return Disposables.create()
+            }
+            
             do {
                 let urlRequest = try router.asURLRequest()
-                
-                print("--리퀘스트--")
-                print(urlRequest)
                 
                 AF.request(urlRequest, interceptor: TokenRefreshInterceptor.shared)
                     .validate(statusCode: 200..<300)
@@ -52,12 +57,14 @@ struct NetworkManager {
     
     static func requestVoid(router: TargetType) -> Single<Result<Void, DRError>> {
         return Single<Result<Void, DRError>>.create { single in
+            if reachabilityManager?.isReachable == false {
+                single(.success(.failure(.internetInvalid(message: "네트워크 연결 후 다시 시도해주세요!"))))
+                return Disposables.create()
+            }
+            
             do {
                 let urlRequest = try router.asURLRequest()
-                
-                print("--리퀘스트--")
-                print(urlRequest)
-                
+
                 AF.request(urlRequest, interceptor: TokenRefreshInterceptor.shared)
                     .validate(statusCode: 200..<300)
                     .response { response in
@@ -91,6 +98,12 @@ struct NetworkManager {
     
     static func requestMultipart<T: Decodable>(type: T.Type, router: TargetType) -> Single<Result<T, DRError>> {
         return Single<Result<T, DRError>>.create { single in
+            
+            if reachabilityManager?.isReachable == false {
+                single(.success(.failure(.internetInvalid(message: "네트워크 연결 후 다시 시도해주세요!"))))
+                return Disposables.create()
+            }
+            
             do {
                 let urlRequest = try router.asURLRequest()
                 
@@ -127,6 +140,7 @@ struct NetworkManager {
     
     static func requestTokenRefresh<T: Decodable>(type: T.Type, router: TargetType) -> Single<Result<T, DRError>> {
         return Single<Result<T, DRError>>.create { single in
+            
             do {
                 let urlRequest = try router.asURLRequest()
                 
@@ -151,6 +165,7 @@ struct NetworkManager {
                             }
                             print("최종", errorMessage)
                             single(.success(.failure(.init(statusCode: statusCode, errorMessage: errorMessage))))
+                            
                         }
                     }
             } catch {

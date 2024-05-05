@@ -24,6 +24,7 @@ final class LaunchScreenViewController: BaseViewController<LaunchScreenView> {
                 if isValid {
                     owner.changeRootView(to: MainTabbarController())
                 } else {
+                    print("왜안되지?")
                     owner.changeRootView(to: WelcomeViewController(), isNav: true)
                 }
             }
