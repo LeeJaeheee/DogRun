@@ -15,7 +15,7 @@ final class UserViewController: BaseViewController<UserView> {
     
     let viewModel = UserViewModel()
     
-    let loadTrigger = PublishRelay<Void>()
+    let loadTrigger = BehaviorRelay<Void>(value: ())
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

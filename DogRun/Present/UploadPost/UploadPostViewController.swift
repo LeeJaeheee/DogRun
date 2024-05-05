@@ -66,7 +66,6 @@ class UploadPostViewController: ModeBaseViewController<UploadPostView> {
     }
     
     override func configureView() {
-        navigationController?.presentationController?.delegate = self
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelButtonTapped))
         navigationItem.rightBarButtonItem = doneButton
         
@@ -147,15 +146,6 @@ class UploadPostViewController: ModeBaseViewController<UploadPostView> {
         dataSource.apply(snapshot)
     }
     
-}
-
-extension UploadPostViewController: UIAdaptivePresentationControllerDelegate {
-
-    func presentationControllerShouldDismiss(_ presentationController: UIPresentationController) -> Bool {
-        showAlertForDismiss()
-        return false
-    }
-
 }
 
 extension UploadPostViewController: PHPickerViewControllerDelegate {

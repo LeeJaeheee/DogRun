@@ -21,7 +21,7 @@ struct UploadItem: Hashable, Identifiable {
         guard case .date(let date) = type else { return nil }
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy년 MM월 dd일 EEEE"
-        return dateFormatter.string(from: date)
+        return ""
     }
 
     var image: UIImage? {
@@ -59,8 +59,8 @@ enum UploadSectionType: Int, CaseIterable {
             itemInset = nil
             orthogonalScrollingBehavior = .none
         case .image:
-            itemSize = NSCollectionLayoutSize(widthDimension: .absolute(128), heightDimension: .absolute(140))
-            itemInset = NSDirectionalEdgeInsets(top: 0, leading: 4, bottom: 20, trailing: 4)
+            itemSize = NSCollectionLayoutSize(widthDimension: .absolute(88), heightDimension: .absolute(140))
+            itemInset = NSDirectionalEdgeInsets(top: 40, leading: 8, bottom: 20, trailing: 0)
             orthogonalScrollingBehavior = .continuous
         case .text:
             itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(70))

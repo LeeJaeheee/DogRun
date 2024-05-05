@@ -183,3 +183,29 @@ extension UserFeedViewModel {
             comments: post.comments)
     }
 }
+
+extension UserFeedViewModel {
+    func duplicate(post: PostResponse, index: Int, comments: [Comment]) {
+        let newPost = PostResponse(
+            post_id: post.post_id,
+            product_id: post.product_id,
+            title: post.title,
+            content: post.content,
+            content1: post.content1,
+            content2: post.content2,
+            content3: post.content3,
+            content4: post.content4,
+            content5: post.content5,
+            createdAt: post.createdAt,
+            creator: post.creator,
+            files: post.files,
+            likes: post.likes,
+            likes2: post.likes2,
+            hashTags: post.hashTags,
+            comments: comments)
+        
+        var updatedPosts = postsRelay.value
+        updatedPosts[index] = newPost
+        postsRelay.accept(updatedPosts)
+    }
+}

@@ -11,6 +11,12 @@ import RxCocoa
 
 final class CommentViewController: BaseViewController<CommentView> {
     let viewModel = CommentViewModel()
+    var dismissHandler: (([Comment]) -> Void)?
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        dismissHandler?(viewModel.comments.value)
+    }
     
     override func bind() {
         let deleteButtonTap = PublishRelay<Int>()

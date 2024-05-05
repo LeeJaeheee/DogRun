@@ -88,6 +88,9 @@ class UserFeedViewController: UIViewController {
                         let vc = CommentViewController()
                         vc.viewModel.postId = post.post_id
                         vc.viewModel.comments.accept(post.comments)
+                        vc.dismissHandler = { comments in
+                            owner.viewModel.duplicate(post: post, index: index, comments: comments)
+                        }
                         owner.present(vc, animated: true)
                     }
                     .disposed(by: cell.disposeBag)
