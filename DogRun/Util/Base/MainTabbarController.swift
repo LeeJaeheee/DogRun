@@ -12,7 +12,7 @@ class MainTabbarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let feedNavigation = configureNavigationController(controller: UserFeedViewController(), title: "피드", imageName: "doc.text.image")
+        let feedNavigation = configureNavigationController(controller: ChallengeViewController(), title: "피드", imageName: "doc.text.image")
         let searchNavigation = configureNavigationController(controller: SearchViewController(), title: "검색", imageName: "number")
         let mapNavigation = configureNavigationController(controller: MapViewController(), title: "산책", imageName: "pawprint.circle.fill")
         let feedVC = UserFeedViewController()

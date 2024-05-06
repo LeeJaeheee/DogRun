@@ -58,6 +58,72 @@ extension PostResponse {
     }
 }
 
+// “dr_banner”
+struct BannerResponse: Decodable, Hashable {
+    let post_id: String
+    let product_id: String
+    let title: String
+    let content: String
+}
+
+// “dr_challenge”
+struct ChallengeResponse: Decodable, Hashable {
+    let post_id: String
+    let product_id: String
+    let title: String
+    let content: String
+    let region: String
+    let price: String
+    let createdAt: String
+    let creator: Creator
+    let files: [String]
+    let likes2: [String]
+    let hashTags: [String]
+    //let buyers: [String]
+    
+    enum CodingKeys: String, CodingKey {
+        case post_id
+        case product_id
+        case title
+        case content
+        case region = "content1"
+        case price = "content2"
+        case createdAt
+        case creator
+        case files
+        case likes2
+        case hashTags
+        //case buyers
+    }
+    
+    init(from decoder: any Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.post_id = try container.decode(String.self, forKey: .post_id)
+        self.product_id = try container.decode(String.self, forKey: .product_id)
+        self.title = try container.decode(String.self, forKey: .title)
+        self.content = try container.decode(String.self, forKey: .content)
+        self.region = try container.decode(String.self, forKey: .region)
+        self.price = try container.decode(String.self, forKey: .price)
+        self.createdAt = try container.decode(String.self, forKey: .createdAt)
+        self.creator = try container.decode(Creator.self, forKey: .creator)
+        self.files = try container.decodeIfPresent([String].self, forKey: .files) ?? []
+        self.likes2 = try container.decode([String].self, forKey: .likes2)
+        self.hashTags = try container.decode([String].self, forKey: .hashTags)
+        //self.buyers = try container.decode([String].self, forKey: .buyers)
+    }
+}
+extension ChallengeResponse {
+    var isLiked: Bool {
+        likes2.contains(UserDefaultsManager.userId)
+    }
+//    var isBought: Bool {
+//        buyers.contains(UserDefaultsManager.userId)
+//    }
+    var imageStrings: [String] {
+        files.map { APIKey.baseURL.rawValue+"/"+$0 }
+    }
+}
+
 struct Creator: Decodable, Hashable {
     let user_id: String
     let nick: String
@@ -104,5 +170,15 @@ struct PostQuery {
 
 struct PostsResponse: Decodable {
     let data: [PostResponse]
+    let next_cursor: String
+}
+
+struct BannersResponse: Decodable {
+    let data: [BannerResponse]
+    let next_cursor: String
+}
+
+struct ChallengesResponse: Decodable {
+    let data: [ChallengeResponse]
     let next_cursor: String
 }

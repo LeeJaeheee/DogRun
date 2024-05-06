@@ -23,7 +23,7 @@ final class BannerCollectionViewCell: BaseCollectionViewCell {
     
     override func configureView() {
         titleLabel.numberOfLines = 2
-        titleLabel.font = .boldSystemFont(ofSize: 17)
+        titleLabel.font = .boldSystemFont(ofSize: 22)
         titleLabel.textAlignment = .center
         
         backgroundColor = .init(

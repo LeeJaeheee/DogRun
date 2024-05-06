@@ -29,7 +29,6 @@ struct NetworkManager {
                     .responseDecodable(of: T.self) { response in
                         switch response.result {
                         case .success(let model):
-                            dump(model)
                             single(.success(.success(model)))
                         case .failure(let error):
                             print("요청 실패: \(error.localizedDescription)")

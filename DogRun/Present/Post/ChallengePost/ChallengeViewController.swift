@@ -6,18 +6,55 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 final class ChallengeViewController: BaseViewController<ChallengeView> {
     
     private var dataSource: UICollectionViewDiffableDataSource<Section, Item>?
+    var snapshot = NSDiffableDataSourceSnapshot<Section, Item>()
+    
+    let viewModel = ChallengeViewModel()
     
     override func configureView() {
         setDataSource()
-        setSnapShot()
+        snapshot.appendSections([.init(id: SectionType.banner.rawValue), .init(id: SectionType.normalCarousel.rawValue), .init(id: SectionType.listCarousel.rawValue)])
     }
     
     override func bind() {
+        let input = ChallengeViewModel.Input(loadBannerTrigger: BehaviorRelay<Void>(value: ()), loadChallengeTrigger: BehaviorRelay(value: ()))
         
+        let output = viewModel.transform(input: input)
+        
+        output.bannerList
+            .drive(with: self) { owner, banners in
+                let items = banners.map { Item.banner($0) }
+                owner.snapshot.appendItems(items, toSection: .init(id: SectionType.banner.rawValue))
+                owner.dataSource?.apply(owner.snapshot)
+            }
+            .disposed(by: disposeBag)
+        
+        output.recommendList
+            .drive(with: self) { owner, recommends in
+                let items = recommends.map { Item.recommend($0) }
+                owner.snapshot.appendItems(items, toSection: .init(id: SectionType.normalCarousel.rawValue))
+                owner.dataSource?.apply(owner.snapshot)
+            }
+            .disposed(by: disposeBag)
+        
+        output.postList
+            .drive(with: self) { owner, posts in
+                let items = posts.map { Item.post($0) }
+                owner.snapshot.appendItems(items, toSection: .init(id: SectionType.listCarousel.rawValue))
+                owner.dataSource?.apply(owner.snapshot)
+            }
+            .disposed(by: disposeBag)
+        
+        output.requestFailure
+            .bind(with: self) { owner, error in
+                owner.errorHandler(error)
+            }
+            .disposed(by: disposeBag)
     }
     
     private func setDataSource() {
@@ -27,39 +64,19 @@ final class ChallengeViewController: BaseViewController<ChallengeView> {
             switch itemIdentifier {
             case .banner(let item):
                 guard let cell = mainView.collectionView.dequeueReusableCell(withReuseIdentifier: BannerCollectionViewCell.identifier, for: indexPath) as? BannerCollectionViewCell else { return UICollectionViewCell() }
-                
+                cell.configureData(title: item.title)
                 return cell
             case .recommend(let item):
                 guard let cell = mainView.collectionView.dequeueReusableCell(withReuseIdentifier: NormalCarouselCollectionViewCell.identifier, for: indexPath) as? NormalCarouselCollectionViewCell else { return UICollectionViewCell() }
-                
+                cell.configureData(data: item)
                 return cell
             case .post(let item):
                 guard let cell = mainView.collectionView.dequeueReusableCell(withReuseIdentifier: ListCarouselCollectionViewCell.identifier, for: indexPath) as? ListCarouselCollectionViewCell else { return UICollectionViewCell() }
-                
+                cell.configureData(data: item)
                 return cell
             }
 
         })
     }
     
-    private func setSnapShot() {
-        var snapshot = NSDiffableDataSourceSnapshot<Section, Item>()
-        
-        let bannerSection = Section(id: SectionType.banner.rawValue)
-        snapshot.appendSections([bannerSection])
-        let bannerItems: [Item] = []
-        snapshot.appendItems(bannerItems, toSection: bannerSection)
-        
-        let recommendSection = Section(id: SectionType.normalCarousel.rawValue)
-        snapshot.appendSections([recommendSection])
-        let recommendItems: [Item] = []
-        snapshot.appendItems(recommendItems, toSection: recommendSection)
-        
-        let postSection = Section(id: SectionType.listCarousel.rawValue)
-        snapshot.appendSections([postSection])
-        let postItems: [Item] = []
-        snapshot.appendItems(postItems, toSection: postSection)
-        
-        dataSource?.apply(snapshot)
-    }
 }

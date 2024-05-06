@@ -18,8 +18,8 @@ enum SectionType: String, CaseIterable {
 }
 
 enum Item: Hashable {
-    case banner(PostResponse)
-    case recommend(PostResponse)
-    case post(PostResponse)
+    case banner(BannerResponse)
+    case recommend(ChallengeResponse)
+    case post(ChallengeResponse)
 }
 
