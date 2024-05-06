@@ -78,6 +78,30 @@ extension UIViewController {
             // 스냅샷 이미지 그리기
             snapshot.image.draw(at: CGPoint.zero)
             
+            // TODO: 오버레이 그리기
+            for overlay in mapView.overlays {
+                if let polyline = overlay as? MKPolyline {
+                    let path = UIBezierPath()
+                    var firstPoint: Bool = true
+                    
+                    for i in 0..<polyline.pointCount {
+                        let mapPoint = polyline.points()[i]
+                        let cgPoint = snapshot.point(for: mapPoint.coordinate)
+                        
+                        if firstPoint {
+                            path.move(to: cgPoint)
+                            firstPoint = false
+                        } else {
+                            path.addLine(to: cgPoint)
+                        }
+                    }
+                    
+                    UIColor.systemYellow.setStroke()
+                    path.lineWidth = 12.0
+                    path.stroke()
+                }
+            }
+            
             // 어노테이션 그리기
             for annotation in mapView.annotations {
                 
@@ -97,8 +121,6 @@ extension UIViewController {
 
                 backgroundView.asImage().draw(at: .init(x: point.x-18, y: point.y-44))
             }
-            
-            // TODO: 오버레이 그리기
             
             let finalImage = UIGraphicsGetImageFromCurrentImageContext()
             UIGraphicsEndImageContext()

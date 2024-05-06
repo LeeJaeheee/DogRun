@@ -127,9 +127,9 @@ final class MapViewController: BaseViewController<MapView> {
             let paddedSpan = MKCoordinateSpan(latitudeDelta: latitudeDeltaWithPadding, longitudeDelta: longitudeDeltaWithPadding)
 
             let paddedRegion = MKCoordinateRegion(center: centerCoordinate, span: paddedSpan)
-            isWalkingEnded = true
+            
             mainView.mapView.setRegion(paddedRegion, animated: true)
-
+            isWalkingEnded = true // 이게 문제였음! region 설정 한 뒤에 true로 변경해줬어야하는데 미리 변경해줘서 제대로 캡쳐가 안됐음
 
             
 //            let topLeftCoordinate = CLLocationCoordinate2D(latitude: maxLatitude, longitude: minLongitude)
@@ -224,7 +224,7 @@ extension MapViewController: MKMapViewDelegate {
         }
         let renderer = MKPolylineRenderer(polyline: polyLine)
             renderer.strokeColor = .systemYellow
-            renderer.lineWidth = 8.0
+            renderer.lineWidth = 12.0
             renderer.alpha = 1.0
  
         return renderer
