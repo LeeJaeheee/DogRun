@@ -13,6 +13,7 @@ final class ChallengeViewModel: ViewModelType {
     var disposeBag: RxSwift.DisposeBag = .init()
     
     let registerIndex = BehaviorRelay(value: 0)
+    let paymentsRelay = PublishRelay<PaymentsModel>()
     
     struct Input {
         let loadBannerTrigger: BehaviorRelay<Void>
@@ -24,16 +25,23 @@ final class ChallengeViewModel: ViewModelType {
         let recommendList: Driver<[ChallengeResponse]>
         let postList: Driver<[ChallengeResponse]>
         let requestFailure: PublishRelay<DRError>
+        let paymentSuccess: PublishRelay<PaymentResponse>
+        let paymentFailure: PublishRelay<Void>
     }
     
     func transform(input: Input) -> Output {
         let requestFailure = PublishRelay<DRError>()
+        
+        let paymentSuccess = PublishRelay<PaymentResponse>()
+        let paymentFailure = PublishRelay<Void>()
         
         let bannerList = BehaviorRelay<[BannerResponse]>(value: [])
         let recommendList = BehaviorRelay<[ChallengeResponse]>(value: [])
         let postList = BehaviorRelay<[ChallengeResponse]>(value: [])
         
         let postNextCursor = BehaviorRelay<String?>(value: nil)
+        
+        
         
         input.loadBannerTrigger
             .flatMap { _ in
@@ -79,17 +87,28 @@ final class ChallengeViewModel: ViewModelType {
             }
             .disposed(by: disposeBag)
         
-//        registerIndex
-//            .skip(1)
-//            .flatMap { index in
-//                <#code#>
-//            }
+        paymentsRelay
+            .flatMap { payments in
+                return NetworkManager.request2(type: PaymentResponse.self, router: PaymentsRouter.validation(model: payments))
+            }
+            .bind(with: self) { owner, response in
+                switch response {
+                case .success(let success):
+                    paymentSuccess.accept(success)
+                case .failure(let failure):
+                    requestFailure.accept(failure)
+                }
+            }
+            .disposed(by: disposeBag)
         
         return Output(
             bannerList: bannerList.asDriver(onErrorJustReturn: []),
             recommendList: recommendList.asDriver(onErrorJustReturn: []),
             postList: postList.asDriver(onErrorJustReturn: []), 
-            requestFailure: requestFailure)
+            requestFailure: requestFailure,
+            paymentSuccess: paymentSuccess,
+            paymentFailure: paymentFailure
+        )
     }
     
 }

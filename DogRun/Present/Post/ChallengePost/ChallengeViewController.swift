@@ -8,6 +8,8 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import iamport_ios
+import WebKit
 
 final class ChallengeViewController: BaseViewController<ChallengeView> {
     
@@ -15,6 +17,12 @@ final class ChallengeViewController: BaseViewController<ChallengeView> {
     var snapshot = NSDiffableDataSourceSnapshot<Section, Item>()
     
     let viewModel = ChallengeViewModel()
+    
+    lazy var wkWebView: WKWebView = {
+        var view = WKWebView()
+        view.backgroundColor = UIColor.clear
+        return view
+    }()
     
     override func configureView() {
         setDataSource()
@@ -55,6 +63,19 @@ final class ChallengeViewController: BaseViewController<ChallengeView> {
                 owner.errorHandler(error)
             }
             .disposed(by: disposeBag)
+        
+        output.paymentSuccess
+            .bind(with: self) { owner, paymentResult in
+                dump(paymentResult)
+                owner.showToast("\(paymentResult.productName)\n\(paymentResult.price)원 결제가 완료되었습니다.🐶", position: .center)
+            }
+            .disposed(by: disposeBag)
+        
+        output.paymentFailure
+            .bind(with: self) { owner, _ in
+                print("결제 실패")
+            }
+            .disposed(by: disposeBag)
     }
     
     private func setDataSource() {
@@ -75,6 +96,38 @@ final class ChallengeViewController: BaseViewController<ChallengeView> {
                         owner.viewModel.registerIndex.accept(indexPath.item)
                     }
                     .disposed(by: cell.disposeBag)
+                
+                cell.registerButton.rx.tap
+                    .debounce(.milliseconds(300), scheduler: MainScheduler.asyncInstance)
+                    .bind(with: self) { owner, index in
+                        let challenge = item
+                        let payment = IamportPayment(
+                            pg: PG.html5_inicis.makePgRawName(pgId: "INIpayTest"),
+                            merchant_uid: "ios_\(APIKey.sesacKey.rawValue)_\(Int(Date().timeIntervalSince1970))",
+                            amount: challenge.price).then {
+                                $0.pay_method = PayMethod.card.rawValue
+                                $0.name = challenge.title
+                                $0.buyer_name = APIKey.buyerName.rawValue
+                                $0.app_scheme = APIKey.appScheme.rawValue
+                            }
+                        
+                        Iamport.shared.payment(viewController: self, userCode: APIKey.userCode.rawValue, payment: payment) { [weak self] iamportResponse in
+                            guard let self, let response = iamportResponse, let uid = response.imp_uid else {
+                                self?.showToast("결제 실패", position: .center)
+                                return
+                            }
+                            let payments = PaymentsModel(
+                                imp_uid: uid,
+                                post_id: challenge.post_id,
+                                productName: challenge.title,
+                                price: Int(challenge.price)!
+                            )
+                            viewModel.paymentsRelay.accept(payments)
+                        }
+                        
+                    }
+                    .disposed(by: disposeBag)
+                
                 return cell
             case .post(let item):
                 guard let cell = mainView.collectionView.dequeueReusableCell(withReuseIdentifier: ListCarouselCollectionViewCell.identifier, for: indexPath) as? ListCarouselCollectionViewCell else { return UICollectionViewCell() }

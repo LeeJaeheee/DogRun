@@ -117,7 +117,8 @@ extension ChallengeResponse {
         likes2.contains(UserDefaultsManager.userId)
     }
     var isBought: Bool {
-        buyers.contains(UserDefaultsManager.userId)
+        get { buyers.contains(UserDefaultsManager.userId) }
+        set { self.isBought = newValue }
     }
     var imageStrings: [String] {
         files.map { APIKey.baseURL.rawValue+"/"+$0 }
