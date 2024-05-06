@@ -68,7 +68,11 @@ final class PasswordViewController: ModeBaseViewController<PasswordView> {
             
             output.signInFailure
                 .bind(with: self) { owner, error in
-                    owner.errorHandler(error)
+                    if error.handlingRule == .showLogin {
+                        owner.showToast(error.errorMessage, position: .center)
+                    } else {
+                        owner.errorHandler(error)
+                    }
                 }
                 .disposed(by: disposeBag)
         }
