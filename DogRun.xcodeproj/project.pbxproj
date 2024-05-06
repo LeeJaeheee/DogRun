@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D219E8BE2BE89E6400E6C234 /* ChallengeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D219E8BD2BE89E6400E6C234 /* ChallengeView.swift */; };
+		D219E8C02BE89E7000E6C234 /* ChallengeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D219E8BF2BE89E7000E6C234 /* ChallengeViewController.swift */; };
+		D219E8C22BE89E8000E6C234 /* ChallengeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D219E8C12BE89E8000E6C234 /* ChallengeViewModel.swift */; };
+		D219E8C42BE8ABB300E6C234 /* ChallengeSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D219E8C32BE8ABB300E6C234 /* ChallengeSectionModel.swift */; };
+		D219E8C62BE8B2AA00E6C234 /* BannerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D219E8C52BE8B2AA00E6C234 /* BannerCollectionViewCell.swift */; };
+		D219E8C82BE8B46000E6C234 /* NormalCarouselCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D219E8C72BE8B46000E6C234 /* NormalCarouselCollectionViewCell.swift */; };
+		D219E8CA2BE8BBB500E6C234 /* ListCarouselCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D219E8C92BE8BBB500E6C234 /* ListCarouselCollectionViewCell.swift */; };
 		D23E77A92BD1290F00A386A0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23E77A82BD1290F00A386A0 /* AppDelegate.swift */; };
 		D23E77AB2BD1290F00A386A0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23E77AA2BD1290F00A386A0 /* SceneDelegate.swift */; };
 		D23E77AD2BD1290F00A386A0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23E77AC2BD1290F00A386A0 /* ViewController.swift */; };
@@ -164,6 +171,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D219E8BD2BE89E6400E6C234 /* ChallengeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeView.swift; sourceTree = "<group>"; };
+		D219E8BF2BE89E7000E6C234 /* ChallengeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeViewController.swift; sourceTree = "<group>"; };
+		D219E8C12BE89E8000E6C234 /* ChallengeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeViewModel.swift; sourceTree = "<group>"; };
+		D219E8C32BE8ABB300E6C234 /* ChallengeSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeSectionModel.swift; sourceTree = "<group>"; };
+		D219E8C52BE8B2AA00E6C234 /* BannerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerCollectionViewCell.swift; sourceTree = "<group>"; };
+		D219E8C72BE8B46000E6C234 /* NormalCarouselCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NormalCarouselCollectionViewCell.swift; sourceTree = "<group>"; };
+		D219E8C92BE8BBB500E6C234 /* ListCarouselCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCarouselCollectionViewCell.swift; sourceTree = "<group>"; };
 		D23E77A52BD1290F00A386A0 /* DogRun.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DogRun.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D23E77A82BD1290F00A386A0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D23E77AA2BD1290F00A386A0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -629,6 +643,9 @@
 		D25DDFFB2BD6CBFB0045C259 /* ChallengePost */ = {
 			isa = PBXGroup;
 			children = (
+				D219E8BD2BE89E6400E6C234 /* ChallengeView.swift */,
+				D219E8BF2BE89E7000E6C234 /* ChallengeViewController.swift */,
+				D219E8C12BE89E8000E6C234 /* ChallengeViewModel.swift */,
 			);
 			path = ChallengePost;
 			sourceTree = "<group>";
@@ -662,6 +679,7 @@
 			children = (
 				D25DE02A2BD93A890045C259 /* SectionModel.swift */,
 				D26190942BDF9708009BD5C5 /* ButtonImages.swift */,
+				D219E8C32BE8ABB300E6C234 /* ChallengeSectionModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -775,6 +793,9 @@
 				D26190D52BE2BFFA009BD5C5 /* CommentTableViewCell.swift */,
 				D258DCDF2BE5E50100A13F0E /* PinterestCollectionViewCell.swift */,
 				D258DCE72BE739EE00A13F0E /* FollowerTableViewCell.swift */,
+				D219E8C52BE8B2AA00E6C234 /* BannerCollectionViewCell.swift */,
+				D219E8C72BE8B46000E6C234 /* NormalCarouselCollectionViewCell.swift */,
+				D219E8C92BE8BBB500E6C234 /* ListCarouselCollectionViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -996,6 +1017,7 @@
 				D23E780A2BD402A300A386A0 /* UserDefaultsManager.swift in Sources */,
 				D2EDA35F2BD69212009CB0D7 /* CardStackViewWrapper.swift in Sources */,
 				D258DCCC2BE5C51E00A13F0E /* ProfileInfoView.swift in Sources */,
+				D219E8C82BE8B46000E6C234 /* NormalCarouselCollectionViewCell.swift in Sources */,
 				D25DE03A2BD9832D0045C259 /* UserTabmanViewController.swift in Sources */,
 				D2EDA3622BD6A357009CB0D7 /* UserModel.swift in Sources */,
 				D258DCD52BE5D62B00A13F0E /* ArrayExtension.swift in Sources */,
@@ -1020,6 +1042,7 @@
 				D25DE02D2BD93EFF0045C259 /* UserProfileViewModel.swift in Sources */,
 				D26190C72BE24F91009BD5C5 /* TextViewCollectionViewCell.swift in Sources */,
 				D26190D42BE29850009BD5C5 /* LikeRouter.swift in Sources */,
+				D219E8C22BE89E8000E6C234 /* ChallengeViewModel.swift in Sources */,
 				D25DDFFF2BD6CC700045C259 /* SNSPostViewController.swift in Sources */,
 				D23E782D2BD5485E00A386A0 /* EmailView.swift in Sources */,
 				D26190CB2BE25152009BD5C5 /* DROpaqueView.swift in Sources */,
@@ -1044,6 +1067,7 @@
 				D26190232BDE3B38009BD5C5 /* String+Ext.swift in Sources */,
 				D2EA5BA92BDCF1810055884C /* UIViewController+Ext.swift in Sources */,
 				D2EDA3442BD580F8009CB0D7 /* MapView.swift in Sources */,
+				D219E8C62BE8B2AA00E6C234 /* BannerCollectionViewCell.swift in Sources */,
 				D2EA5B912BDB99320055884C /* UserGalleryViewController.swift in Sources */,
 				D23E77A92BD1290F00A386A0 /* AppDelegate.swift in Sources */,
 				D258DCE62BE738C000A13F0E /* FollowerViewController.swift in Sources */,
@@ -1075,6 +1099,7 @@
 				D23E77AB2BD1290F00A386A0 /* SceneDelegate.swift in Sources */,
 				D23E781B2BD4C54700A386A0 /* ViewModelType.swift in Sources */,
 				D2EDA35C2BD690B2009CB0D7 /* CardStackView.swift in Sources */,
+				D219E8C02BE89E7000E6C234 /* ChallengeViewController.swift in Sources */,
 				D26190122BDDFF45009BD5C5 /* BirthdayViewController.swift in Sources */,
 				D2EDA34A2BD58D60009CB0D7 /* MapModel.swift in Sources */,
 				D23E78072BD3D05900A386A0 /* AuthRouter.swift in Sources */,
@@ -1082,6 +1107,8 @@
 				D23E78282BD547AD00A386A0 /* PasswordViewController.swift in Sources */,
 				D2EDA3642BD6A365009CB0D7 /* UserRouter.swift in Sources */,
 				D2EA5B932BDBFBCF0055884C /* UserFeedViewController.swift in Sources */,
+				D219E8CA2BE8BBB500E6C234 /* ListCarouselCollectionViewCell.swift in Sources */,
+				D219E8BE2BE89E6400E6C234 /* ChallengeView.swift in Sources */,
 				D2EDA3692BD6A3E1009CB0D7 /* PostRouter.swift in Sources */,
 				D2EA5BA72BDCEEDA0055884C /* LaunchScreenViewModel.swift in Sources */,
 				D26190B62BE22FCC009BD5C5 /* MapRecordPopUpView.swift in Sources */,
@@ -1099,6 +1126,7 @@
 				D23E78052BD3D04F00A386A0 /* AuthModel.swift in Sources */,
 				D258DCDA2BE5DC0400A13F0E /* SearchViewController.swift in Sources */,
 				D258DCC12BE4DDFB00A13F0E /* UIButton+Ext.swift in Sources */,
+				D219E8C42BE8ABB300E6C234 /* ChallengeSectionModel.swift in Sources */,
 				D2EDA3672BD6A3D9009CB0D7 /* PostModel.swift in Sources */,
 				D26190142BDDFF50009BD5C5 /* BirthdayViewModel.swift in Sources */,
 				D26190B22BE22DB9009BD5C5 /* BasePopUpViewController.swift in Sources */,
@@ -1180,7 +1208,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -1237,7 +1265,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;

@@ -58,6 +58,6 @@ final class PostDetailContentView: BaseView {
         // TODO: 데이터 연결하기
         hashtagLabel.text = data.hashTagsString
         contentTextView.text = data.content
-        textView.backgroundColor = .blue
+        //textView.backgroundColor = .blue
     }
 }

@@ -47,7 +47,7 @@ final class WelcomeView: BaseView {
     }
     
     override func configureView() {
-        logoImageView.backgroundColor = .accent
+        logoImageView.image = UIImage(named: "launchPaw")
         
         titleLabel.text = "환영합니다."
         titleLabel.font = .systemFont(ofSize: 36, weight: .bold)
