@@ -55,12 +55,12 @@ class UserFeedViewController: UIViewController {
         //loadTrigger.accept(())
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        if viewModel.usertype != .specific {
-            self.navigationController?.setNavigationBarHidden(false, animated: animated)
-        }
-    }
+//    override func viewWillDisappear(_ animated: Bool) {
+//        super.viewWillDisappear(animated)
+//        if viewModel.usertype == .all || viewModel.usertype == .like {
+//            self.navigationController?.setNavigationBarHidden(false, animated: animated)
+//        }
+//    }
     
     private func bind() {
         

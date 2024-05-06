@@ -30,8 +30,7 @@ final class FeedTabmanController: TabmanViewController {
         let firstVC = UserFeedViewController()
         firstVC.viewModel.usertype = .all
         //firstVC.viewModel.userId = userId
-        let secondVC = UserFeedViewController()
-        secondVC.viewModel.usertype = .all
+        let secondVC = ChallengeViewController()
         
         viewControllers = [firstVC, secondVC]
     }

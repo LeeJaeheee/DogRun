@@ -19,6 +19,7 @@ final class UserViewController: BaseViewController<UserView> {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: true)
         // FIXME: viewWillAppear 말고 변경 시에만 load하기
         loadTrigger.accept(())
     }

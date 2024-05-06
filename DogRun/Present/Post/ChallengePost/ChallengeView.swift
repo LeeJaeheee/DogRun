@@ -14,7 +14,8 @@ final class ChallengeView: BaseView {
     override func configureView() {
         addSubview(collectionView)
         collectionView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+            make.top.equalTo(safeAreaLayoutGuide)
+            make.horizontalEdges.bottom.equalToSuperview()
         }
         
         collectionView.register(BannerCollectionViewCell.self, forCellWithReuseIdentifier: BannerCollectionViewCell.identifier)
