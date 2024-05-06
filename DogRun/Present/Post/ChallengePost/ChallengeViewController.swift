@@ -69,6 +69,12 @@ final class ChallengeViewController: BaseViewController<ChallengeView> {
             case .recommend(let item):
                 guard let cell = mainView.collectionView.dequeueReusableCell(withReuseIdentifier: NormalCarouselCollectionViewCell.identifier, for: indexPath) as? NormalCarouselCollectionViewCell else { return UICollectionViewCell() }
                 cell.configureData(data: item)
+                cell.registerButton.rx.tap
+                    .debounce(.milliseconds(300), scheduler: MainScheduler.asyncInstance)
+                    .bind(with: self) { owner, _ in
+                        owner.viewModel.registerIndex.accept(indexPath.item)
+                    }
+                    .disposed(by: cell.disposeBag)
                 return cell
             case .post(let item):
                 guard let cell = mainView.collectionView.dequeueReusableCell(withReuseIdentifier: ListCarouselCollectionViewCell.identifier, for: indexPath) as? ListCarouselCollectionViewCell else { return UICollectionViewCell() }

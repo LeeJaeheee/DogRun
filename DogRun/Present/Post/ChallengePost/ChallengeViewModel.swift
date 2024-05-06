@@ -12,6 +12,8 @@ import RxCocoa
 final class ChallengeViewModel: ViewModelType {
     var disposeBag: RxSwift.DisposeBag = .init()
     
+    let registerIndex = BehaviorRelay(value: 0)
+    
     struct Input {
         let loadBannerTrigger: BehaviorRelay<Void>
         let loadChallengeTrigger: BehaviorRelay<Void>
@@ -27,9 +29,9 @@ final class ChallengeViewModel: ViewModelType {
     func transform(input: Input) -> Output {
         let requestFailure = PublishRelay<DRError>()
         
-        let bannerList = PublishRelay<[BannerResponse]>()
-        let recommendList = PublishRelay<[ChallengeResponse]>()
-        let postList = PublishRelay<[ChallengeResponse]>()
+        let bannerList = BehaviorRelay<[BannerResponse]>(value: [])
+        let recommendList = BehaviorRelay<[ChallengeResponse]>(value: [])
+        let postList = BehaviorRelay<[ChallengeResponse]>(value: [])
         
         let postNextCursor = BehaviorRelay<String?>(value: nil)
         
@@ -76,6 +78,12 @@ final class ChallengeViewModel: ViewModelType {
                 }
             }
             .disposed(by: disposeBag)
+        
+//        registerIndex
+//            .skip(1)
+//            .flatMap { index in
+//                <#code#>
+//            }
         
         return Output(
             bannerList: bannerList.asDriver(onErrorJustReturn: []),

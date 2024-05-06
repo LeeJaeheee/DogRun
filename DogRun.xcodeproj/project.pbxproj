@@ -14,6 +14,8 @@
 		D219E8C62BE8B2AA00E6C234 /* BannerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D219E8C52BE8B2AA00E6C234 /* BannerCollectionViewCell.swift */; };
 		D219E8C82BE8B46000E6C234 /* NormalCarouselCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D219E8C72BE8B46000E6C234 /* NormalCarouselCollectionViewCell.swift */; };
 		D219E8CA2BE8BBB500E6C234 /* ListCarouselCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D219E8C92BE8BBB500E6C234 /* ListCarouselCollectionViewCell.swift */; };
+		D219E8CD2BE93E7900E6C234 /* PaymentsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D219E8CC2BE93E7900E6C234 /* PaymentsModel.swift */; };
+		D219E8CF2BE93F9600E6C234 /* PaymentsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D219E8CE2BE93F9600E6C234 /* PaymentsRouter.swift */; };
 		D23E77A92BD1290F00A386A0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23E77A82BD1290F00A386A0 /* AppDelegate.swift */; };
 		D23E77AB2BD1290F00A386A0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23E77AA2BD1290F00A386A0 /* SceneDelegate.swift */; };
 		D23E77AD2BD1290F00A386A0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23E77AC2BD1290F00A386A0 /* ViewController.swift */; };
@@ -178,6 +180,8 @@
 		D219E8C52BE8B2AA00E6C234 /* BannerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerCollectionViewCell.swift; sourceTree = "<group>"; };
 		D219E8C72BE8B46000E6C234 /* NormalCarouselCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NormalCarouselCollectionViewCell.swift; sourceTree = "<group>"; };
 		D219E8C92BE8BBB500E6C234 /* ListCarouselCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCarouselCollectionViewCell.swift; sourceTree = "<group>"; };
+		D219E8CC2BE93E7900E6C234 /* PaymentsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentsModel.swift; sourceTree = "<group>"; };
+		D219E8CE2BE93F9600E6C234 /* PaymentsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentsRouter.swift; sourceTree = "<group>"; };
 		D23E77A52BD1290F00A386A0 /* DogRun.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DogRun.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D23E77A82BD1290F00A386A0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D23E77AA2BD1290F00A386A0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -347,6 +351,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D219E8CB2BE93E6100E6C234 /* Payments */ = {
+			isa = PBXGroup;
+			children = (
+				D219E8CC2BE93E7900E6C234 /* PaymentsModel.swift */,
+				D219E8CE2BE93F9600E6C234 /* PaymentsRouter.swift */,
+			);
+			path = Payments;
+			sourceTree = "<group>";
+		};
 		D23E779C2BD1290F00A386A0 = {
 			isa = PBXGroup;
 			children = (
@@ -388,6 +401,7 @@
 		D23E77BE2BD12A5700A386A0 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				D219E8CB2BE93E6100E6C234 /* Payments */,
 				D258DCC42BE4EF0700A13F0E /* Follow */,
 				D26190E02BE3AE67009BD5C5 /* Comment */,
 				D26190D02BE29827009BD5C5 /* Like */,
@@ -998,6 +1012,7 @@
 				D26190D82BE2C02B009BD5C5 /* BaseTableViewCell.swift in Sources */,
 				D2EA5BB22BDD16280055884C /* DRVariableButton.swift in Sources */,
 				D26190212BDE369E009BD5C5 /* PhoneNumberViewModel.swift in Sources */,
+				D219E8CF2BE93F9600E6C234 /* PaymentsRouter.swift in Sources */,
 				D258DCEB2BE75F0F00A13F0E /* FeedTabmanController.swift in Sources */,
 				D23E78372BD54E9700A386A0 /* NicknameView.swift in Sources */,
 				D26190BB2BE230F2009BD5C5 /* MapRecordViewModel.swift in Sources */,
@@ -1106,6 +1121,7 @@
 				D23E782F2BD54DB100A386A0 /* EmailViewModel.swift in Sources */,
 				D23E78282BD547AD00A386A0 /* PasswordViewController.swift in Sources */,
 				D2EDA3642BD6A365009CB0D7 /* UserRouter.swift in Sources */,
+				D219E8CD2BE93E7900E6C234 /* PaymentsModel.swift in Sources */,
 				D2EA5B932BDBFBCF0055884C /* UserFeedViewController.swift in Sources */,
 				D219E8CA2BE8BBB500E6C234 /* ListCarouselCollectionViewCell.swift in Sources */,
 				D219E8BE2BE89E6400E6C234 /* ChallengeView.swift in Sources */,

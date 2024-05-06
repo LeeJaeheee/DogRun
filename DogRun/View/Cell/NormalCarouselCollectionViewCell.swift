@@ -8,8 +8,11 @@
 import UIKit
 import SnapKit
 import Kingfisher
+import RxSwift
 
 final class NormalCarouselCollectionViewCell: BaseCollectionViewCell {
+    
+    var disposeBag = DisposeBag()
 
     private let containerView = UIView()
     private let mainImage = UIImageView()
@@ -19,8 +22,11 @@ final class NormalCarouselCollectionViewCell: BaseCollectionViewCell {
     private let bookmarkButton = UIButton()
     private let regionLabel = UILabel()
     private let priceLabel = UILabel()
-    private let registerButton = DRButton(title: "참여하기")
+    let registerButton = DRButton(title: "참여하기")
     
+    override func prepareForReuse() {
+        disposeBag = DisposeBag()
+    }
     
     override func configureHierarchy() {
         contentView.addSubview(containerView)

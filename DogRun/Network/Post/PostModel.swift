@@ -79,7 +79,7 @@ struct ChallengeResponse: Decodable, Hashable {
     let files: [String]
     let likes2: [String]
     let hashTags: [String]
-    //let buyers: [String]
+    let buyers: [String]
     
     enum CodingKeys: String, CodingKey {
         case post_id
@@ -93,7 +93,7 @@ struct ChallengeResponse: Decodable, Hashable {
         case files
         case likes2
         case hashTags
-        //case buyers
+        case buyers
     }
     
     init(from decoder: any Decoder) throws {
@@ -109,16 +109,16 @@ struct ChallengeResponse: Decodable, Hashable {
         self.files = try container.decodeIfPresent([String].self, forKey: .files) ?? []
         self.likes2 = try container.decode([String].self, forKey: .likes2)
         self.hashTags = try container.decode([String].self, forKey: .hashTags)
-        //self.buyers = try container.decode([String].self, forKey: .buyers)
+        self.buyers = try container.decode([String].self, forKey: .buyers)
     }
 }
 extension ChallengeResponse {
     var isLiked: Bool {
         likes2.contains(UserDefaultsManager.userId)
     }
-//    var isBought: Bool {
-//        buyers.contains(UserDefaultsManager.userId)
-//    }
+    var isBought: Bool {
+        buyers.contains(UserDefaultsManager.userId)
+    }
     var imageStrings: [String] {
         files.map { APIKey.baseURL.rawValue+"/"+$0 }
     }
