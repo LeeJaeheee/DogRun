@@ -16,6 +16,7 @@
 		D219E8CA2BE8BBB500E6C234 /* ListCarouselCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D219E8C92BE8BBB500E6C234 /* ListCarouselCollectionViewCell.swift */; };
 		D219E8CD2BE93E7900E6C234 /* PaymentsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D219E8CC2BE93E7900E6C234 /* PaymentsModel.swift */; };
 		D219E8CF2BE93F9600E6C234 /* PaymentsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D219E8CE2BE93F9600E6C234 /* PaymentsRouter.swift */; };
+		D219E8D22BE9450E00E6C234 /* iamport-ios in Frameworks */ = {isa = PBXBuildFile; productRef = D219E8D12BE9450E00E6C234 /* iamport-ios */; };
 		D23E77A92BD1290F00A386A0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23E77A82BD1290F00A386A0 /* AppDelegate.swift */; };
 		D23E77AB2BD1290F00A386A0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23E77AA2BD1290F00A386A0 /* SceneDelegate.swift */; };
 		D23E77AD2BD1290F00A386A0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23E77AC2BD1290F00A386A0 /* ViewController.swift */; };
@@ -26,7 +27,6 @@
 		D23E77E82BD3CD1A00A386A0 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = D23E77E72BD3CD1A00A386A0 /* RxCocoa */; };
 		D23E77EA2BD3CD1A00A386A0 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D23E77E92BD3CD1A00A386A0 /* RxSwift */; };
 		D23E77ED2BD3CD2600A386A0 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = D23E77EC2BD3CD2600A386A0 /* SnapKit */; };
-		D23E77F02BD3CDB600A386A0 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = D23E77EF2BD3CDB600A386A0 /* Then */; };
 		D23E77F32BD3CDD300A386A0 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = D23E77F22BD3CDD300A386A0 /* Alamofire */; };
 		D23E77F62BD3CDE100A386A0 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = D23E77F52BD3CDE100A386A0 /* Kingfisher */; };
 		D23E77F82BD3CE3E00A386A0 /* TargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23E77F72BD3CE3E00A386A0 /* TargetType.swift */; };
@@ -334,6 +334,7 @@
 			files = (
 				D258DCEE2BE7773500A13F0E /* Lottie in Frameworks */,
 				D23E77F62BD3CDE100A386A0 /* Kingfisher in Frameworks */,
+				D219E8D22BE9450E00E6C234 /* iamport-ios in Frameworks */,
 				D23E78142BD4C2F900A386A0 /* TextFieldEffects in Frameworks */,
 				D23E77F32BD3CDD300A386A0 /* Alamofire in Frameworks */,
 				D23E77ED2BD3CD2600A386A0 /* SnapKit in Frameworks */,
@@ -344,7 +345,6 @@
 				D25DE0182BD92FA90045C259 /* Differentiator in Frameworks */,
 				D23E77E82BD3CD1A00A386A0 /* RxCocoa in Frameworks */,
 				D23E78112BD4C2E300A386A0 /* Toast in Frameworks */,
-				D23E77F02BD3CDB600A386A0 /* Then in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -921,7 +921,6 @@
 				D23E77E72BD3CD1A00A386A0 /* RxCocoa */,
 				D23E77E92BD3CD1A00A386A0 /* RxSwift */,
 				D23E77EC2BD3CD2600A386A0 /* SnapKit */,
-				D23E77EF2BD3CDB600A386A0 /* Then */,
 				D23E77F22BD3CDD300A386A0 /* Alamofire */,
 				D23E77F52BD3CDE100A386A0 /* Kingfisher */,
 				D23E78102BD4C2E300A386A0 /* Toast */,
@@ -931,6 +930,7 @@
 				D25DE0192BD92FA90045C259 /* RxDataSources */,
 				D25DE0352BD980680045C259 /* Tabman */,
 				D258DCED2BE7773500A13F0E /* Lottie */,
+				D219E8D12BE9450E00E6C234 /* iamport-ios */,
 			);
 			productName = DogRun;
 			productReference = D23E77A52BD1290F00A386A0 /* DogRun.app */;
@@ -963,7 +963,6 @@
 			packageReferences = (
 				D23E77E62BD3CD1A00A386A0 /* XCRemoteSwiftPackageReference "RxSwift" */,
 				D23E77EB2BD3CD2600A386A0 /* XCRemoteSwiftPackageReference "SnapKit" */,
-				D23E77EE2BD3CDB500A386A0 /* XCRemoteSwiftPackageReference "Then" */,
 				D23E77F12BD3CDD300A386A0 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				D23E77F42BD3CDE100A386A0 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				D23E780F2BD4C2E300A386A0 /* XCRemoteSwiftPackageReference "Toast-Swift" */,
@@ -972,6 +971,7 @@
 				D25DE0162BD92FA90045C259 /* XCRemoteSwiftPackageReference "RxDataSources" */,
 				D25DE0342BD980680045C259 /* XCRemoteSwiftPackageReference "Tabman" */,
 				D258DCEC2BE7773500A13F0E /* XCRemoteSwiftPackageReference "lottie-ios" */,
+				D219E8D02BE9450E00E6C234 /* XCRemoteSwiftPackageReference "iamport-ios" */,
 			);
 			productRefGroup = D23E77A62BD1290F00A386A0 /* Products */;
 			projectDirPath = "";
@@ -1383,6 +1383,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		D219E8D02BE9450E00E6C234 /* XCRemoteSwiftPackageReference "iamport-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/iamport/iamport-ios.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.4.1;
+			};
+		};
 		D23E77E62BD3CD1A00A386A0 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
@@ -1397,14 +1405,6 @@
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 5.7.1;
-			};
-		};
-		D23E77EE2BD3CDB500A386A0 /* XCRemoteSwiftPackageReference "Then" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/devxoul/Then.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 3.0.0;
 			};
 		};
 		D23E77F12BD3CDD300A386A0 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
@@ -1474,6 +1474,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		D219E8D12BE9450E00E6C234 /* iamport-ios */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D219E8D02BE9450E00E6C234 /* XCRemoteSwiftPackageReference "iamport-ios" */;
+			productName = "iamport-ios";
+		};
 		D23E77E72BD3CD1A00A386A0 /* RxCocoa */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = D23E77E62BD3CD1A00A386A0 /* XCRemoteSwiftPackageReference "RxSwift" */;
@@ -1488,11 +1493,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D23E77EB2BD3CD2600A386A0 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
-		};
-		D23E77EF2BD3CDB600A386A0 /* Then */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D23E77EE2BD3CDB500A386A0 /* XCRemoteSwiftPackageReference "Then" */;
-			productName = Then;
 		};
 		D23E77F22BD3CDD300A386A0 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
