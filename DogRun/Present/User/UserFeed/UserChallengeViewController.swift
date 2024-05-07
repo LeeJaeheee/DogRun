@@ -13,8 +13,7 @@ class UserChallengeViewController: UIViewController {
     
     let tableView = UITableView()
     
-    let data = Observable.just([1,2,3,4,5,6])
-    
+    let viewModel = UserChallengeViewModel()
     let disposeBag = DisposeBag()
 
     override func viewDidLoad() {
@@ -24,14 +23,28 @@ class UserChallengeViewController: UIViewController {
         tableView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
+        tableView.separatorStyle = .none
         tableView.register(UserChallengeTableViewCell.self, forCellReuseIdentifier: UserChallengeTableViewCell.identifier)
-
-        data.bind(to: tableView.rx.items(cellIdentifier: UserChallengeTableViewCell.identifier, cellType: UserChallengeTableViewCell.self)) { index, item, cell in
-            cell.mainImageView.backgroundColor = .init(red: CGFloat.random(in: 0...1), green: .random(in: 0...1), blue: .random(in: 0...1), alpha: 1)
-            cell.titleLabel.text = "\(item)번 타이틀"
-            cell.button.setTitle("인증하기", for: .normal)
-        }
-        .disposed(by: disposeBag)
+        
+        bind()
+    }
+    
+    private func bind() {
+        let input = UserChallengeViewModel.Input(loadTrigger: .init(value: ()))
+        
+        let output = viewModel.transform(input: input)
+        
+        output.paymentsList
+            .bind(to: tableView.rx.items(cellIdentifier: UserChallengeTableViewCell.identifier, cellType: UserChallengeTableViewCell.self)) { index, item, cell in
+                cell.titleLabel.text = item.productName
+            }
+            .disposed(by: disposeBag)
+        
+        output.fetchFailure
+            .bind(with: self) { owner, error in
+                owner.errorHandler(error)
+            }
+            .disposed(by: disposeBag)
     }
 
 }

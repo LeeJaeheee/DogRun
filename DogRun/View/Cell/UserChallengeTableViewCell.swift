@@ -15,7 +15,7 @@ class UserChallengeTableViewCell: UITableViewCell {
     let mainImageView = UIImageView()
     
     let titleLabel = UILabel()
-    let button = DRButton(title: " ")
+    let button = DRButton(title: "인증하기")
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -42,13 +42,13 @@ class UserChallengeTableViewCell: UITableViewCell {
         
         mainImageView.snp.makeConstraints { make in
             make.top.horizontalEdges.equalToSuperview()
-            make.height.equalTo(mainImageView.snp.width).multipliedBy(0.4)
+            make.height.equalTo(mainImageView.snp.width).multipliedBy(0.5)
         }
         
         titleLabel.snp.makeConstraints { make in
             make.top.equalTo(mainImageView.snp.bottom).offset(16)
             make.horizontalEdges.equalToSuperview().inset(8)
-            make.height.equalTo(24)
+            make.height.equalTo(20)
         }
         
         button.snp.makeConstraints { make in
@@ -60,14 +60,22 @@ class UserChallengeTableViewCell: UITableViewCell {
     }
     
     private func configureView() {
+        selectionStyle = .none
+        mainImageView.backgroundColor = .init(
+            red: 0.5 + CGFloat.random(in: 0...0.5),
+            green: 0.5 + CGFloat.random(in: 0...0.5),
+            blue: 0.5 + CGFloat.random(in: 0...0.5),
+            alpha: 0.8
+        )
+        
         containerView.clipsToBounds = true
         containerView.layer.cornerRadius = 20
         containerView.layer.borderColor = UIColor.systemGray5.cgColor
         containerView.layer.borderWidth = 2
         
         titleLabel.textAlignment = .center
-        titleLabel.font = .systemFont(ofSize: 22, weight: .medium)
-        
+        titleLabel.font = .systemFont(ofSize: 18, weight: .heavy)
+
     }
     
 }
